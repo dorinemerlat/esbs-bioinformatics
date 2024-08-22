@@ -1,0 +1,254 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ESBS Bioinformatics",
+    "section": "",
+    "text": "You’ll find here all the materials for your bioinformatics practical sessions (TDs) at ESBS.\nIn addition to the TD subjects, the site also provides helpful resources such as cheatsheets, guides, and links to external courses that will help you get started with the tools and concepts you’ll need.\n\n\n\n\nThese are the tutorials for first-year students. They cover fundamental concepts and essential tools in bioinformatics with an introduction to Command Line Interface (CLI):\n\n1 - Database exploration\n2 - Functional analysis of a gene list and sequence comparison\n3 - Similarity searches\n4 - Analysis of protein families\n5 - Multiple alignment and molecular phylogeny\n\n\n\n\nSecond-year ESBS students (2A) can access the Genomics and Epigenomics tutorials here. These tutorials will guide you through several bioinformatics analysis used in genomics research:"
+  },
+  {
+    "objectID": "home/2A.html",
+    "href": "home/2A.html",
+    "title": "Tutorials for 2A",
+    "section": "",
+    "text": "Tutorial 1 - Pre-processing of sequencing reads\n\n\nTutorial 2 - Read mapping on a reference genome\n\n\nTutorial 3 - De novo assembly\n\n\nTutorial 4 - Annotation of a complete prokaryotic genome\n\n\nTutorial 5 - Analysis of eukaryotic sequences\n\n\n\n\n# Content for 2A"
+  },
+  {
+    "objectID": "tutorials2A/tutorial5.html",
+    "href": "tutorials2A/tutorial5.html",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "",
+    "text": "Tutorial 1: Pre-processing of Sequencing Reads\nIn this tutorial, you will learn how to pre-process raw sequencing reads by removing adapters, trimming low-quality bases, and filtering out low-quality reads.\nSteps Covered: 1. Quality assessment using FastQC 2. Adapter trimming using Trimmomatic 3. Quality filtering using Seqtk\nFollow along to clean up your raw sequencing reads before moving on to further analysis."
+  },
+  {
+    "objectID": "tutorials2A/tutorial3.html",
+    "href": "tutorials2A/tutorial3.html",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "",
+    "text": "Tutorial 1: Pre-processing of Sequencing Reads\nIn this tutorial, you will learn how to pre-process raw sequencing reads by removing adapters, trimming low-quality bases, and filtering out low-quality reads.\nSteps Covered: 1. Quality assessment using FastQC 2. Adapter trimming using Trimmomatic 3. Quality filtering using Seqtk\nFollow along to clean up your raw sequencing reads before moving on to further analysis."
+  },
+  {
+    "objectID": "tutorials2A/tutorial1.html",
+    "href": "tutorials2A/tutorial1.html",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "",
+    "text": "To practise quality control and pre-processing of raw NGS data, we will use small datasets. The tools are available in Galaxy, a platform for omics data analysis.\nFirst step: log on to https://usegalaxy.fr\nthen, to ensure you have sufficient resources, go to the url :\nhttps://usegalaxy.fr/join-training/td1genomics/\nYou can then return to galaxy."
+  },
+  {
+    "objectID": "tutorials2A/tutorial2.html",
+    "href": "tutorials2A/tutorial2.html",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "",
+    "text": "Tutorial 1: Pre-processing of Sequencing Reads\nIn this tutorial, you will learn how to pre-process raw sequencing reads by removing adapters, trimming low-quality bases, and filtering out low-quality reads.\nSteps Covered: 1. Quality assessment using FastQC 2. Adapter trimming using Trimmomatic 3. Quality filtering using Seqtk\nFollow along to clean up your raw sequencing reads before moving on to further analysis."
+  },
+  {
+    "objectID": "tutorials2A/tutorial4.html",
+    "href": "tutorials2A/tutorial4.html",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "",
+    "text": "Tutorial 1: Pre-processing of Sequencing Reads\nIn this tutorial, you will learn how to pre-process raw sequencing reads by removing adapters, trimming low-quality bases, and filtering out low-quality reads.\nSteps Covered: 1. Quality assessment using FastQC 2. Adapter trimming using Trimmomatic 3. Quality filtering using Seqtk\nFollow along to clean up your raw sequencing reads before moving on to further analysis."
+  },
+  {
+    "objectID": "2A.html",
+    "href": "2A.html",
+    "title": "Tutorials for 2A",
+    "section": "",
+    "text": "Content for 2A"
+  },
+  {
+    "objectID": "2A.html#helps",
+    "href": "2A.html#helps",
+    "title": "Tutorials for 2A",
+    "section": "Helps",
+    "text": "Helps"
+  },
+  {
+    "objectID": "tutorials2A/tutorial1.html#illumina-se",
+    "href": "tutorials2A/tutorial1.html#illumina-se",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "Illumina SE",
+    "text": "Illumina SE\nYou can rename your history (right panel).\nThe 1st data set concerns a metagenomic study of the microbiome of the oral cavity of a snake. After extraction and fragmentation of the sample DNA, part of the 16S rRNA gene was amplified and sequenced (Illumina Single End) in order to identify the bacteria present. Due to time constraints, only part of the data will be analysed.\n\nRaw data: FASTQ file\n\nImport the FASTQ file from the zenodo server:\n\nCopy the address of the link: https://zenodo.org/record/3977236/files/female_oral2.fastq-4143.gz\nIn Galaxy, use the Upload Data button (top left) then Paste/Fetch data, copy the link and launch (start).\n\nLook at the file (eye icon).\n\nWhat are the characteristics of the FASTQ format? Given that the scores are encoded using the SANGER/Illumina 1.8+ system, what is the score value for most of the bases at the start of the 1st read? Is this satisfactory?\n\n\nQuality control using FASTQ\nOpen the FASTQ Quality Control toolbox (left panel) and choose FastQC.\nFastQC\nExplore the quality of reads with FastQC (default settings). See the FastQC website for help and examples of analysis.\nPer Base Sequence Quality: How long are the reads? How does the quality evolve along the reads? Per sequence quality scores: What can be deduced from this graph? Per base sequence content: In the case of genome sequencing (without specific amplification), what should this graph look like? Is the result obtained normal in our case? Adapter content: Which adapter is detected?\n\n\nRead processing using Trimmomatic\n1.Use Trimmomatic (FASTQ Quality control section) to improve the quality of reads:\nPerform initial IllUMINACLIP step? Yes, select Nextera Sliding window trimming (proposed by default) Drop reads below a specific length (MINLEN): 20 2. Perform FastQC analysis again on the processed reads and compare the results to the raw data. Is the result acceptable?\n\nWhat would be the next step to identify the microbial species present in the snake’s oral cavity from these reads?"
+  },
+  {
+    "objectID": "tutorials2A/tutorial1.html#pacbio-hifi",
+    "href": "tutorials2A/tutorial1.html#pacbio-hifi",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "PacBio Hifi",
+    "text": "PacBio Hifi\nThis dataset contains 50,000 PacBio HiFi reads from the sequencing of a human genome (PacBio - GIAB sample HG002).\n\nImport the file into Galaxy:\nhttps://zenodo.org/api/files/ff9aa6e3-3d69-451f-9798-7ea69b475989/m64011_190830_220126.Q20.subsample.fastq.gz\n\nPerform quality control with Nanoplot (available in Nanopore). This tool can only be used for long reads (PacBio or Nanopore):\n\nOptions for customizing the plot created: Specify the bivariate format of the plots: dot Show the N50 mark in the read length histogram: Yes\n\n\nAnalysis:\nWhat is the average length of reads? Significant variations in read size are observed in the PacBio data, unlike the Illumina data. Why? What does N5O represent in this case? How useful can the Yield by length chart be? Read length vs Average read qualiy plot using dots: No read is observed with Q&lt;20. Why? Is there a link between read size and quality?"
+  },
+  {
+    "objectID": "tutorials2A/tutorial1.html#nanopore",
+    "href": "tutorials2A/tutorial1.html#nanopore",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "NanoPore",
+    "text": "NanoPore\nThe last set corresponds to nanopore reads obtained from a plant genome. We will use PycoQC for quality control. This only works with Nanopores readings; it requires specific information provided by nanopore basecallers such as Guppy.\n\nImport the files into Galaxy:\nhttps://zenodo.org/api/files/ff9aa6e3-3d69-451f-9798-7ea69b475989/nanopore_basecalled-guppy.fastq.gz https://zenodo.org/api/files/ff9aa6e3-3d69-451f-9798-7ea69b475989/sequencing_summary.txt\n\n\nPerform quality control with PycoQC\nHow many reads are available? How many bases does this represent? How do you explain the discrepancy between median reading size and N50? Basecalled reads length: what can you say about the distribution of lengths? Basecalled reads quality: What range do most quality scores fall into?"
+  },
+  {
+    "objectID": "tutorials-2A/tutorial5.html",
+    "href": "tutorials-2A/tutorial5.html",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "",
+    "text": "Tutorial 1: Pre-processing of Sequencing Reads\nIn this tutorial, you will learn how to pre-process raw sequencing reads by removing adapters, trimming low-quality bases, and filtering out low-quality reads.\nSteps Covered: 1. Quality assessment using FastQC 2. Adapter trimming using Trimmomatic 3. Quality filtering using Seqtk\nFollow along to clean up your raw sequencing reads before moving on to further analysis."
+  },
+  {
+    "objectID": "tutorials-2A/tutorial3.html",
+    "href": "tutorials-2A/tutorial3.html",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "",
+    "text": "Tutorial 1: Pre-processing of Sequencing Reads\nIn this tutorial, you will learn how to pre-process raw sequencing reads by removing adapters, trimming low-quality bases, and filtering out low-quality reads.\nSteps Covered: 1. Quality assessment using FastQC 2. Adapter trimming using Trimmomatic 3. Quality filtering using Seqtk\nFollow along to clean up your raw sequencing reads before moving on to further analysis."
+  },
+  {
+    "objectID": "tutorials-2A/tutorial1.html",
+    "href": "tutorials-2A/tutorial1.html",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "",
+    "text": "To practise quality control and pre-processing of raw NGS data, we will use small datasets. The tools are available in Galaxy, a platform for omics data analysis.\nFirst step: log on to https://usegalaxy.fr\nthen, to ensure you have sufficient resources, go to the url :\nhttps://usegalaxy.fr/join-training/td1genomics/\nYou can then return to galaxy."
+  },
+  {
+    "objectID": "tutorials-2A/tutorial1.html#illumina-se",
+    "href": "tutorials-2A/tutorial1.html#illumina-se",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "1 Illumina SE",
+    "text": "1 Illumina SE\nYou can rename your history (right panel).\nThe 1st data set concerns a metagenomic study of the microbiome of the oral cavity of a snake. After extraction and fragmentation of the sample DNA, part of the 16S rRNA gene was amplified and sequenced (Illumina Single End) in order to identify the bacteria present. Due to time constraints, only part of the data will be analysed.\n\n1.1 Raw data: FASTQ file\n\nImport the FASTQ file from the zenodo server:\n\nCopy the address of the link: https://zenodo.org/record/3977236/files/female_oral2.fastq-4143.gz\nIn Galaxy, use the Upload Data button (top left) then Paste/Fetch data, copy the link and launch (start).\n\nLook at the file (eye icon).\n\nWhat are the characteristics of the FASTQ format? Given that the scores are encoded using the SANGER/Illumina 1.8+ system, what is the score value for most of the bases at the start of the 1st read? Is this satisfactory?\n\n\n1.2 Quality control using FASTQ\nOpen the FASTQ Quality Control toolbox (left panel) and choose FastQC.\nFastQC\nExplore the quality of reads with FastQC (default settings). See the FastQC website for help and examples of analysis.\nPer Base Sequence Quality: How long are the reads? How does the quality evolve along the reads? Per sequence quality scores: What can be deduced from this graph? Per base sequence content: In the case of genome sequencing (without specific amplification), what should this graph look like? Is the result obtained normal in our case? Adapter content: Which adapter is detected?\n\n\n1.3 Read processing using Trimmomatic\n1.Use Trimmomatic (FASTQ Quality control section) to improve the quality of reads:\nPerform initial IllUMINACLIP step? Yes, select Nextera Sliding window trimming (proposed by default) Drop reads below a specific length (MINLEN): 20 2. Perform FastQC analysis again on the processed reads and compare the results to the raw data. Is the result acceptable?\n\nWhat would be the next step to identify the microbial species present in the snake’s oral cavity from these reads?"
+  },
+  {
+    "objectID": "tutorials-2A/tutorial1.html#pacbio-hifi",
+    "href": "tutorials-2A/tutorial1.html#pacbio-hifi",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "2 PacBio Hifi",
+    "text": "2 PacBio Hifi\nThis dataset contains 50,000 PacBio HiFi reads from the sequencing of a human genome (PacBio - GIAB sample HG002).\n\n2.1 Import the file into Galaxy:\nhttps://zenodo.org/api/files/ff9aa6e3-3d69-451f-9798-7ea69b475989/m64011_190830_220126.Q20.subsample.fastq.gz\n\nPerform quality control with Nanoplot (available in Nanopore). This tool can only be used for long reads (PacBio or Nanopore):\n\nOptions for customizing the plot created: Specify the bivariate format of the plots: dot Show the N50 mark in the read length histogram: Yes\n\n\n2.2 Analysis:\nWhat is the average length of reads? Significant variations in read size are observed in the PacBio data, unlike the Illumina data. Why? What does N5O represent in this case? How useful can the Yield by length chart be? Read length vs Average read qualiy plot using dots: No read is observed with Q&lt;20. Why? Is there a link between read size and quality?"
+  },
+  {
+    "objectID": "tutorials-2A/tutorial1.html#nanopore",
+    "href": "tutorials-2A/tutorial1.html#nanopore",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "3 NanoPore",
+    "text": "3 NanoPore\nThe last set corresponds to nanopore reads obtained from a plant genome. We will use PycoQC for quality control. This only works with Nanopores readings; it requires specific information provided by nanopore basecallers such as Guppy.\n\n3.1 Import the files into Galaxy:\nhttps://zenodo.org/api/files/ff9aa6e3-3d69-451f-9798-7ea69b475989/nanopore_basecalled-guppy.fastq.gz https://zenodo.org/api/files/ff9aa6e3-3d69-451f-9798-7ea69b475989/sequencing_summary.txt\n\n\n3.2 Perform quality control with PycoQC\nHow many reads are available? How many bases does this represent? How do you explain the discrepancy between median reading size and N50? Basecalled reads length: what can you say about the distribution of lengths? Basecalled reads quality: What range do most quality scores fall into?"
+  },
+  {
+    "objectID": "tutorials-2A/tutorial2.html",
+    "href": "tutorials-2A/tutorial2.html",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "",
+    "text": "Tutorial 1: Pre-processing of Sequencing Reads\nIn this tutorial, you will learn how to pre-process raw sequencing reads by removing adapters, trimming low-quality bases, and filtering out low-quality reads.\nSteps Covered: 1. Quality assessment using FastQC 2. Adapter trimming using Trimmomatic 3. Quality filtering using Seqtk\nFollow along to clean up your raw sequencing reads before moving on to further analysis."
+  },
+  {
+    "objectID": "tutorials-2A/tutorial4.html",
+    "href": "tutorials-2A/tutorial4.html",
+    "title": "Pre-processing of Sequencing Reads",
+    "section": "",
+    "text": "Tutorial 1: Pre-processing of Sequencing Reads\nIn this tutorial, you will learn how to pre-process raw sequencing reads by removing adapters, trimming low-quality bases, and filtering out low-quality reads.\nSteps Covered: 1. Quality assessment using FastQC 2. Adapter trimming using Trimmomatic 3. Quality filtering using Seqtk\nFollow along to clean up your raw sequencing reads before moving on to further analysis."
+  },
+  {
+    "objectID": "index.html#available-courses-and-tutorials",
+    "href": "index.html#available-courses-and-tutorials",
+    "title": "ESBS Bioinformatics",
+    "section": "",
+    "text": "These are the tutorials for first-year students. They cover fundamental concepts and essential tools in bioinformatics with an introduction to Command Line Interface (CLI):\n\n1 - Database exploration\n2 - Functional analysis of a gene list and sequence comparison\n3 - Similarity searches\n4 - Analysis of protein families\n5 - Multiple alignment and molecular phylogeny\n\n\n\n\nSecond-year ESBS students (2A) can access the Genomics and Epigenomics tutorials here. These tutorials will guide you through several bioinformatics analysis used in genomics research:"
+  },
+  {
+    "objectID": "index.html#help-and-support",
+    "href": "index.html#help-and-support",
+    "title": "ESBS Bioinformatics",
+    "section": "Help and Support",
+    "text": "Help and Support\nIf you need additional guidance, visit our Help section where you’ll find detailed resources to assist you with the technical aspects of the tutorials, as well as external links to bioinformatics courses:\n\nGalaxy Help: Get familiar with the Galaxy platform, a popular tool for conducting bioinformatics analyses without extensive programming knowledge.\nCLI Help: This guide will help you master the command-line tools essential for bioinformatics workflows.\n\nAdditionally, you will find links to other existing bioinformatics courses and external resources to enhance your learning experience.\n\nWe hope these tutorials and resources will guide you in your bioinformatics journey, helping you develop the skills and knowledge needed for your academic and research projects."
+  },
+  {
+    "objectID": "index.html#welcome-to-the-esbs-bioinformatics-tutorial-platform",
+    "href": "index.html#welcome-to-the-esbs-bioinformatics-tutorial-platform",
+    "title": "ESBS Bioinformatics",
+    "section": "",
+    "text": "This website provides a comprehensive collection of tutorials tailored for various bioinformatics courses at the European School of Biotechnology Strasbourg (ESBS). These tutorials are aimed at helping students across different year groups understand and apply key concepts in genomics, epigenomics, and bioinformatics.\nWhether you are in your first year exploring the basics of bioinformatics or in your later years diving into more complex analyses, you’ll find a range of tutorials designed to support your learning journey."
+  },
+  {
+    "objectID": "help/galaxy-help.html",
+    "href": "help/galaxy-help.html",
+    "title": "Galaxy Help",
+    "section": "",
+    "text": "Galaxy is a popular platform used in bioinformatics for running various data analyses, including genome assembly, mapping, and more. This guide will help you get started with Galaxy and provide an overview of its key features and functions."
+  },
+  {
+    "objectID": "help/galaxy-help.html#accessing-galaxy",
+    "href": "help/galaxy-help.html#accessing-galaxy",
+    "title": "Galaxy Help",
+    "section": "1 Accessing Galaxy",
+    "text": "1 Accessing Galaxy\nTo start using Galaxy, visit the following URL:\n\nGalaxy French Server\n\n(Insert a screenshot of the Galaxy homepage here)"
+  },
+  {
+    "objectID": "help/galaxy-help.html#creating-an-account",
+    "href": "help/galaxy-help.html#creating-an-account",
+    "title": "Galaxy Help",
+    "section": "2 Creating an Account",
+    "text": "2 Creating an Account\nIf you don’t already have an account, you’ll need to create one:\n\nClick on the Login/Register button in the upper right corner.\nSelect Register and fill out the form with your details.\n\nOnce your account is created, you can log in and save your workflows and analyses.\n(Insert a screenshot showing the login/registration buttons here)"
+  },
+  {
+    "objectID": "help/galaxy-help.html#getting-more-resources-only-available-during-practical-sessions",
+    "href": "help/galaxy-help.html#getting-more-resources-only-available-during-practical-sessions",
+    "title": "Galaxy Help",
+    "section": "3 Getting More Resources (Only Available During Practical Sessions)",
+    "text": "3 Getting More Resources (Only Available During Practical Sessions)\nTo ensure you have sufficient resources for your practical sessions, follow these steps:\n\nMake sure to use the French version of Galaxy.\nDuring the practical sessions, additional resources will be reserved for you. Go to the following URL to join the training session:\n\nJoin Practical Session Resources\n\nAfter joining, you can return to Galaxy and continue working with the reserved resources.\n\n(Insert a screenshot showing the process of joining the training session here)\nYou can then return to galaxy."
+  },
+  {
+    "objectID": "help/galaxy-help.html#uploading-data",
+    "href": "help/galaxy-help.html#uploading-data",
+    "title": "Galaxy Help",
+    "section": "4 Uploading Data",
+    "text": "4 Uploading Data\nTo upload your sequencing data or other files:\n\nClick on the Upload Data button located on the top left of the page under the Tools section.\nA panel will appear where you can drag-and-drop files or choose them from your computer.\n\nMake sure that your data is correctly formatted and meets the requirements for the specific tools you’ll be using.\n(Insert a screenshot of the data upload panel here)"
+  },
+  {
+    "objectID": "help/galaxy-help.html#running-tools-and-workflows",
+    "href": "help/galaxy-help.html#running-tools-and-workflows",
+    "title": "Galaxy Help",
+    "section": "5 Running Tools and Workflows",
+    "text": "5 Running Tools and Workflows\nGalaxy offers many bioinformatics tools, each designed to perform specific tasks like quality control, mapping, assembly, and annotation. To use these tools effectively:\n\nExplore the Tools section on the left panel.\nWhen you select a tool, Galaxy will display options for configuring it. Follow the tool documentation to understand which parameters need adjustment based on your data.\nMany tools allow for custom inputs, but default settings often work well for general cases.\n\nMake sure to familiarize yourself with the help sections of each tool, as they provide detailed descriptions and usage tips.\nYour job will be queued, and you can monitor its progress in the History panel on the right-hand side of the screen.\n(Insert a screenshot of running a tool, showing input fields and execution button here)"
+  },
+  {
+    "objectID": "help/galaxy-help.html#understanding-job-status-in-the-history-panel",
+    "href": "help/galaxy-help.html#understanding-job-status-in-the-history-panel",
+    "title": "Galaxy Help",
+    "section": "6 Understanding Job Status in the History Panel",
+    "text": "6 Understanding Job Status in the History Panel\n\nGreen: The job has successfully completed.\nRed: The job failed. You can click on the red dataset to see the error log.\nYellow: The job is still running.\nGray: The job is queued and waiting to be processed.\n\n(Insert a screenshot showing the different job statuses in the History panel here)"
+  },
+  {
+    "objectID": "help/galaxy-help.html#viewing-and-downloading-results",
+    "href": "help/galaxy-help.html#viewing-and-downloading-results",
+    "title": "Galaxy Help",
+    "section": "7 Viewing and Downloading Results",
+    "text": "7 Viewing and Downloading Results\nOnce your job is completed, ithe results appear in the History panel. You can:\n\nClick on the dataset to view the output directly in Galaxy.\nDownload the results by clicking on the download icon next to the dataset in the History panel.\n\n(Insert a screenshot of the History panel with completed jobs and download options here)"
+  },
+  {
+    "objectID": "help/galaxy-help.html#help-and-troubleshooting",
+    "href": "help/galaxy-help.html#help-and-troubleshooting",
+    "title": "Galaxy Help",
+    "section": "8 Help and Troubleshooting",
+    "text": "8 Help and Troubleshooting\nIf you encounter any issues, Galaxy has extensive documentation and community support:\n\nGalaxy Tutorials\nGalaxy Help Forum\n\nThese resources provide guides for using Galaxy, troubleshooting tips, and examples of common workflows.\n(Optional: Insert a screenshot of the Galaxy help page or tutorials page here)\n\nBy following these steps, you should be able to navigate Galaxy efficiently and complete your analyses. As you progress, feel free to add your own notes, screenshots, and comments to enhance your understanding of the platform."
+  },
+  {
+    "objectID": "index_fr.html",
+    "href": "index_fr.html",
+    "title": "Bioinformatique à l’ESBS",
+    "section": "",
+    "text": "You’ll find here all the materials for your bioinformatics practical sessions (TDs) at ESBS.\nIn addition to the TD subjects, the site also provides helpful resources such as cheatsheets, guides, and links to external courses that will help you get started with the tools and concepts you’ll need.\n\n\n\n\nThese are the tutorials for first-year students. They cover fundamental concepts and essential tools in bioinformatics with an introduction to Command Line Interface (CLI):\n\n1 - Database exploration\n2 - Functional analysis of a gene list and sequence comparison\n3 - Similarity searches\n4 - Analysis of protein families\n5 - Multiple alignment and molecular phylogeny\n\n\n\n\nSecond-year ESBS students (2A) can access the Genomics and Epigenomics tutorials here. These tutorials will guide you through several bioinformatics analysis used in genomics research:\n\n1 - Pre-processing of sequencing reads\n2 - Read mapping on a reference genome\n3 - De novo assembly\n4 - Annotation of a complete prokaryotic genome\n5 - Analysis of eukaryotic sequences\n\n\n\n\nThird-year students can access the following advenced tutorials:\n\n2 - Phylogenetic profiles and functional links\n3 - Exome analysis\n4 - Personal genomics: variants\n\n\n\n\nThese are the tutorials for ifth-year pharmacy students (Pharma). They introduce bioinformatics tools and techniques relevant to pharmaceutical research:\n\n1 - Pre-processing of sequencing reads\n2 - Database exploration\n3 - Functional analysis of a gene list and sequence comparison\n4 - Similarity searches\n5 - Multiple alignment\n\n\n\n\n\nIf you need additional guidance, visit our Help section where you’ll find detailed resources to assist you with the technical aspects of the tutorials, as well as external links to bioinformatics courses:\n\nGalaxy Help: Get familiar with the Galaxy platform, a popular tool for conducting bioinformatics analyses without extensive programming knowledge.\nCLI Help: This guide will help you master the command-line tools essential for bioinformatics workflows.\n\nAdditionally, you will find links to other existing bioinformatics courses and external resources to enhance your learning experience.\n\nWe hope these tutorials and resources will guide you in your bioinformatics journey, helping you develop the skills and knowledge needed for your academic and research projects."
+  },
+  {
+    "objectID": "index_fr.html#available-courses-and-tutorials",
+    "href": "index_fr.html#available-courses-and-tutorials",
+    "title": "Bioinformatique à l’ESBS",
+    "section": "",
+    "text": "These are the tutorials for first-year students. They cover fundamental concepts and essential tools in bioinformatics with an introduction to Command Line Interface (CLI):\n\n1 - Database exploration\n2 - Functional analysis of a gene list and sequence comparison\n3 - Similarity searches\n4 - Analysis of protein families\n5 - Multiple alignment and molecular phylogeny\n\n\n\n\nSecond-year ESBS students (2A) can access the Genomics and Epigenomics tutorials here. These tutorials will guide you through several bioinformatics analysis used in genomics research:\n\n1 - Pre-processing of sequencing reads\n2 - Read mapping on a reference genome\n3 - De novo assembly\n4 - Annotation of a complete prokaryotic genome\n5 - Analysis of eukaryotic sequences\n\n\n\n\nThird-year students can access the following advenced tutorials:\n\n2 - Phylogenetic profiles and functional links\n3 - Exome analysis\n4 - Personal genomics: variants\n\n\n\n\nThese are the tutorials for ifth-year pharmacy students (Pharma). They introduce bioinformatics tools and techniques relevant to pharmaceutical research:\n\n1 - Pre-processing of sequencing reads\n2 - Database exploration\n3 - Functional analysis of a gene list and sequence comparison\n4 - Similarity searches\n5 - Multiple alignment"
+  },
+  {
+    "objectID": "index_fr.html#help-and-support",
+    "href": "index_fr.html#help-and-support",
+    "title": "Bioinformatique à l’ESBS",
+    "section": "",
+    "text": "If you need additional guidance, visit our Help section where you’ll find detailed resources to assist you with the technical aspects of the tutorials, as well as external links to bioinformatics courses:\n\nGalaxy Help: Get familiar with the Galaxy platform, a popular tool for conducting bioinformatics analyses without extensive programming knowledge.\nCLI Help: This guide will help you master the command-line tools essential for bioinformatics workflows.\n\nAdditionally, you will find links to other existing bioinformatics courses and external resources to enhance your learning experience.\n\nWe hope these tutorials and resources will guide you in your bioinformatics journey, helping you develop the skills and knowledge needed for your academic and research projects."
+  }
+]

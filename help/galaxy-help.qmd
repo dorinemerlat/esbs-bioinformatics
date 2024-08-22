@@ -1,0 +1,104 @@
+---
+title: "Galaxy Help"
+toc: true
+number-sections: true
+number-depth: 3
+---
+
+
+Galaxy is a popular platform used in bioinformatics for running various data analyses, including genome assembly, mapping, and more. This guide will help you get started with Galaxy and provide an overview of its key features and functions.
+
+## Accessing Galaxy
+
+To start using Galaxy, visit the following URL:
+
+- [Galaxy French Server](https://usegalaxy.fr)
+
+*(Insert a screenshot of the Galaxy homepage here)*
+
+## Creating an Account
+
+If you don’t already have an account, you’ll need to create one:
+
+1. Click on the **Login/Register** button in the upper right corner.
+2. Select **Register** and fill out the form with your details.
+
+Once your account is created, you can log in and save your workflows and analyses.
+
+*(Insert a screenshot showing the login/registration buttons here)*
+
+## Getting More Resources (Only Available During Practical Sessions)
+
+To ensure you have sufficient resources for your practical sessions, follow these steps:
+
+1. Make sure to use the French version of Galaxy.
+2. During the practical sessions, additional resources will be reserved for you. Go to the following URL to join the training session:
+   - [Join Practical Session Resources](https://usegalaxy.fr/join-training/td1genomics/)
+   
+3. After joining, you can return to Galaxy and continue working with the reserved resources.
+
+*(Insert a screenshot showing the process of joining the training session here)*
+
+
+You can then return to galaxy.
+
+## Uploading Data
+
+To upload your sequencing data or other files:
+
+1. Click on the **Upload Data** button located on the top left of the page under the **Tools** section.
+
+2. A panel will appear where you can drag-and-drop files or choose them from your computer.
+
+Make sure that your data is correctly formatted and meets the requirements for the specific tools you'll be using.
+
+*(Insert a screenshot of the data upload panel here)*
+
+## Running Tools and Workflows
+
+Galaxy offers many bioinformatics tools, each designed to perform specific tasks like quality control, mapping, assembly, and annotation. To use these tools effectively:
+
+1. Explore the **Tools** section on the left panel.
+2. When you select a tool, Galaxy will display options for configuring it. Follow the tool documentation to understand which parameters need adjustment based on your data.
+3. Many tools allow for custom inputs, but default settings often work well for general cases.
+
+Make sure to familiarize yourself with the help sections of each tool, as they provide detailed descriptions and usage tips.
+
+Your job will be queued, and you can monitor its progress in the **History** panel on the right-hand side of the screen.
+
+
+*(Insert a screenshot of running a tool, showing input fields and execution button here)*
+
+## Understanding Job Status in the History Panel
+
+- **Green**: The job has successfully completed.
+- **Red**: The job failed. You can click on the red dataset to see the error log.
+- **Yellow**: The job is still running.
+- **Gray**: The job is queued and waiting to be processed.
+
+*(Insert a screenshot showing the different job statuses in the History panel here)*
+
+## Viewing and Downloading Results
+
+Once your job is completed, ithe results appear in the **History** panel. You can:
+
+- Click on the dataset to view the output directly in Galaxy.
+- Download the results by clicking on the download icon next to the dataset in the **History** panel.
+
+*(Insert a screenshot of the History panel with completed jobs and download options here)*
+
+
+## Help and Troubleshooting
+
+If you encounter any issues, Galaxy has extensive documentation and community support:
+
+- [Galaxy Tutorials](https://training.galaxyproject.org/training-material/)
+- [Galaxy Help Forum](https://help.galaxyproject.org/)
+
+These resources provide guides for using Galaxy, troubleshooting tips, and examples of common workflows.
+
+*(Optional: Insert a screenshot of the Galaxy help page or tutorials page here)*
+
+---
+
+By following these steps, you should be able to navigate Galaxy efficiently and complete your analyses. As you progress, feel free to add your own notes, screenshots, and comments to enhance your understanding of the platform.

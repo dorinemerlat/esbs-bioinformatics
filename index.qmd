@@ -1,0 +1,59 @@
+---
+title: "ESBS Bioinformatics"
+---
+
+# Welcome to the ESBS Bioinformatics Practical Sessions
+
+You’ll find here all the materials for your bioinformatics practical sessions (TDs) at ESBS. 
+
+In addition to the TD subjects, the site also provides helpful resources such as cheatsheets, guides, and links to external courses that will help you get started with the tools and concepts you'll need.
+
+
+## Available Courses and Tutorials
+
+### 1A - Introduction to Bioinformatics (1st Year)
+These are the tutorials for first-year students. They cover fundamental concepts and essential tools in bioinformatics with an introduction to Command Line Interface (CLI):
+
+- **[1 - Database exploration](tutorials-1A/tutorial1.qmd)**
+- **[2 - Functional analysis of a gene list and sequence comparison](tutorials-1A/tutorial2.qmd)**
+- **[3 - Similarity searches](tutorials-1A/tutorial3.qmd)**
+- **[4 - Analysis of protein families](tutorials-1A/tutorial4.qmd)**
+- **[5 - Multiple alignment and molecular phylogeny](tutorials-1A/tutorial5.qmd)**
+
+### 2A - Genomics and Epigenomics (2nd Year)
+Second-year ESBS students (2A) can access the **Genomics and Epigenomics** tutorials here. These tutorials will guide you through several bioinformatics analysis used in genomics research:
+
+- **[1 - Pre-processing of sequencing reads](tutorials-2A/tutorial1.qmd)**
+- **[2 - Read mapping on a reference genome](tutorials-2A/tutorial2.qmd)**
+- **[3 - De novo assembly](tutorials-2A/tutorial3.qmd)**
+- **[4 - Annotation of a complete prokaryotic genome](tutorials-2A/tutorial4.qmd)**
+- **[5 - Analysis of eukaryotic sequences](tutorials-2A/tutorial5.qmd)**
+
+### 3A - Comparative and Medical Genomics (3rd Year)
+Third-year students can access the following advenced tutorials:
+
+- **[2 - Phylogenetic profiles and functional links](tutorials-3A/tutorial2.qmd)**
+- **[3 - Exome analysis](tutorials-3A/tutorial3.qmd)**
+- **[4 - Personal genomics: variants](tutorials-3A/tutorial4.qmd)**
+
+### Pharma - Introduction to Bioinformatics (5th Year, Pharmacy)
+These are the tutorials for ifth-year pharmacy students (Pharma). They introduce bioinformatics tools and techniques relevant to pharmaceutical research:
+
+- **[1 - Pre-processing of sequencing reads](tutorials-pharma/tutorial1.qmd)**
+- **[2 - Database exploration](tutorials-pharma/tutorial2.qmd)**
+- **[3 - Functional analysis of a gene list and sequence comparison](tutorials-pharma/tutorial3.qmd)**
+- **[4 - Similarity searches](tutorials-pharma/tutorial4.qmd)**
+- **[5 - Multiple alignment](tutorials-pharma/tutorial5.qmd)**
+
+## Help and Support
+
+If you need additional guidance, visit our **Help** section where you’ll find detailed resources to assist you with the technical aspects of the tutorials, as well as external links to bioinformatics courses:
+
+- **[Galaxy Help](help/galaxy-help.qmd)**: Get familiar with the Galaxy platform, a popular tool for conducting bioinformatics analyses without extensive programming knowledge.
+- **[CLI Help](help/cli-help.qmd)**: This guide will help you master the command-line tools essential for bioinformatics workflows.
+
+Additionally, you will find links to other existing bioinformatics courses and external resources to enhance your learning experience.
+
+---
+
+We hope these tutorials and resources will guide you in your bioinformatics journey, helping you develop the skills and knowledge needed for your academic and research projects.

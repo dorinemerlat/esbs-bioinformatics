@@ -1,0 +1,119 @@
+{
+  "index.qmd": {
+    "index.html": "b5a7c90f"
+  },
+  "about.qmd": {
+    "about.html": "34220ccc"
+  },
+  "help/cli-help.qmd": {
+    "cli-help.html": "09d448d0"
+  },
+  "help/galaxy-help.qmd": {
+    "galaxy-help.html": "22e70fc9"
+  },
+  "tutorials/tutorial1.qmd": {
+    "tutorial1.html": "4fe3098f"
+  },
+  "tutorials/tutorial2.qmd": {
+    "tutorial2.html": "ff370c2b"
+  },
+  "tutorials/tutorial3.qmd": {
+    "tutorial3.html": "8ee936a0"
+  },
+  "tutorials/tutorial4.qmd": {
+    "tutorial4.html": "37f7793a"
+  },
+  "tutorials/tutorial5.qmd": {
+    "tutorial5.html": "48185979"
+  },
+  "home/2A.qmd": {
+    "2A.html": "8821efee"
+  },
+  "tutorials2A/tutorial1.qmd": {
+    "tutorial1.html": "9a6d6462"
+  },
+  "tutorials2A/tutorial2.qmd": {
+    "tutorial2.html": "ba5718ba"
+  },
+  "tutorials2A/tutorial3.qmd": {
+    "tutorial3.html": "f4034e6e"
+  },
+  "tutorials2A/tutorial4.qmd": {
+    "tutorial4.html": "fa6e01a7"
+  },
+  "tutorials2A/tutorial5.qmd": {
+    "tutorial5.html": "d813667c"
+  },
+  "2A.qmd": {
+    "2A.html": "8b9c6458"
+  },
+  "1A.qmd": {
+    "1A.html": "b65ce417"
+  },
+  "3A.qmd": {
+    "3A.html": "94ad8d23"
+  },
+  "help.qmd": {
+    "help.html": "e6ebc8fe"
+  },
+  "pharma.qmd": {
+    "pharma.html": "fde1fa85"
+  },
+  "tutorials-1A/tutorial1.qmd": {
+    "tutorial1.html": "5d75a6b1"
+  },
+  "tutorials-1A/tutorial2.qmd": {
+    "tutorial2.html": "37ad7758"
+  },
+  "tutorials-1A/tutorial3.qmd": {
+    "tutorial3.html": "828810c2"
+  },
+  "tutorials-1A/tutorial4.qmd": {
+    "tutorial4.html": "418fdcca"
+  },
+  "tutorials-1A/tutorial5.qmd": {
+    "tutorial5.html": "4292e58d"
+  },
+  "tutorials-2A/tutorial1.qmd": {
+    "tutorial1.html": "d26e8f3a"
+  },
+  "tutorials-2A/tutorial2.qmd": {
+    "tutorial2.html": "46d3cbf0"
+  },
+  "tutorials-2A/tutorial3.qmd": {
+    "tutorial3.html": "daef8224"
+  },
+  "tutorials-2A/tutorial4.qmd": {
+    "tutorial4.html": "0157ec2d"
+  },
+  "tutorials-2A/tutorial5.qmd": {
+    "tutorial5.html": "338361cc"
+  },
+  "tutorials-3A/tutorial2.qmd": {
+    "tutorial2.html": "dba447ec"
+  },
+  "tutorials-3A/tutorial3.qmd": {
+    "tutorial3.html": "52075cec"
+  },
+  "tutorials-3A/tutorial4.qmd": {
+    "tutorial4.html": "8692b138"
+  },
+  "tutorials-pharma/tutorial1.qmd": {
+    "tutorial1.html": "d0cfcae7"
+  },
+  "tutorials-pharma/tutorial2.qmd": {
+    "tutorial2.html": "3267b6c6"
+  },
+  "tutorials-pharma/tutorial3.qmd": {
+    "tutorial3.html": "1a35ae05"
+  },
+  "tutorials-pharma/tutorial4.qmd": {
+    "tutorial4.html": "dcdeab1e"
+  },
+  "tutorials-pharma/tutorial5.qmd": {
+    "tutorial5.html": "8593833a"
+  },
+  "index_fr.qmd": {
+    "index_fr.html": "1c4f20e4"
+  }
+}

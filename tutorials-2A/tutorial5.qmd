@@ -1,0 +1,15 @@
+---
+title: "Pre-processing of Sequencing Reads"
+toc: true
+---
+
+# Tutorial 1: Pre-processing of Sequencing Reads
+
+In this tutorial, you will learn how to pre-process raw sequencing reads by removing adapters, trimming low-quality bases, and filtering out low-quality reads.
+
+**Steps Covered:**
+1. Quality assessment using FastQC
+2. Adapter trimming using Trimmomatic
+3. Quality filtering using Seqtk
+
+Follow along to clean up your raw sequencing reads before moving on to further analysis.

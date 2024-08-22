@@ -115,5 +115,11 @@
   },
   "index_fr.qmd": {
     "index_fr.html": "1c4f20e4"
+  },
+  "help/cli.qmd": {
+    "cli.html": "a7cc19eb"
+  },
+  "help/galaxy.qmd": {
+    "galaxy.html": "67d7d4e8"
   }
 }

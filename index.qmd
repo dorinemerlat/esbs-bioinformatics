@@ -2,16 +2,14 @@
 title: "ESBS Bioinformatics Practical Sessions"
 ---
 
-# Welcome to the ESBS Bioinformatics Practical Sessions
-
 Here you will find all the materials needed for your bioinformatics practical sessions (TDs) at ESBS.
 
 In addition to the exercise sheets, the site also provides useful resources such as guides and links to external courses that will help you become familiar with the tools and concepts you will need.
 
 
-## Available Courses and Tutorials
+## Practical sessions
 
-### 1A - Introduction to Bioinformatics (1st Year)
+### 1A - Introduction to Bioinformatics
 Here are the tutorials for first-year students. They cover fundamental concepts and essential tools in bioinformatics with an introduction to the command line interface (CLI):
 
 - **[1 - Database exploration](tutorials-1A/tutorial1.qmd)**
@@ -20,7 +18,7 @@ Here are the tutorials for first-year students. They cover fundamental concepts 
 - **[4 - Analysis of protein families](tutorials-1A/tutorial4.qmd)**
 - **[5 - Multiple alignment and molecular phylogeny](tutorials-1A/tutorial5.qmd)**
 
-### 2A - Genomics and Epigenomics (2nd Year)
+### 2A - Genomics and Epigenomics
 The Genomics and Epigenomics tutorials are aimed at second-year students. They will guide you through several analyses commonly used in genomics:
 
 - **[1 - Pre-processing of sequencing reads](tutorials-2A/tutorial1.qmd)**
@@ -29,14 +27,14 @@ The Genomics and Epigenomics tutorials are aimed at second-year students. They w
 - **[4 - Annotation of a complete prokaryotic genome](tutorials-2A/tutorial4.qmd)**
 - **[5 - Analysis of eukaryotic sequences](tutorials-2A/tutorial5.qmd)**
 
-### 3A - Comparative and Medical Genomics (3rd Year)
+### 3A - Comparative and Medical Genomics
 These advanced tutorials are intended for third-year students:
 
 - **[2 - Phylogenetic profiles and functional links](tutorials-3A/tutorial2.qmd)**
 - **[3 - Exome analysis](tutorials-3A/tutorial3.qmd)**
 - **[4 - Personal genomics: variants](tutorials-3A/tutorial4.qmd)**
 
-### Pharma - Introduction to Bioinformatics (5th Year, Pharmacy)
+### Pharma - Introduction to Bioinformatics
 These tutorials for fifth-year pharmacy students introduce some of the bioinformatics tools and techniques needed in pharmaceutical
 
 - **[1 - Pre-processing of sequencing reads](tutorials-pharma/tutorial1.qmd)**

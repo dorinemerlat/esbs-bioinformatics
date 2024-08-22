@@ -1,18 +1,18 @@
 ---
-title: "ESBS Bioinformatics"
+title: "ESBS Bioinformatics Practical Sessions"
 ---
 
 # Welcome to the ESBS Bioinformatics Practical Sessions
 
-You’ll find here all the materials for your bioinformatics practical sessions (TDs) at ESBS. 
+Here you will find all the materials needed for your bioinformatics practical sessions (TDs) at ESBS.
 
-In addition to the TD subjects, the site also provides helpful resources such as cheatsheets, guides, and links to external courses that will help you get started with the tools and concepts you'll need.
+In addition to the exercise sheets, the site also provides useful resources such as guides and links to external courses that will help you become familiar with the tools and concepts you will need.
 
 
 ## Available Courses and Tutorials
 
 ### 1A - Introduction to Bioinformatics (1st Year)
-These are the tutorials for first-year students. They cover fundamental concepts and essential tools in bioinformatics with an introduction to Command Line Interface (CLI):
+Here are the tutorials for first-year students. They cover fundamental concepts and essential tools in bioinformatics with an introduction to the command line interface (CLI):
 
 - **[1 - Database exploration](tutorials-1A/tutorial1.qmd)**
 - **[2 - Functional analysis of a gene list and sequence comparison](tutorials-1A/tutorial2.qmd)**
@@ -21,7 +21,7 @@ These are the tutorials for first-year students. They cover fundamental concepts
 - **[5 - Multiple alignment and molecular phylogeny](tutorials-1A/tutorial5.qmd)**
 
 ### 2A - Genomics and Epigenomics (2nd Year)
-Second-year ESBS students (2A) can access the **Genomics and Epigenomics** tutorials here. These tutorials will guide you through several bioinformatics analysis used in genomics research:
+The Genomics and Epigenomics tutorials are aimed at second-year students. They will guide you through several analyses commonly used in genomics:
 
 - **[1 - Pre-processing of sequencing reads](tutorials-2A/tutorial1.qmd)**
 - **[2 - Read mapping on a reference genome](tutorials-2A/tutorial2.qmd)**
@@ -30,14 +30,14 @@ Second-year ESBS students (2A) can access the **Genomics and Epigenomics** tutor
 - **[5 - Analysis of eukaryotic sequences](tutorials-2A/tutorial5.qmd)**
 
 ### 3A - Comparative and Medical Genomics (3rd Year)
-Third-year students can access the following advenced tutorials:
+These advanced tutorials are intended for third-year students:
 
 - **[2 - Phylogenetic profiles and functional links](tutorials-3A/tutorial2.qmd)**
 - **[3 - Exome analysis](tutorials-3A/tutorial3.qmd)**
 - **[4 - Personal genomics: variants](tutorials-3A/tutorial4.qmd)**
 
 ### Pharma - Introduction to Bioinformatics (5th Year, Pharmacy)
-These are the tutorials for ifth-year pharmacy students (Pharma). They introduce bioinformatics tools and techniques relevant to pharmaceutical research:
+These tutorials for fifth-year pharmacy students introduce some of the bioinformatics tools and techniques needed in pharmaceutical
 
 - **[1 - Pre-processing of sequencing reads](tutorials-pharma/tutorial1.qmd)**
 - **[2 - Database exploration](tutorials-pharma/tutorial2.qmd)**

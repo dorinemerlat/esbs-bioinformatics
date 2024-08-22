@@ -56,28 +56,28 @@ website:
     - text: "Help"
       menu:      
       - text: "Galaxy Help"
-        href: help/galaxy-help.qmd
+        href: help/galaxy.qmd
       - text: "CLI Help"
-        href: help/cli-help.qmd
+        href: help/cli.qmd
     tools:
     - icon: github
       menu:
         - text: Source Code
-          href:  https://code.com
+          href:  https://github.com/dorinemerlat/bioinformatics-en
         - text: Report a Bug
-          href:  https://bugs.com  
+          href:  https://github.com/dorinemerlat/bioinformatics-en/issues
     - icon: globe  # Use the globe icon for language switcher
       menu:
         - text: "English"
-          href: index.qmd
+          href: https://dorinemerlat.github.io/bioinformatics-en/
         - text: "French"
-          href: index_fr.qmd
+          href: https://dorinemerlat.github.io/bioinformatics-fr/
   search: 
     location: navbar
     type: textbox
     keyboard-shortcut: ["?", "H"]
     copy-button: true
-  page-footer: "Copyright 2024, Dorine MERLAT. Built with Quarto." 
+  page-footer: "Copyright 2024, Dorine Merlat. Built with Quarto." 
 
 language: 
   search-box-placeholder: Search

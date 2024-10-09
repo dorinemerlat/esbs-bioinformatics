@@ -1,0 +1,8 @@
+## test
+
+::: {.callout-tip}
+Help
+If you need help with a command, display its help using:
+ - `<command> -h` or `<command> --help` for short help messages.
+ - `man <command>` to display the full manual of a command.
+:::

@@ -1,1 +1,1 @@
-{"entries":[],"headings":[]}
+{"entries":[],"headings":["practical-2---exome-analysis-snv-calling","connection-to-the-server","raw-sequence-data-exome-of-chromosome-22","fastq---quality-control","alignement---mapping-to-the-reference-genome-fastq-to-bam","alignment-using-bowtie2","visualization-of-the-bam-file","calling-single-nucleotide-variations-snvs-pileup-interval-and-bed-files","generation-of-a-pileup-file","filtering-pileup-to-get-a-list-of-snvs","annotation-of-variants"]}

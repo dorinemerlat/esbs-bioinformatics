@@ -121,5 +121,11 @@
   },
   "help/galaxy.qmd": {
     "galaxy.html": "67d7d4e8"
+  },
+  "help/connexion_to_lbgi_server.qmd": {
+    "connexion_to_lbgi_server.html": "8616e2d9"
+  },
+  "help/server_connection_guide.qmd": {
+    "server_connection_guide.html": "40c1165e"
   }
 }

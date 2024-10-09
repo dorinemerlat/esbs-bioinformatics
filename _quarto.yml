@@ -35,12 +35,10 @@ website:
         href: tutorials-2A/tutorial5.qmd
     - text: "3A"
       menu:
-      - text: "2 - Read mapping on a reference genome"
+      - text: "2 - Exome analysis"
         href: tutorials-3A/tutorial2.qmd
-      - text: "3 - De novo assembly"
+      - text: "3 - Personal genomics: variants"
         href: tutorials-3A/tutorial3.qmd
-      - text: "4 - Annotation of a complete prokaryotic genome"
-        href: tutorials-3A/tutorial4.qmd
     - text: "Pharma"
       menu:
       - text: "1 - Pre-processing of sequencing reads"
@@ -59,6 +57,8 @@ website:
         href: help/galaxy.qmd
       - text: "CLI Help"
         href: help/cli.qmd
+      - text: "Server Connection Guide"
+        href: help/server_connection_guide.qmd
     tools:
     - icon: github
       menu:
@@ -66,12 +66,6 @@ website:
           href:  https://github.com/dorinemerlat/bioinformatics-en
         - text: Report a Bug
           href:  https://github.com/dorinemerlat/bioinformatics-en/issues
-    - icon: globe  # Use the globe icon for language switcher
-      menu:
-        - text: "English"
-          href: https://dorinemerlat.github.io/bioinformatics-en/
-        - text: "French"
-          href: https://dorinemerlat.github.io/bioinformatics-fr/
   search: 
     location: navbar
     type: textbox

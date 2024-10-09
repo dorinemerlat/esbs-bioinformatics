@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Galaxy Help – ESBS Bioinformatics</title>
+<title>connexion_to_lbgi_server – ESBS Bioinformatics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -153,15 +187,11 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-a-2">    
         <li>
     <a class="dropdown-item" href="../tutorials-3A/tutorial2.html">
- <span class="dropdown-text">2 - Read mapping on a reference genome</span></a>
+ <span class="dropdown-text">2 - Exome analysis</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../tutorials-3A/tutorial3.html">
- <span class="dropdown-text">3 - De novo assembly</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../tutorials-3A/tutorial4.html">
- <span class="dropdown-text">4 - Annotation of a complete prokaryotic genome</span></a>
+ <span class="dropdown-text">3 - Personal genomics: variants</span></a>
   </li>  
     </ul>
   </li>
@@ -204,6 +234,10 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="../help/cli.html">
  <span class="dropdown-text">CLI Help</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../help/connexion_to_lbgi_server.html">
+ <span class="dropdown-text">Server Connection Guide</span></a>
   </li>  
     </ul>
   </li>
@@ -254,125 +288,56 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#accessing-galaxy" id="toc-accessing-galaxy" class="nav-link active" data-scroll-target="#accessing-galaxy"><span class="header-section-number">1</span> Accessing Galaxy</a></li>
-  <li><a href="#creating-an-account" id="toc-creating-an-account" class="nav-link" data-scroll-target="#creating-an-account"><span class="header-section-number">2</span> Creating an Account</a></li>
-  <li><a href="#getting-more-resources-only-available-during-practical-sessions" id="toc-getting-more-resources-only-available-during-practical-sessions" class="nav-link" data-scroll-target="#getting-more-resources-only-available-during-practical-sessions"><span class="header-section-number">3</span> Getting More Resources (Only Available During Practical Sessions)</a></li>
-  <li><a href="#uploading-data" id="toc-uploading-data" class="nav-link" data-scroll-target="#uploading-data"><span class="header-section-number">4</span> Uploading Data</a></li>
-  <li><a href="#running-tools-and-workflows" id="toc-running-tools-and-workflows" class="nav-link" data-scroll-target="#running-tools-and-workflows"><span class="header-section-number">5</span> Running Tools and Workflows</a></li>
-  <li><a href="#understanding-job-status-in-the-history-panel" id="toc-understanding-job-status-in-the-history-panel" class="nav-link" data-scroll-target="#understanding-job-status-in-the-history-panel"><span class="header-section-number">6</span> Understanding Job Status in the History Panel</a></li>
-  <li><a href="#viewing-and-downloading-results" id="toc-viewing-and-downloading-results" class="nav-link" data-scroll-target="#viewing-and-downloading-results"><span class="header-section-number">7</span> Viewing and Downloading Results</a></li>
-  <li><a href="#help-and-troubleshooting" id="toc-help-and-troubleshooting" class="nav-link" data-scroll-target="#help-and-troubleshooting"><span class="header-section-number">8</span> Help and Troubleshooting</a></li>
+  <li><a href="#server-connection-guide" id="toc-server-connection-guide" class="nav-link active" data-scroll-target="#server-connection-guide">Server Connection Guide</a>
+  <ul class="collapse">
+  <li><a href="#step-1-open-a-terminal" id="toc-step-1-open-a-terminal" class="nav-link" data-scroll-target="#step-1-open-a-terminal">Step 1: Open a Terminal</a></li>
+  <li><a href="#use-the-ssh-command" id="toc-use-the-ssh-command" class="nav-link" data-scroll-target="#use-the-ssh-command">Use the SSH Command</a></li>
+  <li><a href="#step-3-enter-the-password" id="toc-step-3-enter-the-password" class="nav-link" data-scroll-target="#step-3-enter-the-password">Step 3: Enter the Password</a></li>
+  <li><a href="#step-4-success" id="toc-step-4-success" class="nav-link" data-scroll-target="#step-4-success">Step 4: Success!</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Galaxy Help</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Galaxy is a popular platform used in bioinformatics for running various data analyses, including genome assembly, mapping, and more. This guide will help you get started with Galaxy and provide an overview of its key features and functions.</p>
-<section id="accessing-galaxy" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="accessing-galaxy"><span class="header-section-number">1</span> Accessing Galaxy</h2>
-<p>To start using Galaxy, visit the following URL:</p>
+<section id="server-connection-guide" class="level1">
+<h1>Server Connection Guide</h1>
+<p>In some of our practical sessions, we will be using the Linux server hosted by the iCube CSTB team (formerly known as LBGI). You can access this server from any operating system—whether you’re using Windows, macOS, or Linux.</p>
+<section id="step-1-open-a-terminal" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-open-a-terminal">Step 1: Open a Terminal</h2>
 <ul>
-<li><a href="https://usegalaxy.fr">Galaxy French Server</a></li>
+<li><strong>Windows users</strong>: Open the <strong>Command Prompt</strong> (called <em>Invite de commande</em> in French). You can do this by typing “cmd” in the search bar and pressing Enter.</li>
+<li><strong>MacOS or Linux users</strong>: Open the <strong>Terminal</strong> application. On macOS, you can find it using Spotlight (press <code>Cmd + Space</code> and type “Terminal”). On Linux, it’s usually located in your applications under “Utilities” or you can use a keyboard shortcut (like <code>Ctrl + Alt + T</code>).</li>
 </ul>
 </section>
-<section id="creating-an-account" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="creating-an-account"><span class="header-section-number">2</span> Creating an Account</h2>
-<p>If you don’t already have an account, you’ll need to create one:</p>
-<ol type="1">
-<li>Click on the <strong>Authentification et Enregistrement (</strong>Login/Register**) button in the upper bar.</li>
-<li>Select <strong>Don’t have an account? Register here</strong> and fill out the form with your details.</li>
-</ol>
-<p>Once your account is created, you can log in and save your workflows and analyses.</p>
-<p><em>(Insert a screenshot showing the login/registration buttons here)</em></p>
+<section id="use-the-ssh-command" class="level2">
+<h2 class="anchored" data-anchor-id="use-the-ssh-command">Use the SSH Command</h2>
+<p>To connect to the server, we’ll use the <code>ssh</code> command, which allows you to establish a secure connection to a remote machine (in this case, the LBGI server). You have each been assigned an account on the server. Your username (login) is typically your last name (in lowercase), or your first last name if you have multiple.</p>
+<p>In the terminal, type the following command (replacing <code>yourlastname</code> with your actual login name):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> yourlastname@tp.lbgi.fr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After typing the command, press <strong>Enter</strong>.</p>
 </section>
-<section id="getting-more-resources-only-available-during-practical-sessions" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="getting-more-resources-only-available-during-practical-sessions"><span class="header-section-number">3</span> Getting More Resources (Only Available During Practical Sessions)</h2>
-<p>To ensure you have sufficient resources for your practical sessions, follow these steps:</p>
-<ol type="1">
-<li>Make sure to use the French version of Galaxy.</li>
-<li>During the practical sessions, additional resources will be reserved for you. Go to the following URL to join the training session:
-<ul>
-<li><a href="https://usegalaxy.fr/join-training/td1genomics/">Join Practical Session Resources</a></li>
-</ul></li>
-<li>After joining, you can return to Galaxy and continue working with the reserved resources.</li>
-</ol>
-<p><em>(Insert a screenshot showing the process of joining the training session here)</em></p>
-<p>You can then return to galaxy.</p>
+<section id="step-3-enter-the-password" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-enter-the-password">Step 3: Enter the Password</h2>
+<p>You will be prompted to enter a password. The password for everyone is:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">genomics2024</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Important Notes:</strong> - The password will not be visible as you type. This is a security feature. You won’t see any characters appear on the screen, but don’t worry—just type it and press Enter when done. - If this is your first time connecting to the server, you may see a message like the following:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Are</span> you sure you want to continue connecting <span class="er">(</span><span class="ex">yes/no</span><span class="kw">)</span><span class="ex">?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Simply type <code>yes</code> and press <strong>Enter</strong>.</p>
 </section>
-<section id="uploading-data" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="uploading-data"><span class="header-section-number">4</span> Uploading Data</h2>
-<p>To upload your sequencing data or other files:</p>
-<ol type="1">
-<li><p>Click on the <strong>Upload Data</strong> button located on the top left of the page under the <strong>Tools</strong> section.</p></li>
-<li><p>A panel will appear where you can drag-and-drop files or choose them from your computer.</p></li>
-</ol>
-<p>Make sure that your data is correctly formatted and meets the requirements for the specific tools you’ll be using.</p>
-<p><em>(Insert a screenshot of the data upload panel here)</em></p>
-</section>
-<section id="running-tools-and-workflows" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="running-tools-and-workflows"><span class="header-section-number">5</span> Running Tools and Workflows</h2>
-<p>Galaxy offers many bioinformatics tools, each designed to perform specific tasks like quality control, mapping, assembly, and annotation. To use these tools effectively:</p>
-<ol type="1">
-<li>Explore the <strong>Tools</strong> section on the left panel.</li>
-<li>When you select a tool, Galaxy will display options for configuring it. Follow the tool documentation to understand which parameters need adjustment based on your data.</li>
-<li>Many tools allow for custom inputs, but default settings often work well for general cases.</li>
-</ol>
-<p>Make sure to familiarize yourself with the help sections of each tool, as they provide detailed descriptions and usage tips.</p>
-<p>Your job will be queued, and you can monitor its progress in the <strong>History</strong> panel on the right-hand side of the screen.</p>
-<p><em>(Insert a screenshot of running a tool, showing input fields and execution button here)</em></p>
-</section>
-<section id="understanding-job-status-in-the-history-panel" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="understanding-job-status-in-the-history-panel"><span class="header-section-number">6</span> Understanding Job Status in the History Panel</h2>
-<ul>
-<li><strong>Green</strong>: The job has successfully completed.</li>
-<li><strong>Red</strong>: The job failed. You can click on the red dataset to see the error log.</li>
-<li><strong>Yellow</strong>: The job is still running.</li>
-<li><strong>Gray</strong>: The job is queued and waiting to be processed.</li>
-</ul>
-<p><em>(Insert a screenshot showing the different job statuses in the History panel here)</em></p>
-</section>
-<section id="viewing-and-downloading-results" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="viewing-and-downloading-results"><span class="header-section-number">7</span> Viewing and Downloading Results</h2>
-<p>Once your job is completed, ithe results appear in the <strong>History</strong> panel. You can:</p>
-<ul>
-<li>Click on the dataset to view the output directly in Galaxy.</li>
-<li>Download the results by clicking on the download icon next to the dataset in the <strong>History</strong> panel.</li>
-</ul>
-<p><em>(Insert a screenshot of the History panel with completed jobs and download options here)</em></p>
-</section>
-<section id="help-and-troubleshooting" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="help-and-troubleshooting"><span class="header-section-number">8</span> Help and Troubleshooting</h2>
-<p>If you encounter any issues, Galaxy has extensive documentation and community support:</p>
-<ul>
-<li><a href="https://training.galaxyproject.org/training-material/">Galaxy Tutorials</a></li>
-<li><a href="https://help.galaxyproject.org/">Galaxy Help Forum</a></li>
-</ul>
-<p>These resources provide guides for using Galaxy, troubleshooting tips, and examples of common workflows.</p>
-<p><em>(Optional: Insert a screenshot of the Galaxy help page or tutorials page here)</em></p>
-<hr>
-<p>By following these steps, you should be able to navigate Galaxy efficiently and complete your analyses. As you progress, feel free to add your own notes, screenshots, and comments to enhance your understanding of the platform.</p>
+<section id="step-4-success" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-success">Step 4: Success!</h2>
+<p>Once you’ve successfully logged in, a welcome message will appear. This confirms that you’re now connected to the server and ready to proceed with your practical work.</p>
+<p>To disconnect from the server when you’re done (<em>at the end of the practical</em>), simply type:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can now return to the practical instructions and continue with the exercises.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -153,15 +187,11 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-a-2">    
         <li>
     <a class="dropdown-item" href="../tutorials-3A/tutorial2.html">
- <span class="dropdown-text">2 - Read mapping on a reference genome</span></a>
+ <span class="dropdown-text">2 - Exome analysis</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../tutorials-3A/tutorial3.html">
- <span class="dropdown-text">3 - De novo assembly</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../tutorials-3A/tutorial4.html">
- <span class="dropdown-text">4 - Annotation of a complete prokaryotic genome</span></a>
+ <span class="dropdown-text">3 - Personal genomics: variants</span></a>
   </li>  
     </ul>
   </li>
@@ -198,44 +228,33 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-help">    
         <li>
-    <a class="dropdown-item" href="../help/galaxy-help.html">
+    <a class="dropdown-item" href="../help/galaxy.html">
  <span class="dropdown-text">Galaxy Help</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../help/cli-help.html">
+    <a class="dropdown-item" href="../help/cli.html">
  <span class="dropdown-text">CLI Help</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../help/server_connection_guide.html">
+ <span class="dropdown-text">Server Connection Guide</span></a>
   </li>  
     </ul>
   </li>
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools tools-wide">
+            <div class="quarto-navbar-tools">
     <div class="dropdown">
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="https://code.com">
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/dorinemerlat/bioinformatics-en">
             Source Code
             </a>
           </li>
           <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="https://bugs.com">
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/dorinemerlat/bioinformatics-en/issues">
             Report a Bug
-            </a>
-          </li>
-      </ul>
-    </div>
-    <div class="dropdown">
-      <a href="" title="" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-globe"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
-          <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="../index.html">
-            English
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="../index_fr.html">
-            French
             </a>
           </li>
       </ul>
@@ -249,8 +268,30 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#practical-2---exome-analysis-snv-calling" id="toc-practical-2---exome-analysis-snv-calling" class="nav-link active" data-scroll-target="#practical-2---exome-analysis-snv-calling">Practical 2 - Exome analysis (SNV calling)</a>
+  <ul class="collapse">
+  <li><a href="#connection-to-the-server" id="toc-connection-to-the-server" class="nav-link" data-scroll-target="#connection-to-the-server">Connection to the server</a></li>
+  <li><a href="#raw-sequence-data-exome-of-chromosome-22" id="toc-raw-sequence-data-exome-of-chromosome-22" class="nav-link" data-scroll-target="#raw-sequence-data-exome-of-chromosome-22">Raw sequence data: exome of chromosome 22</a></li>
+  <li><a href="#fastq---quality-control" id="toc-fastq---quality-control" class="nav-link" data-scroll-target="#fastq---quality-control">FASTQ - Quality control</a></li>
+  <li><a href="#alignement---mapping-to-the-reference-genome-fastq-to-bam" id="toc-alignement---mapping-to-the-reference-genome-fastq-to-bam" class="nav-link" data-scroll-target="#alignement---mapping-to-the-reference-genome-fastq-to-bam">Alignement - Mapping to the reference genome (FASTQ to BAM)</a>
+  <ul class="collapse">
+  <li><a href="#alignment-using-bowtie2" id="toc-alignment-using-bowtie2" class="nav-link" data-scroll-target="#alignment-using-bowtie2">Alignment using Bowtie2</a></li>
+  <li><a href="#visualization-of-the-bam-file" id="toc-visualization-of-the-bam-file" class="nav-link" data-scroll-target="#visualization-of-the-bam-file">Visualization of the BAM file</a></li>
+  </ul></li>
+  <li><a href="#calling-single-nucleotide-variations-snvs-pileup-interval-and-bed-files" id="toc-calling-single-nucleotide-variations-snvs-pileup-interval-and-bed-files" class="nav-link" data-scroll-target="#calling-single-nucleotide-variations-snvs-pileup-interval-and-bed-files">Calling single nucleotide variations (SNVs) – pileup, interval and BED files</a>
+  <ul class="collapse">
+  <li><a href="#generation-of-a-pileup-file" id="toc-generation-of-a-pileup-file" class="nav-link" data-scroll-target="#generation-of-a-pileup-file">Generation of a Pileup file</a></li>
+  <li><a href="#filtering-pileup-to-get-a-list-of-snvs" id="toc-filtering-pileup-to-get-a-list-of-snvs" class="nav-link" data-scroll-target="#filtering-pileup-to-get-a-list-of-snvs">Filtering pileup to get a list of SNVs</a></li>
+  </ul></li>
+  <li><a href="#annotation-of-variants" id="toc-annotation-of-variants" class="nav-link" data-scroll-target="#annotation-of-variants">Annotation of variants</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -258,8 +299,593 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="practical-2---exome-analysis-snv-calling" class="level1">
+<h1>Practical 2 - Exome analysis (SNV calling)</h1>
+<section id="connection-to-the-server" class="level2">
+<h2 class="anchored" data-anchor-id="connection-to-the-server">Connection to the server</h2>
+<p>To learn how to connect to the server for practical work, refer to the <a href="../help/server_connection_guide.html">Server Connection Guide</a>.</p>
+<p>Once you’re connected, start by creating a working directory for this session and navigate into it.</p>
+<p>Once connected, create a working directory for this session and move inside.</p>
+<p><strong>mkdir</strong> The mkdir command stands for “make directory”, is used to create a new folder in the file system. You can create your directory like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="op">&lt;</span>directory_name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>cd</strong> The cd command stands for “change directory”, allows you to move into a different folder within the file system. Use it as follows:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="op">&lt;</span>directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> TdExome</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> TdExome</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Help
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you need help with a command, display its help using: - <code>&lt;command-h</code> or <code>&lt;command--help</code> for short help messages. - <code>man &lt;command&gt;</code> to display the full manual of a command.</p>
+</div>
+</div>
+</section>
+<section id="raw-sequence-data-exome-of-chromosome-22" class="level2">
+<h2 class="anchored" data-anchor-id="raw-sequence-data-exome-of-chromosome-22">Raw sequence data: exome of chromosome 22</h2>
+<p>Reads have been obtained using Illumina sequencing (Single-end library) from the exome of chromosome 22 of a single human individual, a Caucasian female from US. Her family was one of the original trios in Hapmap project and she was part of the 1000 Genomes project.</p>
+<p>Create an alias of the file with reads in your directory for easy access. For that, use the command <code>ln</code>, which create links between files. Links are pointers to files, allowing multiple references (aliases) to the same file. This way, you don’t need to duplicate large files, saving storage space and making file management easier.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> <span class="op">&lt;</span>path_to_original_file<span class="op">&gt;</span> <span class="op">&lt;</span>path_to_link_file<span class="op">&gt;</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The option <code>-s</code>stands for “symbolic link.” A symbolic link is like a shortcut that points to the original file, enabling easy access. Unlike hard links, symbolic links can span different file systems, and if the original file is moved, the symbolic link can still point to it if it is relocated in the same system.</p>
+<p>Create an alias for the reads (original path:<code>/data/human/reads/chrom22.fastq</code>) inside your directory.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> /data/human/reads/chrom22.fastq .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The dot (<code>.</code>) refers to the current working directory. When you execute the command, this tells the system to create the symbolic link (alias) for chrom22.fastq in the current directory where you are running the command.</p>
+</div>
+</div>
+</div>
+<p>Create a directory for the reference of chromosome 22 (original path: <code>/data/human/reference/human_genome.fasta</code>) and create an alias for the file.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> reference</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> /data/human/reference/human_genome.fasta reference</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>Display data with the command <code>more</code>.</p>
+<p>The more command is used to display the contents of a file one screen at a time. This is useful for viewing large files like FASTQ files, where the data is too big to fit on a single screen.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span> <span class="op">&lt;</span>path_file_to_display<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Navigation keys in more
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>space</strong>: pressing the <em>space</em> key advances the display by one full screen, allowing you to scroll through the content quickly.</li>
+<li><strong>enter</strong>: Ppressing <em>enter</em> moves the display down by one line. This is useful if you want to slowly scroll through the content line by line.</li>
+<li><strong>q</strong>: pressing <em>q</em> will quit the more command and return you to the terminal prompt. You can use this key if you’re done viewing the file or don’t want to scroll through the entire file.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span> chrom22.fastq </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Q1.</strong> How many lines are used to represent each read?</p>
+<p><strong>Q2.</strong> How many sequences are present in <code>human_genome.fasta</code>? What do they correspond to? Use the command <code>grep</code> to display only the identifier lines.</p>
+<p><strong>grep</strong></p>
+<p>Grep, short for “global regular expression print”, is a command used for searching and matching text patterns in files contained in the regular expressions.</p>
+<p>Display the lines with a pattern:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"&lt;pattern&gt;"</span> <span class="op">&lt;</span>file_path<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This command searches through the specified file and outputs the lines that contain the given pattern.</p>
+<p>Count the lines with a pattern:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"&lt;pattern&gt;"</span> <span class="op">&lt;</span>file_path<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The -c option tells grep to count the number of lines that match the specified pattern rather than displaying them. This is useful for quickly determining how many occurrences of the pattern exist in the file.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the identifier lines</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"&gt;"</span> reference/human_genome.fasta </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the identifier lines</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"&gt;"</span> reference/human_genome.fasta </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fastq---quality-control" class="level2">
+<h2 class="anchored" data-anchor-id="fastq---quality-control">FASTQ - Quality control</h2>
+<p>Use the <code>fastqc</code> tool to assess the quality of the reads. Before running <code>fastqc</code>, create a directory to store the output reports (with <code>mkdir</code>command).</p>
+<p><strong>FastQC</strong></p>
+<p>FastQC is a quality control tool for high-throughput sequence data that provides an overview of various quality metrics, helping to identify potential issues with sequencing data.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> <span class="at">-o</span> <span class="op">&lt;</span>output_directory<span class="op">&gt;</span> <span class="op">&lt;</span>fastq_file<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The option <code>-o &lt;output_directory&gt;</code> specifies the directory where the FastQC output files will be saved.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> FastQCReport</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> <span class="at">-o</span> FastQCReport chrom22.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>fastcq</code> analyzes the file <code>chrom22.fastq</code> and saves the results in the <code>FastQCReport</code> directory.</p>
+</div>
+</div>
+</div>
+<p>Move the HTML output files to your local computer to view the results in a browser. Use the <code>scp</code> command for this (in a local terminal).</p>
+<p><strong>scp</strong> The scp command stands for “secure copy protocol.” It is used to securely transfer files between a local computer and a remote server or between two remote servers over an encrypted SSH connection. This ensures that the data is protected during transfer.</p>
+<p>To copy file from a server to your computer, <strong>open a new terminal</strong> and use scp like this:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@<span class="op">&lt;</span>server_adress<span class="op">&gt;</span>:<span class="op">&lt;</span>source_file_path<span class="op">&gt;</span> <span class="op">&lt;</span>target_file_path<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+View the path of a file
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you not sure of the path .html file, use the command <code>realpath</code> to known it. <code>realpath &lt;file&gt;</code></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@tp.lbgi.fr:~/TdExome/FastQCReport/chrom22_fastqc.html .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Note: Replace <code>&lt;login&gt;</code> with your username. The tilde <code>~</code> is a shortcut for your home directory <code>/home/&lt;username&gt;</code>.</em></p>
+</div>
+</div>
+</div>
+<p>Now that the HTML file is on your computer, you can access it like any other file using your file explorer.</p>
+<p>In the terminal where you used the <code>scp</code> command, run the <code>pwd</code> command to check your current directory. This will help you locate the file in your file explorer.</p>
+<p><strong>Q3.</strong> How many sequences are available?</p>
+<p><strong>Q4.</strong> What is the sequence length?</p>
+<p><strong>Q5.</strong> Do you find poor quality sequences?</p>
+<p><strong>Q6.</strong> What do you think of the overall data quality?</p>
+<p><strong>Q7.</strong> Which part of the reads exhibit a lower quality?</p>
+</section>
+<section id="alignement---mapping-to-the-reference-genome-fastq-to-bam" class="level2">
+<h2 class="anchored" data-anchor-id="alignement---mapping-to-the-reference-genome-fastq-to-bam">Alignement - Mapping to the reference genome (FASTQ to BAM)</h2>
+<section id="alignment-using-bowtie2" class="level3">
+<h3 class="anchored" data-anchor-id="alignment-using-bowtie2">Alignment using Bowtie2</h3>
+<p>Before we can align sequencing reads to a reference genome, we must prepare the reference file using two key tools: <code>bwa index</code> and <code>samtools faidx</code>.</p>
+<p><strong>bwa index</strong>: The bwa index command is used to create an index of the reference genome (in this case, human_genome.fasta). This index allows the BWA algorithm to efficiently search and align sequencing reads to the reference. Without the index, BWA would not be able to quickly identify where in the genome each read belongs, making the alignment process slow or impossible. The index is essential for speeding up the read mapping process.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa</span> index <span class="op">&lt;</span>reference_file<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>samtools faidx</strong>: Similarly, samtools faidx generates an index for the reference FASTA file. This index allows samtools and other bioinformatics tools to quickly retrieve specific sequences or regions from the reference genome. This is useful when working with large genomes where extracting specific chromosomes or regions manually would be inefficient. The .fai file generated by this command is used by downstream tools for fast reference lookups.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> faidx <span class="op">&lt;</span>reference_file<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> reference</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa</span> index human_genome.fasta</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> faidx human_genome.fasta</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These commands may take some time to complete (one hour). To save time, you can use the ln command to create links to already generated files.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> /data/human/reference/human_genome.fasta.<span class="pp">*</span> reference/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>You get a lots of new files, forming a small database that you will use to align reads.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Know where you are
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To find out your current location within the directory structure, use the command <code>pwd</code> (stands for “print working directory”). It outputs the full path of the directory you are currently in, helping you confirm your current location in the file system.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><strong>bwa</strong></p>
+<p>Create a mapping directory (at the same level as <code>Reference</code> and <code>FastQCReport</code> directories), move there and run BWA with the <strong>maximum exact matches (MEM)</strong> algorithm. This algorithm is faster and more accurate than previous BWA algorithms for aligning high-throughput sequencing data.</p>
+<p>The command <code>bwa mem</code> uses BWA use the MEM algorithm:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa</span> mem <span class="at">-o</span> <span class="op">&lt;</span>path_of_output<span class="op">&gt;</span> <span class="op">&lt;</span>path_of_reference<span class="op">&gt;</span> <span class="op">&lt;</span>path_of_reads<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Parameters:</p>
+<ul>
+<li><code>-o</code>: This option specifies the output file. In this case, the aligned reads will be saved in the mapping directory as chrom22.sam.</li>
+<li><code>&lt;path_of_reference&gt;</code>: This is the reference genome file against which the reads will be aligned.</li>
+<li><code>&lt;path_of_reads&gt;</code>: This is the input file containing the sequencing reads that you want to align to the reference genome.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> mapping</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa</span> mem <span class="at">-o</span> mapping/chrom22.sam reference/human_genome.fasta chrom22.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>bwa mem</code>: use bwa with maximum exact matches (MEM) algorithm.</li>
+<li><code>-o</code>: option to specify the output file.</li>
+</ul>
+</div>
+</div>
+</div>
+<p><strong>Q8.</strong> View the file built by BWA.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span> mapping/chrom22.sam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Q9.</strong> What is the format of this file? What information can be found in it?</p>
+<p>To manipulate the mapping file, we’ll use&nbsp;<a href="http://www.htslib.org/">SAMtools</a>.</p>
+<p><strong>samtools view</strong> This command is specifically used to convert between these formats and to filter, extract, or manipulate alignments.</p>
+<p>To transform SAM file into BAM use the command like this:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-S</span> <span class="at">-b</span> <span class="at">-o</span> <span class="op">&lt;</span>name_of_BAM_output<span class="op">&gt;</span> <span class="op">&lt;</span>name_of_SAM_input<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>With:</p>
+<ul>
+<li><code>-S</code>: indicate that the input file is in SAM format.</li>
+<li><code>-b</code>: tell samtools to output the result in BAM format.</li>
+<li><code>-o</code>: specify the name of the output file.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> mapping </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-S</span> <span class="at">-b</span> <span class="at">-o</span> chrom22.bam chrom22.sam </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Q10.</strong> What does the BAM file represent in relation to the SAM file?</p>
+<p><strong>ls</strong></p>
+<p>The <code>ls</code> command is used to list the contents of a directory in Linux. It provides a way to see files and subdirectories within the specified directory.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="pp">[-</span><span class="ss">l</span><span class="pp">]</span> <span class="op">&lt;</span>directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Options:</p>
+<ul>
+<li><code>-l</code>: This option provides a detailed listing. In this format, additional information about each file or directory is displayed, including:
+<ol type="1">
+<li>File permissions</li>
+<li>Number of links</li>
+<li>Owner name</li>
+<li>Owner group</li>
+<li>File size (in bytes)</li>
+<li>Last modified date and time</li>
+<li>File or directory name</li>
+</ol></li>
+</ul>
+<p><strong>Q11.</strong> Compare the size of the SAM and BAM files.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>The file now needs to be sorted and indexed with <code>samtools sort</code> and <code>samtools index</code>.</p>
+<p><strong>samtools sort</strong></p>
+<p>The samtools sort command is used to sort a BAM file. Sorting is essential for many downstream analyses, such as variant calling, as it organizes the reads in a way that allows for efficient processing. The command takes the following parameters:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> sort <span class="op">&lt;</span>name_of_BAM_file<span class="op">&gt;</span> -o <span class="op">&lt;</span>name_of_sorted_BAM_file<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>samtools index</strong></p>
+<p>The samtools index command is used to create an index file for a sorted BAM file. Indexing allows for fast random access to data in the BAM file, making it easier and quicker to retrieve specific regions of interest during analysis. The command takes the following parameter:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index <span class="op">&lt;</span>name_of_sorted_BAM_file<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> sort chrom22.bam <span class="at">-o</span> chrom22.sorted.bam</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index chrom22.sorted.bam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Q12.</strong> How is the file sorted now? To view its contents, use the command <code>samtools view</code>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="op">&lt;</span>file_name<span class="op">&gt;</span> <span class="kw">|</span> <span class="fu">more</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <strong>pipe</strong> symbol (<code>|</code>) is used to connect the output of one command directly into the input of another. This allows for the chaining of commands, enabling you to perform complex tasks efficiently without the need to create intermediate files.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">command1</span> <span class="kw">|</span> <span class="ex">command2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Pipe Shortcut
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Windows and Linux: <code>Alt Gr + 6</code></li>
+<li>Mac keyboard: <code>Option + Maj + L</code></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view chrom22.sorted.bam <span class="kw">|</span> <span class="fu">more</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>To view few statistics about the mapping, use idxStats:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> idxstats chrom22.sorted.bam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Q13.</strong> How do you explain these results?</p>
+<p>Select the part of the alignment corresponding to chromosome 3. To filter the file, use again the command <code>samtools view</code> but add the region.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-b</span> <span class="at">-o</span> <span class="op">&lt;</span>name_of_BAM_output<span class="op">&gt;</span> <span class="op">&lt;</span>name_of_BAM_input<span class="op">&gt;</span> <span class="op">&lt;</span>region<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>-b</code>: This option indicates that the output should be in BAM format.</li>
+<li><code>-o &lt;name_of_BAM_output&gt;</code>: This specifies the name of the output BAM file.</li>
+<li><code>&lt;name_of_BAM_input&gt;</code>: This is the name of the input BAM file you want to filter.</li>
+<li><code>&lt;region&gt;</code>: Specify the region you want to extract, such as <code>chromosome3</code> or <code>chromosome3:1-1000000</code> to limit the output to a specific range on chromosome 3.</li>
+</ul>
+<p>In your case, the region is the name of the sequence of chromosome 22.</p>
+<blockquote class="blockquote">
+
+</blockquote>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-b</span> <span class="at">-o</span> chrom22.sorted.filter.bam chrom22.sorted.bam chromosome22</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>Then index this file with <code>samtools index</code> as previously.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index chrom22.sorted.filter.bam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>Download the two 2 bam files of the alignment of chromosome 22 (the <code>.bam</code> and the <code>.bam.bai</code>).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="op">&lt;</span>login<span class="op">&gt;</span>@tp.lbgi.fr:~/TdExome/mapping/chrom22.sorted.filter.bam<span class="pp">*</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Note: Replace <code>&lt;login&gt;</code> with your username. The tilde <code>~</code> is a shortcut for your home directory <code>/home/&lt;username&gt;</code>.</em></p>
+</div>
+</div>
+</div>
+</section>
+<section id="visualization-of-the-bam-file" class="level3">
+<h3 class="anchored" data-anchor-id="visualization-of-the-bam-file">Visualization of the BAM file</h3>
+<p>BAM files can be visualized using a browser. Display the filtered BAM data using <a href="https://igv.org/app/">IGV</a> with Human hg38.</p>
+<p>You can use your own files or used files available online. - Load the bam file <code>chr22_filter.bam</code> and <code>chr22_filter.bai</code> with Local (Tracks &gt; Local). - Load the bam file https://lbgi.fr/~merlat/TD3/chr22_filter.bam &amp; the index file https://lbgi.fr/~merlat/TD3/chr22_filter.bai with URL (Tracks &gt; URL).</p>
+<p>Zoom in to display a small region of chromosome 22 (or a gene such as APOL5). Configure the display to highlight mismatches.</p>
+<p><strong>Q14.</strong> Are reads exclusively mapped on exonic regions? Why?</p>
+<p><strong>Q15.</strong> Do you think that all observed mismatches correspond to variants?</p>
+<p><strong>Q16.</strong> What criteria have to be fulfilled to infer variants?</p>
+</section>
+</section>
+<section id="calling-single-nucleotide-variations-snvs-pileup-interval-and-bed-files" class="level2">
+<h2 class="anchored" data-anchor-id="calling-single-nucleotide-variations-snvs-pileup-interval-and-bed-files">Calling single nucleotide variations (SNVs) – pileup, interval and BED files</h2>
+<section id="generation-of-a-pileup-file" class="level3">
+<h3 class="anchored" data-anchor-id="generation-of-a-pileup-file">Generation of a Pileup file</h3>
+<p>A pileup is a column wise representation of the aligned read - at the base level - to the reference. The pileup file summarizes all data from the reads at each genomic region that is covered by at least one read.</p>
+<p>To generate a pileup file using SAMtools, use <code>samtools mpileup</code> command.</p>
+<p><strong>samtools mpileup</strong></p>
+<ul>
+<li><code>-f reference.fasta</code>: Specifies the reference genome file.</li>
+<li><code>aligned_reads.bam</code>: Your input BAM file with aligned reads.</li>
+<li><code>output.pileup</code>: The name of the output pileup file.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> mpileup <span class="at">-f</span> reference.fasta <span class="at">-C</span> 50 aligned_reads.bam <span class="op">&gt;</span> output.pileup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="filtering-pileup-to-get-a-list-of-snvs" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-pileup-to-get-a-list-of-snvs">Filtering pileup to get a list of SNVs</h3>
+<p>The pileup described all aligned positions. To call SNVs, we have to filter: - Aligned positions that differ from the reference base - Positions covered by minimum amount of reads (e.g.&nbsp;at least 10 reads) - Sites with variants with sufficient quality base scores</p>
+</section>
+</section>
+<section id="annotation-of-variants" class="level2">
+<h2 class="anchored" data-anchor-id="annotation-of-variants">Annotation of variants</h2>
+<p>Go to Variant Effect Predictor : http://grch37.ensembl.org/Homo_sapiens/Tools/VEP</p>
+<p>Click on Ensembl default below the white frame for input data</p>
+<p>Paste the URL : http://lbgi.fr/~weber/GC/TD3/2_VCF/chr22_filter.vcf.gz corresponding to the chr22 VCF file in the URL field. Select the following options : - Transcript database to use - RefSeq transcripts - Additional configuration - Variants and frequency data - Frequency data for co-located variants:s - <strong>DISABLE</strong> 1000 Genomes global minor allele frequency - <strong>ENABLE</strong> gnomAD (exomes) allele frequencies - Predictions - Pathogenicity predictions - <strong>ENABLE</strong> CADD - Filtering options - Filters - Restrict results: Show one selected consequence per gene</p>
+<p>Then RUN !</p>
+<p><strong>Q17.</strong> How many missense variants are there in this file ? (approximately)</p>
+<p>Create a filter to select only missense_variant (Consequence is missense_variant)</p>
+<p>Focus on 22:23482483-23482483.</p>
+<p><strong>Q15.</strong> On which gene is the variant ? Which exon ?</p>
+<p><strong>Q15.</strong> Why is this variant difficult to interpret ? (MAF, scores)</p>
+<p><strong>Q15.</strong> Bonus : is the variant referenced in ClinVar ?</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -833,7 +1459,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>Copyright 2024, Dorine MERLAT. Built with Quarto.</p>
+<p>Copyright 2024, Dorine Merlat. Built with Quarto.</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

@@ -1,0 +1,53 @@
+# Server Connection Guide
+
+In some of our practical sessions, we will be using the Linux server hosted by the iCube CSTB team (formerly known as LBGI). You can access this server from any operating system—whether you're using Windows, macOS, or Linux.
+
+## Step 1: Open a Terminal
+- **Windows users**: Open the **Command Prompt** (called *Invite de commande* in French). You can do this by typing "cmd" in the search bar and pressing Enter.
+- **MacOS or Linux users**: Open the **Terminal** application. On macOS, you can find it using Spotlight (press `Cmd + Space` and type "Terminal"). On Linux, it’s usually located in your applications under "Utilities" or you can use a keyboard shortcut (like `Ctrl + Alt + T`).
+
+## Use the SSH Command
+
+To connect to the server, we’ll use the `ssh` command, which allows you to establish a secure connection to a remote machine (in this case, the LBGI server). You have each been assigned an account on the server. Your username (login) is typically your last name (in lowercase), or your first last name if you have multiple.
+
+In the terminal, type the following command (replacing `yourlastname` with your actual login name):
+
+```bash
+ssh yourlastname@tp.lbgi.fr
+```
+
+After typing the command, press **Enter**.
+
+
+## Step 3: Enter the Password
+
+You will be prompted to enter a password. The password for everyone is:
+
+```bash
+genomics2024
+```
+
+::: {.callout-important}
+## Important
+The password will not be visible as you type. This is a security feature. You won't see any characters appear on the screen, but don’t worry—just type it and press Enter when done.
+:::
+
+If this is your first time connecting to the server, you may see a message like the following:
+
+```bash
+Are you sure you want to continue connecting (yes/no)?
+```
+
+Simply type `yes` and press **Enter**.
+
+## Step 4: Success!
+
+Once you’ve successfully logged in, a welcome message will appear. This confirms that you're now connected to the server and ready to proceed with your practical work.
+
+To disconnect from the server when you're done (*at the end of the practical*), simply type:
+
+```bash
+exit
+```
+
+You can now return to the practical instructions and continue with the exercises.

@@ -14,14 +14,13 @@ To start using Galaxy, visit the following URL:
 
 - [Galaxy French Server](https://usegalaxy.fr)
 
-*(Insert a screenshot of the Galaxy homepage here)*
 
 ## Creating an Account
 
 If you don’t already have an account, you’ll need to create one:
 
-1. Click on the **Login/Register** button in the upper right corner.
-2. Select **Register** and fill out the form with your details.
+1. Click on the **Authentification et Enregistrement (**Login/Register**) button in the upper bar.
+2. Select **Don't have an account? Register here** and fill out the form with your details.
 
 Once your account is created, you can log in and save your workflows and analyses.
 

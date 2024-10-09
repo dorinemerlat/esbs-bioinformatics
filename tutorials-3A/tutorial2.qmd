@@ -1,0 +1,603 @@
+---
+Title: Practical 2 - Exome analysis (SNV calling)
+---
+
+# Practical 2 - Exome analysis (SNV calling)
+
+## Connection to the server
+
+To learn how to connect to the server for practical work, refer to the [Server Connection Guide](../help/server_connection_guide.qmd).
+
+Once you're connected, start by creating a working directory for this session and navigate into it.
+
+Once connected, create a working directory for this session and move inside.
+
+**mkdir**
+The mkdir command stands for "make directory", is used to create a new folder in the file system. You can create your directory like this:
+
+```bash
+mkdir <directory_name>
+```
+
+**cd**
+The cd command stands for "change directory", allows you to move into a different folder within the file system. Use it as follows:
+
+```bash
+cd <directory>
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir TdExome
+cd TdExome
+```
+:::
+
+::: {.callout-note}
+## Help
+If you need help with a command, display its help using:
+ - `<command-h` or `<command--help` for short help messages.
+ - `man <command>` to display the full manual of a command.
+:::
+
+
+## Raw sequence data: exome of chromosome 22
+
+Reads have been obtained using Illumina sequencing (Single-end library) from the exome of
+chromosome 22 of a single human individual, a Caucasian female from US. Her family was
+one of the original trios in Hapmap project and she was part of the 1000 Genomes project.
+
+Create an alias of the file with reads in your directory for easy access. For that, use the command `ln`, which create links between files. Links are pointers to files, allowing multiple references (aliases) to the same file. This way, you don't need to duplicate large files, saving storage space and making file management easier.
+
+```bash
+ln -s <path_to_original_file> <path_to_link_file> 
+``` 
+
+The option `-s`stands for "symbolic link." A symbolic link is like a shortcut that points to the original file, enabling easy access. Unlike hard links, symbolic links can span different file systems, and if the original file is moved, the symbolic link can still point to it if it is relocated in the same system.
+
+Create an alias for the reads (original path:`/data/human/reads/chrom22.fastq`) inside your directory.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+ln -s /data/human/reads/chrom22.fastq .
+```
+
+The dot (`.`) refers to the current working directory. When you execute the command, this tells the system to create the symbolic link (alias) for chrom22.fastq in the current directory where you are running the command.
+:::
+
+Create a directory for the reference of chromosome 22 (original path: `/data/human/reference/human_genome.fasta`) and create an alias for the file.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir reference
+ln -s /data/human/reference/human_genome.fasta reference
+```
+:::
+
+Display data with the command `more`.
+
+The more command is used to display the contents of a file one screen at a time. This is useful for viewing large files like FASTQ files, where the data is too big to fit on a single screen.
+
+```bash
+more <path_file_to_display>
+```
+
+::: {.callout-note}
+## Navigation keys in more
+
+- **space**: pressing the *space* key advances the display by one full screen, allowing you to scroll through the content quickly.
+- **enter**: Ppressing *enter* moves the display down by one line. This is useful if you want to slowly scroll through the content line by line.
+- **q**: pressing *q* will quit the more command and return you to the terminal prompt. You can use this key if you're done viewing the file or don't want to scroll through the entire file.
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+more chrom22.fastq 
+```
+:::
+
+**Q1.** How many lines are used to represent each read?
+
+**Q2.** How many sequences are present in `human_genome.fasta`? What do they correspond to? Use the command `grep` to display only the identifier lines.
+
+**grep**
+
+Grep, short for “global regular expression print”, is a command used for searching and matching text patterns in files contained in the regular expressions.
+
+Display the lines with a pattern:
+
+```bash
+grep "<pattern>" <file_path>
+```
+
+This command searches through the specified file and outputs the lines that contain the given pattern.
+
+Count the lines with a pattern:
+
+```bash
+grep -c "<pattern>" <file_path>
+```
+
+The -c option tells grep to count the number of lines that match the specified pattern rather than displaying them. This is useful for quickly determining how many occurrences of the pattern exist in the file.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+# Display the identifier lines
+grep ">" reference/human_genome.fasta 
+
+# Count the identifier lines
+grep -c ">" reference/human_genome.fasta 
+```
+:::
+
+## FASTQ - Quality control
+
+Use the `fastqc` tool to assess the quality of the reads. Before running `fastqc`, create a directory to store the output reports (with `mkdir`command). 
+
+**FastQC**
+
+FastQC is a quality control tool for high-throughput sequence data that provides an overview of various quality metrics, helping to identify potential issues with sequencing data.
+
+```bash
+fastqc -o <output_directory> <fastq_file>
+```
+
+The option `-o <output_directory>` specifies the directory where the FastQC output files will be saved.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir FastQCReport
+fastqc -o FastQCReport chrom22.fastq
+```
+
+`fastcq` analyzes the file `chrom22.fastq` and saves the results in the `FastQCReport` directory.
+:::
+
+Move the HTML output files to your local computer to view the results in a browser. Use the `scp` command for this (in a local terminal).
+
+**scp**
+The scp command stands for "secure copy protocol." It is used to securely transfer files between a local computer and a remote server or between two remote servers over an encrypted SSH connection. This ensures that the data is protected during transfer.
+
+To copy file from a server to your computer, **open a new terminal** and use scp like this:
+```bash
+scp <username>@<server_adress>:<source_file_path> <target_file_path>
+```
+
+::: {.callout-note}
+## View the path of a file
+If you not sure of the path .html file, use the command `realpath` to known it.
+`realpath <file>` 
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+scp <username>@tp.lbgi.fr:~/TdExome/FastQCReport/chrom22_fastqc.html .
+```
+
+*Note: Replace `<login>` with your username. The tilde `~` is a shortcut for your home directory `/home/<username>`.*
+:::
+
+Now that the HTML file is on your computer, you can access it like any other file using your file explorer.
+
+In the terminal where you used the `scp` command, run the `pwd` command to check your current directory. This will help you locate the file in your file explorer.
+
+**Q3.** How many sequences are available?
+
+**Q4.** What is the sequence length?
+
+**Q5.** Do you find poor quality sequences?
+
+**Q6.** What do you think of the overall data quality?
+
+**Q7.** Which part of the reads exhibit a lower quality?
+
+## Alignement - Mapping to the reference genome (FASTQ to BAM)
+### Alignment using Bowtie2
+Before we can align sequencing reads to a reference genome, we must prepare the reference file using two key tools: `bwa index` and `samtools faidx`.
+
+**bwa index**: The bwa index command is used to create an index of the reference genome (in this case, human_genome.fasta). This index allows the BWA algorithm to efficiently search and align sequencing reads to the reference. Without the index, BWA would not be able to quickly identify where in the genome each read belongs, making the alignment process slow or impossible. The index is essential for speeding up the read mapping process.
+
+```bash
+bwa index <reference_file>
+```
+
+**samtools faidx**: Similarly, samtools faidx generates an index for the reference FASTA file. This index allows samtools and other bioinformatics tools to quickly retrieve specific sequences or regions from the reference genome. This is useful when working with large genomes where extracting specific chromosomes or regions manually would be inefficient. The .fai file generated by this command is used by downstream tools for fast reference lookups.
+
+```bash
+samtools faidx <reference_file>
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+cd reference
+bwa index human_genome.fasta
+samtools faidx human_genome.fasta
+cd ..
+```
+::: 
+
+::: {.callout-important}
+## Important
+
+These commands may take some time to complete (one hour). To save time, you can use the ln command to create links to already generated files.
+
+```bash
+ln -s /data/human/reference/human_genome.fasta.* reference/
+```
+:::
+
+You get a lots of new files, forming a small database that you will use to align reads.
+
+::: {.callout-note}
+## Know where you are
+To find out your current location within the directory structure, use the command `pwd` (stands for "print working directory"). It outputs the full path of the directory you are currently in, helping you confirm your current location in the file system. 
+
+```bash
+pwd
+```
+::: 
+
+
+**bwa**
+
+Create a mapping directory (at the same level as `reference` and `FastQCReport` directories), move there and run BWA with the **maximum exact matches (MEM)** algorithm. This algorithm is faster and more accurate than previous BWA algorithms for aligning high-throughput sequencing data.
+
+The command `bwa mem` uses BWA use the MEM algorithm:
+
+```bash
+bwa mem -o <path_of_output> <path_of_reference> <path_of_reads>
+```
+
+Parameters:
+
+- `-o`: This option specifies the output file. In this case, the aligned reads will be saved in the mapping directory as chrom22.sam.
+- `<path_of_reference>`: This is the reference genome file against which the reads will be aligned.
+- `<path_of_reads>`: This is the input file containing the sequencing reads that you want to align to the reference genome.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir mapping
+bwa mem -o mapping/chrom22.sam reference/human_genome.fasta chrom22.fastq
+```
+
+- `bwa mem`: use bwa with maximum exact matches (MEM) algorithm. 
+- `-o`: option to specify the output file.
+:::
+
+**Q8.** View the file built by BWA.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+more mapping/chrom22.sam
+```
+:::
+
+**Q9.** What is the format of this file? What information can be found in it?
+
+To manipulate the mapping file, we'll use [SAMtools](http://www.htslib.org/).
+
+**samtools view**
+This command is specifically used to convert between these formats and to filter, extract, or manipulate alignments.
+
+To transform SAM file into BAM use the command like this:
+
+```bash
+samtools view -S -b -o <name_of_BAM_output> <name_of_SAM_input>
+```
+
+With: 
+
+- `-S`: indicate that the input file is in SAM format.
+- `-b`: tell samtools to output the result in BAM format.
+- `-o`: specify the name of the output file. 
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+cd mapping 
+samtools view -S -b -o chrom22.bam chrom22.sam 
+```
+:::
+
+**Q10.** What does the BAM file represent in relation to the SAM file?
+
+**ls**
+
+The `ls` command is used to list the contents of a directory in Linux. It provides a way to see files and subdirectories within the specified directory.
+
+```bash
+ls [-l] <directory>
+```
+Options:
+
+- `-l`: This option provides a detailed listing. In this format, additional information about each file or directory is displayed, including:
+    1. File permissions
+    2. Number of links
+    3. Owner name
+    4. Owner group
+    5. File size (in bytes)
+    6. Last modified date and time
+    7. File or directory name
+
+**Q11.** Compare the size of the SAM and BAM files. 
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+ls -l 
+```
+:::
+
+The file now needs to be sorted and indexed with `samtools sort` and `samtools index`.
+
+**samtools sort**
+
+The samtools sort command is used to sort a BAM file. Sorting is essential for many downstream analyses, such as variant calling, as it organizes the reads in a way that allows for efficient processing. The command takes the following parameters:
+
+```bash
+samtools sort <name_of_BAM_file> -o <name_of_sorted_BAM_file>
+```
+
+**samtools index**
+
+The samtools index command is used to create an index file for a sorted BAM file. Indexing allows for fast random access to data in the BAM file, making it easier and quicker to retrieve specific regions of interest during analysis. The command takes the following parameter:
+
+```bash
+samtools index <name_of_sorted_BAM_file>
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+samtools sort chrom22.bam -o chrom22.sorted.bam
+samtools index chrom22.sorted.bam
+```
+:::
+
+**Q12.** How is the file sorted now? To view its contents, use the command `samtools view`.
+
+```bash
+samtools view <file_name> | more
+```
+
+The **pipe** symbol (`|`) is used to connect the output of one command directly into the input of another. This allows for the chaining of commands, enabling you to perform complex tasks efficiently without the need to create intermediate files.
+
+```bash
+command1 | command2
+```
+::: {.callout-note}
+## Pipe Shortcut
+- Windows and Linux: `Alt Gr + 6`
+- Mac keyboard: `Option + Maj + L`
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+samtools view chrom22.sorted.bam | more
+```
+:::
+
+To view few statistics about the mapping, use idxStats:
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+samtools idxstats chrom22.sorted.bam
+```
+:::
+
+**Q13.** How do you explain these results?
+
+Select the part of the alignment corresponding to chromosome 3. To filter the file, use again the command `samtools view` but add the region.
+
+```bash
+samtools view -b -o <name_of_BAM_output> <name_of_BAM_input> <region>
+```
+
+- `-b`: This option indicates that the output should be in BAM format.
+- `-o <name_of_BAM_output>`: This specifies the name of the output BAM file.
+- `<name_of_BAM_input>`: This is the name of the input BAM file you want to filter.
+- `<region>`: Specify the region you want to extract, such as `chr3` or `chr3:1-1000000` to limit the output to a specific range on chromosome 3.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+samtools view -b -o chrom22.sorted.filter.bam chrom22.sorted.bam chr22
+```
+:::
+
+Then index this file with `samtools index` as previously.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+samtools index chrom22.sorted.filter.bam
+```
+:::
+
+Download the two 2 bam files of the alignment of chromosome 22 (the `.bam` and the `.bam.bai`).
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+scp <login>@tp.lbgi.fr:~/TdExome/mapping/chrom22.sorted.filter.bam* .
+```
+
+*Note: Replace `<login>` with your username. The tilde `~` is a shortcut for your home directory `/home/<username>`.*
+:::
+
+### Visualization of the BAM file
+BAM files can be visualized using a browser. Display the filtered BAM data using [IGV](https://igv.org/app/) with Human hg38.
+
+You can use your own files or used files available online.
+- Load the bam file `chr22_filter.bam` and `chr22_filter.bai` with Local (Tracks > Local). 
+- Load the bam file https://lbgi.fr/~merlat/TD3/chr22_filter.bam & the index file https://lbgi.fr/~merlat/TD3/chr22_filter.bai with URL (Tracks > URL). 
+
+Zoom in to display a small region of chromosome 22 (or a gene such as APOL5). Configure the display to highlight mismatches.
+
+**Q14.** Are reads exclusively mapped on exonic regions? Why?
+
+**Q15.** Do you think that all observed mismatches correspond to variants?
+
+**Q16.** What criteria have to be fulfilled to infer variants?
+
+## Calling single nucleotide variations (SNVs) – pileup, interval and BED files
+
+### Generation of a Pileup file
+
+At the same level as `reference`, `FastQCReport` and `mapping` directories, create a directory `variantCalling`.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+cd ..
+mkdir variantCalling
+```
+
+A pileup is a column wise representation of the aligned read - at the base level - to the reference. The pileup file summarizes all data from the reads at each genomic region that is covered by at least one read.
+
+To generate a pileup file using SAMtools, use `samtools mpileup` command with the specified options.
+
+**samtools mpileup**
+
+- `-f reference.fasta`: Specifies the reference genome file.
+- `aligned_reads.bam`: Your input BAM file with aligned reads.
+- `output.pileup`: The name of the output pileup file.
+
+```bash
+samtools mpileup -f <reference_file> -C <value> <bam_file> > <pileup_output>
+```
+
+Parameters: 
+
+- `-f <reference_file>`: Specifies the reference genome file to which the reads are aligned.
+- `-C`: Adjusts the mapping quality. It allows to reduce the impact of mismapped reads on the pileup by reducing their quality score.
+- `<bam_file>`: The input BAM file that contains the aligned reads. It must be sorted and indexed for efficient querying.
+- `>`: Redirects the standard output (stdout) to a file, saving the results of the command into the specified file rather than displaying them in the terminal.
+- `<pileup_output>`: This writes the output to the specified pileup file.
+
+
+Generate the pileup file and adjust the mapping quality to 50. 
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+samtools mpileup -f reference/human_genome.fasta -C 50 aligned_reads.bam > variantCalling/chrom22.pileup
+```
+:::
+
+Search online for the significance of each column.
+
+### Filtering pileup to get a list of SNVs
+
+The pileup described all aligned positions. To call SNVs, we have to filter:
+
+- Aligned positions that differ from the reference base
+- Positions covered by minimum amount of reads (e.g. at least 10 reads)
+- Sites with variants with sufficient quality base scores
+
+#### First filter: depth of coverage and read base quality
+
+This command generates an interval format file.
+
+```bash
+perl /bin/pileup_parser.pl <input_pileup> <ref_base_column> <read_bases_column> <base_quality_column> <coverage column> <qv cutoff> <coverage cutoff> <SNPs only?> <output bed?> <coord_column> <out_file> <total_diff> <print_qual_bases>
+```
+
+Arguments: 
+
+- `<input_pileup>`: Path to your input pileup file.
+- `<ref_base_column>`: The column index (starting from 1) of the reference nucleotide.
+- `<read_bases_column>`: The column index of the bases at that position from aligned reads.
+- `<base_quality_column>`: The column index of the Phred quality.
+- `<coverage_column>`: The column index of the depth of coverage.
+- `<qv_cutoff>`: Quality value cutoff.
+- `<coverage_cutoff>`: Coverage cutoff.
+- `<SNPs_only>`: If you only want SNPs (yes/no).
+- `<output_bed>`: If you want to output in BED format (yes/no).
+- `<coord_column>`: The coordinate system.
+- `<out_file>`: Path where you want to save the output (e.g., output.txt).
+- `<total_diff>`: If you want to print the total number of differences (yes/no).
+- `<print_qual_bases>`: If you want to print the quality bases (yes/no).
+
+Use this command to parse the pileup file by filling with the correct columns and the folowing options: 
+- Do not consider read bases with quality lower than = **20**.
+- Do not report positions with coverage lower than = **10**.
+- Only SNPs.
+- Do not produce a output in BED format. 
+- Use the coordinate system 2.
+- Do not print the total number of difference.
+- Print the quality bases.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+cd variantCalling/
+/bin/pileup_parser.pl chrom22.pileup 3 5 6 4 20 10 Yes No 2 chrom22.pileup.parsed No Yes
+```
+
+**Q17.** How many regions do you obtain? Use the command `wc -l` to count the number of lines. 
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+wc -l chrom22.pileup.parsed 
+```
+
+#### Second filter: SNV quality (>50)
+
+In the interval file, SNV quality is indicated in column 7. Use awk to keep only lines where column 7 > 50, combine with wc -l to count the number of keeped lines.
+
+**Q18.** How many reliable SNVs have been called? Use awk to keep only lines where column 7 > 50, combine with wc -l to count the number of keeped lines.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+awk '$7 > 50'  chrom22.pileup.parsed2 |wc -l
+```
+
+## Annotation of variants
+Go to Variant Effect Predictor : http://grch37.ensembl.org/Homo_sapiens/Tools/VEP
+
+Click on Ensembl default below the white frame for input data
+
+Paste the URL : http://lbgi.fr/~weber/GC/TD3/2_VCF/chr22_filter.vcf.gz corresponding to the chr22 VCF file in the URL field.
+Select the following options :
+- Transcript database to use
+- RefSeq transcripts
+- Additional configuration
+- Variants and frequency data
+- Frequency data for co-located variants:s
+- **DISABLE** 1000 Genomes global minor allele frequency
+- **ENABLE** gnomAD (exomes) allele frequencies
+- Predictions
+- Pathogenicity predictions
+- **ENABLE** CADD
+- Filtering options
+- Filters
+- Restrict results: Show one selected consequence per gene
+
+Then RUN !
+
+**Q17.** How many missense variants are there in this file ? (approximately)
+
+Create a filter to select only missense_variant (Consequence is missense_variant)
+
+Focus on 22:23482483-23482483.
+
+**Q15.** On which gene is the variant ? Which exon ?
+
+**Q15.** Why is this variant difficult to interpret ? (MAF, scores)
+
+**Q15.** Bonus : is the variant referenced in ClinVar ?

@@ -20,7 +20,7 @@ Consult the How field. Which bank does this sequence come from? Is it reliable? 
 Look for the coding region corresponding to the N protein (nucleocapsid phosphoprotein).
 :::
 
-::: {#exr-1 .custom}s
+::: {#exr-1 .custom}
 What do you think of the composition of this protein? What problems might such a sequence pose in a similarity search?
 :::
 

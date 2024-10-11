@@ -1,0 +1,166 @@
+# Practical - Similary searches
+
+## Search for homologous proteins using BLASTP (NCBI BLAST)
+
+We want to find homologs of a bat protein sequence available on moodle.
+
+### Composition
+
+What can you say about the composition of this protein sequence? What problem can be
+encountered in a similarity search with such a composition?
+
+### Databases
+
+::: {#exr-1 .custom}
+Which databases are available for the search?
+:::
+  
+Select the SwissProt database. 
+
+::: {#exr-1 .custom}
+Will the search be exhaustive?
+:::
+
+### BLASTP parameters
+
+See Algorithm parameters, at the bottom of the page.
+
+::: {#exr-1 .custom}
+How many sequences can you get?
+:::
+
+::: {#exr-1 .custom}
+What is the Expect threshold to display sequences? Modify the Expect threshold to obtain results with E≤10.
+:::
+
+::: {#exr-1 .custom}
+What are the gap penalties? The word size?
+:::
+
+::: {#exr-1 .custom}
+How are regions of low complexity processed?
+:::
+
+### Perform the similarity search (SwissProt, E≤10, default for other parameters)
+
+#### Graphic summary
+
+::: {#exr-1 .custom}
+How many sequences do you obtain with E≤10?
+:::
+
+::: {#exr-1 .custom}
+What can be deduced from the graphical representation of BLAST results? There is no alignment on the C-terminal region. Why?
+:::
+
+### Description
+
+::: {#exr-1 .custom}
+Which families are detected?
+:::
+
+#### Taxonomy
+
+::: {#exr-1 .custom}
+In which organisms do you find hits?
+:::
+
+::: {#exr-1 .custom}
+In which species is the closest sequence found?
+:::
+
+#### Alignments
+
+::: {#exr-1 .custom}
+Identify a conserved motif in the superfamily.
+:::
+
+::: {#exr-1 .custom}
+According to the alignments, are the detected sequences all homologous to our query?
+:::
+
+#### Decrease in the word size
+
+::: {#exr-1 .custom}
+What might be the consequences of a decrease in word size?
+:::
+
+Repeat the search with the parameters used in question 4 but with a word size of 3 aa.
+
+::: {#exr-1 .custom}
+How many "hits" are you getting now?
+:::
+
+::: {#exr-1 .custom}
+In which taxon (taxa) are similar proteins found? 
+:::
+
+## Localisation of a transcript on a genome and search for a CDS
+
+A gene has been detected as being over-expressed in several patients with esophageal cancer. The sequence of the transcript is provided below.
+
+```bash
+>human mRNA
+GTGTGGACACTCCTAGGTTAGAAAGTTTGGTATGTTGCTATACCTTTGCTTCTCCCACCT
+TCCCCAATATCTAATATGTATTTCTCATTCTTAGAATAATCCAGAATGGCTACTCTGATC
+TATGTTGATAAGGAAAATGGAGAACCAGGCACCCGTGTGGTTGCTAAGGATGGGCTGAAG
+CTGGGGTCTGGACCTTCAATCAAAGCCTTAGATGGGAGATCTCAAGTTTCAACACCACGT
+TTTGGCAAAACGTTCGATGCCCCACCAGCCTTACCTAAAGCTACTAGAAAGGCTTTGGGA
+ACTGTCAACAGAGCTACAGAAAAGTCTGTAAAGACCAAGGGACCCCTCAAACAAAAACAG
+CCAAGCTTTTCTGCCAAAAAGATGACTGAGAAGACTGTTAAAGCAAAAAGCTCTGTTCCT
+GCCTCAGATGATGCCTATCCAGAAATAGAAAAATTCTTTCCCTTCAATCCTCTAGACTTT
+GAGAGTTTTGACCTGCCTGAAGAGCACCAGATTGCGCACCTCCCCTTGAGTGGAGTGCCT
+CTCATGATCCTTGACGAGGAGAGAGAGCTTGAAAAGCTGTTTCAGCTGGGCCCCCCTTCA
+CCTGTGAAGATGCCCTCTCCACCATGGGAATCCAATCTGTTGCAGTCTCCTTCAAGCATT
+CTGTCGACCCTGGATGTTGAATTGCCACCTGTTTGCTGTGACATAGATATTTAAATTTCT
+TAGTGCTTCAGAGTTTGTGTGTATTTGTATTAATAAAGCATTCTTTATCAGAAAAAAAAA
+AAAAAAA
+```
+
+### Localization of a mRNA sequence on a genome
+
+Localize the corresponding gene on the human genome with BLAST (BLAST Genomes section, at the bottom of the page). Use the GRCh38.p14 reference assembly.
+
+#### Program
+MEGABLAST is proposed by default. 
+
+::: {#exr-1 .custom}
+What is the word size in MEGABLAST? Can we use MegaBLAST in our case or should we use BLASTN?
+:::
+
+#### Analysis
+
+::: {#exr-1 .custom}
+Comment obtained results (number of hits, conservation...)
+:::
+
+::: {#exr-1 .custom}
+Give the localization of the transcribed region (chromosome, strand, start, end).
+:::
+
+::: {#exr-1 .custom}
+How many exons are present in this gene? Can you give the precise boundaries of exons?
+:::
+
+::: {#exr-1 .custom}
+How can you explain the ranking provided by BLAST?
+:::
+
+::: {#exr-1 .custom}
+Which program can be used to improve your results? Compare results.
+:::
+
+
+#### Localization of the coding sequence (CDS)
+
+::: {#exr-1 .custom}
+How could we localize the coding region of this transcript?
+:::
+
+::: {#exr-1 .custom}
+Perform the similarity search in SwissProt.
+:::
+
+::: {#exr-1 .custom}
+What are the boundaries and reading frame of the CDS?
+:::

@@ -1,0 +1,120 @@
+# Practical - Functional analysis of a gene list and sequence comparison
+
+## Functional analysis of a gene list (Gene Ontology)
+
+Gene expression profiles in tumors from breast cancer patients were compared to expression profiles in healthy tissue. This comparison revealed 991 overexpressed genes and 1422 downregulated genes in tumors. The gene lists are available on moodle.
+
+Analyze the list of the 991 overexpressed genes using the GO Enrichment analysis tool on the [Panther website](http://geneontology.org/) and choosing the Cellular component ontology.
+
+::: {#exr-1 .custom}
+Explain the meaning of the different columns presented.
+:::
+
+::: {#exr-1 .custom}
+Which GO term is most enriched in the gene list? Consult the meaning of this term. Is this a consistent result given that these are genes overexpressed in tumors?
+:::
+
+::: {#exr-1 .custom}
+Which GO term is the most underrepresented in this list?
+:::
+
+Repeat the analysis using GO biological process (complete). Rank the results according to the False Discovery Rate (FDR). 
+
+::: {#exr-1 .custom}
+Which enrichment is most significant? Are the results consistent in your opinion?
+:::
+
+Now analyze the list of genes that are under-expressed in tumors (GO biological process).
+
+::: {#exr-1 .custom}
+To which major types of processes do the down-regulated genes belong?
+:::
+
+## Dotplot and optimal alignments (with EMBOSS tools)
+
+EMBOSS: tool package for sequence analysis, available for instance at: https://www.ebi.ac.uk/Tools/emboss/
+
+### Comparison of 2 myotubularin sequences
+
+Search for **MTMR3_HUMAN** (Q13615) and **Q9W1Q6_DROME** (Q9W1Q6) sequences in UniProt and compare them with:
+
+1. the dotplot method (dotmatcher program). Don’t forget to adjust parameters to decrease noise
+2. the water program (local alignment)
+3. the needle program (global alignment)
+
+::: {#exr-1 .custom}
+Which similarity regions between the two sequences can be detected using dotplot? Is it in agreement with the domain organisation of the two proteins (see InterPro annotations of the 2 sequences)?
+:::
+
+Compare the results obtained using local and global alignments. 
+
+::: {#exr-1 .custom}
+Why is the score obtained using needle lower?
+:::
+
+::: {#exr-1 .custom}
+How can you improve the global alignment? Test your hypothesis.
+:::
+
+::: {#exr-1 .custom}
+What can you say about the C-terminal domain? How could you characterize this domain?
+:::
+
+### Self-comparison of a protein sequence
+
+Search for the protein sequence corresponding to the aef1 gene of *Drosophila melanogaster* in UniProt. 
+
+::: {#exr-1 .custom}
+Which domain(s) are present?
+:::
+
+::: {#exr-1 .custom}
+Represent schematically the result of a self-comparison of this sequence using the dotplot method.
+:::
+
+Perform the self-comparison using dotmatcher (with w=10, s=30 for instance). 
+
+::: {#exr-1 .custom}
+Is the result in agreement with your expectations? Which additional information appears?
+:::
+
+## Search for homologous proteins using BLASTP (NCBI BLAST)
+
+We want to find homologs of a bat protein sequence available on moodle.
+
+### Composition
+
+What can you say about the composition of this protein sequence? What problem can be
+encountered in a similarity search with such a composition?
+
+### Databases
+
+::: {#exr-1 .custom}
+Which databases are available for the search?
+:::
+  
+Select the SwissProt database. 
+
+::: {#exr-1 .custom}
+Will the search be exhaustive?
+:::
+
+### BLASTP parameters
+
+See Algorithm parameters, at the bottom of the page.
+
+::: {#exr-1 .custom}
+How many sequences can you get?
+:::
+
+::: {#exr-1 .custom}
+What is the Expect threshold to display sequences? Modify the Expect threshold to obtain results with E≤10.
+:::
+
+::: {#exr-1 .custom}
+What are the gap penalties? The word size?
+:::
+
+::: {#exr-1 .custom}
+How are regions of low complexity processed?
+:::

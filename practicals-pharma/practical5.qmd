@@ -1,0 +1,151 @@
+# Practical – Analysis of Protein Families
+
+## 1. Characterization of a Sequence of Unknown Function
+
+```bash
+> Hypothetical protein [Candidatus Poribacteria sp. WGA-A3]
+MVDFNNTLSSTASVQVAAHWDPIENTANNLHRSTEEKFNRDKAQWQEPVEMTWEQWLEVFNPGPAHPLKN
+YSTADFQVFLPPSTVNVADVWDLDTEGILPFLRQFHPSATMKLPRYGSIPSDQKDAKACLRALSPEYADI
+VFRIHARFTLDASIDAYFMPAQFAGHLIINRNSRTIHQWTLSLPNRNSNVDIGAFRSHDIGFVPRMELCS
+VSETQPESIVWEAAITAEEADKKFQNSLYKFAEIEWTPIEEAVELAKASNRSIHAVLLFGVLDDESC
+```
+
+##  First Part: BLASTP Search
+
+Search for the organism **Candidatus Poribacteria** in the NCBI Taxonomy database. 
+
+
+::: {#exr-1 .custom}
+What can you say about the organism taxonomy?
+:::
+
+Search for homologs of the Poribacteria sequence (available on Moodle) using NCBI BLASTP:
+
+- In the **RefSeq_protein** database (not in **RefSeq select**!!!)
+- With word size = 3
+- With a maximum of 1000 sequences and E ≤ 10 (other parameters: default)
+- **How many hits did you get with E ≤ 10?**
+  
+::: {#exr-1 .custom}
+To which family does the protein seem to belong?
+:::
+
+
+::: {#exr-1 .custom}
+According to BLASTP alignments, propose 2 patterns conserved in the protein family.
+:::
+
+
+::: {#exr-1 .custom}
+In which taxonomic group(s) do we find hits? Are the hits found in the bacterial sequences significant? Propose a function and an evolutionary origin for the gene encoding the Poribacteria protein.
+:::
+
+
+::: {#exr-1 .custom}
+Look at the alignment with human selenoprotein N **NP_996809.1**. Do the alignments cover the C-terminal part of the query sequence and animal selenoprotein N? In metazoans, which amino acid "matches" the stop codon of the Poribacteria sequence? What hypothesis can be made? How could this hypothesis be tested?
+:::
+
+## Connection to the server
+
+To learn how to connect to the server for practical work, refer to the [Server Connection Guide](../help/server_connection_guide.qmd).
+
+Once you're connected, start by creating a working directory for this session and navigate into it.
+
+**mkdir**
+
+The mkdir command stands for "make directory", is used to create a new folder in the file system. You can create your directory like this:
+
+```bash
+mkdir <directory_name>
+```
+
+**cd**
+
+The cd command stands for "change directory", allows you to move into a different folder within the file system. Use it as follows:
+
+```bash
+cd <directory>
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir TdBlast
+cd TdBlast
+```
+:::
+
+::: {.callout-note}
+## Help
+If you need help with a command, display its help using:
+ - `<command-h` or `<command--help` for short help messages.
+ - `man <command>` to display the full manual of a command.
+:::
+
+
+## Comparison Protein/Genome Using Command-Line BLAST
+
+Retrieve the Human Protein Sequence of the Selenoprotein N (Accession Number: Q9NZV5) using the command GET of the UniProtKB API.
+
+Documentation of UniProtKB API: [UniProtKB API Documentation](https://www.ebi.ac.uk/proteins/api/doc/#!/proteins/search)
+
+```bash
+curl -X GET --header 'Accept:text/x-fasta' -o Q9NZV5.fasta 'https://www.ebi.ac.uk/proteins/api/proteins?offset=0&size=100&accession=Q9NZV5'
+```
+
+You can open the file with the `cat` command:
+```bash
+cat Q9NZV5.fasta
+```
+Create a BLAST Database with Poribacteria Genomes
+
+Copy the fasta file containing sequences from 2 Poribacteria genomes to your directory. The sequence is available at:  `/home/lecompte/Poribacteria_genomes.fasta`
+
+```bash
+cp /home/lecompte/Poribacteria_genomes.fasta Poribacteria_genomes.fasta
+```
+
+Create the BLAST database with the `makeblastdb` command:
+To see available options: 
+```bash
+makeblastdb –help
+```
+
+```bash
+makeblastdb -in Poribacteria_genomes.fasta -dbtype nucl -out PoribacteriaDb
+```
+
+
+Perform a Similarity Search using the human selenoprotein N **Q9NZV5.fasta** as a query in the **PoribacteriaDb** database using the **tblastN** command:
+To see available options: 
+```bash
+tblastn –help
+```
+
+```bash
+tblastn -db PoribacteriaDb -query Q9NZV5.fasta -out selN.tblastn
+```
+
+Analysis of the TblastN Results. 
+
+Display the TblastN output:
+
+```bash
+more selN.tblastn
+```
+
+::: {#exr-1 .custom}
+Can we extend the gene sequence in 3’?
+:::
+
+::: {#exr-1 .custom}
+What do you learn from this search about the evolution of this gene in available Poribacteria genomes?
+:::
+
+::: {#exr-1 .custom}
+We obtain several alignments for the sequence **VYCT01000218**. Why?
+:::
+
+```bash
+grep -A 90 '>VYCT01000218' selN.tblastn
+```

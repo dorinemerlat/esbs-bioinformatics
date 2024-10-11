@@ -1,0 +1,307 @@
+# Practical - *De novo* assembly
+
+In this practical, you will work with data from different strains of _Saccharomyces cerevisiae_, including strain SJ1L04, sequenced as part of the 1011 yeast genomes project. This strain was sequenced using Illumina HiSeq2500 technology with paired-end reads and 250X coverage.
+
+::: {#exr-1 .custom}
+What is the 1011 yeast genomes project ?
+:::
+
+The mitochondrial genome of _S. cerevisiae_ shows greater variability than the nuclear genome due to differences in intergenic regions and the presence/absence of introns.
+
+::: {#exr-1 .custom}
+What strategy would be most appropriate for comparing a strain's nuclear genome to the reference genome? What about for the mitochondrial genome?
+:::
+
+Use the NCBI Genome database to find the reference genome of _S. cerevisiae_ and the corresponding mitochondrial genome annotation (NC_001224).
+
+::: {#exr-1 .custom}
+What is the size of the mitochondrial genome?
+:::
+
+::: {#exr-1 .custom}
+Given that the nuclear genome size is 12 Mb and the sequencing depth is 250X, how many paired reads were generated? How can we reduce the number of reads to process for assembling the mitochondrial genome? (Assume the average read length is 100 bp, so 200 bp for paired-end reads).
+:::
+
+## Connection to the server
+
+To learn how to connect to the server for practical work, refer to the [Server Connection Guide](../help/server_connection_guide.qmd).
+
+Once you're connected, start by creating a working directory for this session and navigate into it.
+
+**mkdir**
+
+The mkdir command stands for "make directory", is used to create a new folder in the file system. You can create your directory like this:
+
+```bash
+mkdir <directory_name>
+```
+
+**cd**
+
+The cd command stands for "change directory", allows you to move into a different folder within the file system. Use it as follows:
+
+```bash
+cd <directory>
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir tdDenovo
+cd tdDenovo
+```
+:::
+
+::: {.callout-note}
+## Help
+If you need help with a command, display its help using:
+ - `<command-h` or `<command--help` for short help messages.
+ - `man <command>` to display the full manual of a command.
+:::
+
+
+## Copying and displaying files
+
+### Creating Symbolic Links
+
+Create an alias of the file with reads in your directory for easy access. For that, use the command `ln`, which create links between files. Links are pointers to files, allowing multiple references (aliases) to the same file. This way, you don't need to duplicate large files, saving storage space and making file management easier. 
+
+```bash
+ln -s <path_to_original_file> <path_to_link_file> 
+``` 
+
+The option `-s`stands for "symbolic link." A symbolic link is like a shortcut that points to the original file, enabling easy access. Unlike hard links, symbolic links can span different file systems, and if the original file is moved, the symbolic link can still point to it if it is relocated in the same system.
+
+Create an alias for the reads (original paths:`/data/yeast/reads/chrM/readsSJ1L04_1.fq.gz` and `/data/yeast/reads/chrM/readsSJ1L04_2.fq.gz`) inside a new directory called `reads`.
+
+::: {.callout-note}
+## The Wildcard 
+The `*` symbol is a wildcard character used to represent "zero or more characters" in file or directory names. When used in commands, it allows you to work with multiple files or patterns at once.
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir reads
+ln -s /data/yeast/reads/chrM/readsSJ1L04_*.fq.gz reads
+```
+Creates symbolic links for all files starting with `readsSJ1L04_` and ending with `.fq.gz` in the `reads` directory. 
+:::
+
+### Display a compressed file
+
+FASTQ files are often compressed for storage efficiency and faster processing. Since you cannot read them directly with commands like `more`, you need to use the `zcat` command.
+
+**zcat**
+
+The `zcat` command is used to display the contents of compressed files, specifically those with `.gz` extensions, without needing to decompress them first. It reads the contents of the compressed file and outputs them to the terminal.
+
+```bash
+zcat <file.gz>
+```
+
+`zcat`display in one time all the contents of the file. You can also combine `zcat` with other commands like `more` to make the output easier to scroll through:
+
+```bash
+zcat <file.gz> | more
+```
+
+**more**
+
+The `more` command is used to display the contents of a file one screen at a time. This is useful for viewing large files like FASTQ files, where the data is too big to fit on a single screen.
+
+```bash
+more <path_file_to_display>
+```
+
+::: {.callout-note}
+## Navigation keys in more
+
+- **space**: pressing the *space* key advances the display by one full screen, allowing you to scroll through the content quickly.
+- **enter**: Ppressing *enter* moves the display down by one line. This is useful if you want to slowly scroll through the content line by line.
+- **q**: pressing *q* will quit the more command and return you to the terminal prompt. You can use this key if you're done viewing the file or don't want to scroll through the entire file.
+:::
+
+::: {.callout-note}
+## The pipe (|)
+
+The **pipe** symbol (`|`) is used to connect the output of one command directly into the input of another. This allows for the chaining of commands, enabling you to perform complex tasks efficiently without the need to create intermediate files.
+
+```bash
+command1 | command2
+```
+:::
+
+**head**
+
+The `head` command is used to display the first few lines of a file, which is helpful when you want to quickly preview its content without opening the entire file.
+
+```bash
+head <file>
+```
+
+By default, head shows the first 10 lines of the file. You can customize the number of lines displayed using the `-n` option. This option allows you to specify the exact number of lines to display.
+
+```bash
+head -n 20 <file>
+```
+
+This command will display the first 20 lines of the file. You can adjust the number of lines according to your needs.
+
+Combine the `zcat` and `head` commands to display the first 12 lines of each reads file.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+zcat reads/readsSJ1L04_1.fq.gz | head -n 12
+zcat reads/readsSJ1L04_2.fq.gz | head -n 12
+```
+:::
+
+::: {#exr-1 .custom}
+What is the format of these files?
+:::
+
+::: {#exr-1 .custom}
+Is the length of the reads uniform? What can we assume?
+:::
+
+::: {#exr-1 .custom}
+How many reads are available? You can use the command `wc` and `python`.
+:::
+
+::: {.callout-note}
+## Using Python from the CLI  
+
+You can run Python from the command line by executing `python`. This will start the Python interpreter, where you can use Python as usual. To exit the interpreter, type `exit()` and press `Enter`.
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+zcat readsSJ1L04_1.fq.gz |wc -l
+zcat readsSJ1L04_2.fq.gz |wc -l
+```
+
+Launch python:
+```bash
+python
+```
+
+```python
+4764652/4
+``` 
+:::
+
+## Quality control of reads
+
+Use the [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) program to get a report on the quality of readings.
+
+```bash
+fastqc -o <output_directory_path> <reads_path>
+```
+
+- `-o <output_directory_path>`: Specifies the directory where the FastQC reports will be saved.
+- `<reads_path>`: Indicates the path to the input FASTQ files you want to analyze.
+
+
+Create a directory to store FastQC outputs and run `fastqc`.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir fastQCReport
+fastqc -o fastQCReport reads/readsSJ1L04_*.fq.gz
+```
+:::
+
+An HTML file is generated by FastQC, which contains lines of code for displaying web pages. While you can attempt to view it using the `more` command, it's not well-suited for direct reading. To properly inspect the quality metrics and identify potential issues with the sequencing data, it's best to open the HTML reports in a web browser. Before doing so, you will need to transfer the file from the server to your local computer.
+
+**scp**
+
+The `scp` command stands for "secure copy protocol." It is used to securely transfer files between a local computer and a remote server or between two remote servers over an encrypted SSH connection. This ensures that the data is protected during transfer.
+
+To copy file from a server to your computer, **open a new terminal** and use scp like this:
+```bash
+scp <username>@<server_adress>:<source_file_path> <target_file_path>
+```
+
+::: {.callout-note}
+## View the path of a file
+If you not sure of the path .html file, use the command `realpath` to known it.
+`realpath <file>` 
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+scp <username>@tp.lbgi.fr:~/tdDenovo/fastQCReport/chrom22_fastqc.html .
+```
+
+*Note: Replace `<login>` with your username. The tilde `~` is a shortcut for your home directory `/home/<username>`.*
+:::
+
+Now that the HTML file is on your computer, you can access it like any other file using your file explorer.
+
+In the terminal where you used the `scp` command, run the `pwd` command to check your current directory. This will help you locate the file in your file explorer.
+
+
+::: {#exr-1 .custom}
+Comment the results.
+:::
+
+## Assembly with Abyss
+
+For de novo assembly, we will use the **Abyss** program: [Abyss Bioinformatics Software](http://www.bcgsc.ca/platform/bioinfo/software/abyss). Create a directory named `assembly` within your working directory and move inside.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir assembly
+cd assembly
+```
+:::
+
+### Running Abyss
+
+The general syntax for the `abyss-pe` command is:
+
+```bash
+abyss-pe k=<km> name=<output_name> lib='pe1' pe1="<absolute_path_of_reads>" -C <output_directory>
+```
+You can store the value of `km` in a variable for easy reuse:
+
+```bash
+km="40"
+abyss-pe k=$km name="readsSJ1L04_$km" lib='pe1' pe1="<absolute_path_of_reads>" -C <output_directory>
+
+```
+After you have just to change the value of `$km` and relaunch the same command.
+
+Run Abyss with different k-mer values (e.g., `40`, `60`, or `80`).
+
+::: {.callout-tip collapse="true"}
+## Solution 
+
+Solution for km=40:
+
+```bash
+km=40
+abyss-pe k=$km name="readsSJ1L04_$km" lib='pe1' pe1="/home/merlat/tdDenovo/readsSJ1L04_*.fq.gz" -C "/home/merlat/tdDenovo/Assembly"
+```
+:::
+
+### Comparison of results
+
+A statistics file is associated with each assembly (**-stats** files). Display the files.
+
+
+
+::: {#exr-1 .custom}
+Which assembly is most relevant and why?
+::
+
+::: {#exr-1 .custom}
+Assemblies are consistently larger than the expected size of the mitochondrial genome. What could be the additional scaffolds/contigs?
+::
+

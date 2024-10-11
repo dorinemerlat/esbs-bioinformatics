@@ -1,0 +1,177 @@
+# Practical - Multiple Alignment & Phylogeny
+
+## Part 1 - Analysis of a Protein Family
+
+A protein sequence (available on the Moodle platform) has been automatically predicted during the annotation of the fungus *Malassezia globosa* genome.
+
+### Similarity Search
+
+Perform a similarity search using BLAST at EBI in the SWISSPROT database (https://www.ebi.ac.uk/jdispatcher/sss/ncbiblast) (default parameters).
+
+::: {#exr-1 .custom}
+How many sequences do you obtain (with E<10)? Why so few sequences are detected according to you?  
+:::
+
+Display results with Tool output.
+
+::: {#exr-1 .custom}
+Find 3 conserved motifs.  
+:::
+
+::: {#exr-1 .custom}
+Is the *Malassezia* sequence homologous to: Q84424, P05469, P0C995, O13881?  
+:::
+
+Display results with Visual output.
+
+::: {#exr-1 .custom}
+For each group of homologs, specify which region(s) (N-terminus, central region, C-terminus, almost whole sequence...) of the query sequence and of the database sequences have been aligned by BLAST.
+:::
+
+::: {#exr-1 .custom}
+Why can this information be important before constructing a global multiple alignment?  
+:::
+
+Display the Summary table. Select all sequences detected by BLAST except:  
+
+- CLR2_SCHPO (O13881) and YKP3_KLULA (P05469): non-homologous sequences  
+- YL226_MIMIV (Q5UQC0) and MCE_MIMIV (Q5UQX1): too few motifs.  
+  
+Save sequences in Fasta format and add the query sequence in the file. The final file is also available on Moodle (`distant_homologs.txt`).
+
+### Multiple Alignment of Homologs Using Mafft
+
+**Parameters:  **
+
+Display alignment parameters.  
+
+::: {#exr-1 .custom}
+Why are pairwise parameters mentioned?  
+:::
+
+Align sequences (Alignment, Do complete alignment) with default parameters.  
+
+Visualize this alignment with Jalview (available on your computer or using https://www.jalview.org/jalview-js/JalviewJS/).  
+
+Residues can be colored according to their properties with Colour, Zappo (or Clustal, for instance).  
+
+::: {#exr-1 .custom}
+Is the sequence order relevant? Modify sequence order if necessary.  
+:::
+
+::: {#exr-1 .custom}
+Do all sequences exhibit the same domain organization?  
+:::
+
+::: {#exr-1 .custom}
+Do you find the previously defined motifs? According to you, is the alignment correct?  
+:::
+
+::: {#exr-1 .custom}
+Can you find additional motifs? Can you find obvious sequence prediction errors?  
+:::
+
+::: {#exr-1 .custom}
+Which sequence sub-groups can be defined? Are there “orphan” sequences? Justify your answer and give one discriminative residue or motif for each group.
+:::
+
+## Phylogeny
+
+A multiple alignment of aspartyl-tRNA synthetases (SYD) and asparaginyl-tRNA synthetases (SYN) protein sequences has been constructed. A few lysyl-tRNA synthetase (SYK) sequences have been added as an outgroup. In Eukarya, cytoplasmic proteins are indicated with C (ex: SYNC_HUMAN) while mitochondrial proteins are indicated with M. The alignment is schematically shown below (Jalview overview).
+
+::: {#exr-1 .custom}
+According to this graphical overview, what precaution should we take before building a phylogenetic tree from this alignment?  
+:::
+
+Some sequences have been selected, and the variable N-terminus part of the alignment has been removed. The corresponding alignment is available on Moodle (fasta format).  
+
+Codes for species:  
+
+- Animals: human, mouse.  
+- Fungi: yeast, Schpo, Enccu.  
+- Amoebas: dicdi.  
+- Archaea: pyrab, aerpe
+- Bacteria: bacsu, ecoli
+- Plant: arath
+
+Use the Seaview program available on your computer (http://doua.prabi.fr/software/seaview) and open the multiple alignment with Seaview.
+
+### Distance Method (BioNJ) – Pairwise Gap Removal
+
+Construct a phylogenetic tree using BioNJ (Trees/Distance Methods/) with 100 bootstrap replicates, Poisson distance, and ignore all gaps (global gap removal).
+
+::: {#exr-1 .custom}
+How many sites have been used to calculate distances? Do you agree with the root position?
+:::
+
+::: {#exr-1 .custom}
+Which pair of sequences are closest to each other? Which sequence has the highest rate of evolution (except SYK_BACSU)?
+:::
+
+::: {#exr-1 .custom}
+Display bootstrap values using “Br support”. Is the separation between aspartyl-tRNA synthetases (SYD) and asparaginyl-tRNA synthetases (SYN) sequences clearly established according to this tree?
+:::
+
+::: {#exr-1 .custom}
+Are the relationships between SYN sequences expected? Are they significantly supported?
+:::
+
+::: {#exr-1 .custom}
+Are phylogenetic relationships observed for eukaryotic aspartyl-tRNA synthetases in agreement with the current phylogeny of eukaryotes?
+:::
+
+::: {#exr-1 .custom}
+What is the homology relationship between:
+
+  - sync_human and sync_mouse?
+  - sync_human and sydc_mouse?
+  - sync1_arath and sync2_arath?
+:::
+
+::: {#exr-1 .custom}
+Why is it important to distinguish these types of relationships?
+:::
+
+### Distance Method (BioNJ) – Pairwise Gap Removal
+
+Construct the phylogenetic tree using BioNJ (Trees/Distance Methods/) with 100 bootstrap replicates, Poisson distance but without the “ignore all gaps” option (=>pairwise gap removal).
+
+::: {#exr-1 .custom}
+How many sites are used on average?
+:::
+
+::: {#exr-1 .custom}
+Are there topology differences between the two trees? Apart from topology, what types of differences can be observed?
+:::
+
+### Maximum Parsimony (ProtPars)
+
+Construct the phylogenetic tree using Maximum parsimony (default parameters but with 100 bootstrap replicates).
+
+::: {#exr-1 .custom}
+What can you say about the execution time of the two programs?
+:::
+
+::: {#exr-1 .custom}
+How many sites are informative? What do “steps” stand for? How can we obtain “3 best trees”?
+:::
+
+::: {#exr-1 .custom}
+Is branch length informative in this tree?
+:::
+
+::: {#exr-1 .custom}
+The tree is shown as a rooted tree. Do you agree with the root position? Modify the root position if needed (“re-root”).
+:::
+
+::: {#exr-1 .custom}
+What is the most reliable tree between the first tree and this one? Justify your answer.
+:::
+
+### Maximum Likelihood (PhyML)
+
+Construct the phylogenetic tree using PhyML: default parameters but without calculating branch support (“none”).
+
+::: {#exr-1 .custom}
+Is the tree topology in agreement with the topology obtained using BioNJ?
+:::

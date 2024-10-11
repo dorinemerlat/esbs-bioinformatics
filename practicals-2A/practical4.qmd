@@ -1,0 +1,337 @@
+# Practical - Annotation of a complete prokaryotic genome
+
+*Sulcia muelleri* is an intracellular endosymbiotic bacterium. It lives inside an insect with another symbiotic bacterium. *S. muelleri* genome is extremely reduced with a size of 245,530 bp.
+
+## Connection to the server
+
+To learn how to connect to the server for practical work, refer to the [Server Connection Guide](../help/server_connection_guide.qmd).
+
+Once you're connected, start by creating a working directory for this session and navigate into it.
+
+**mkdir**
+
+The mkdir command stands for "make directory", is used to create a new folder in the file system. You can create your directory like this:
+
+```bash
+mkdir <directory_name>
+```
+
+**cd**
+
+The cd command stands for "change directory", allows you to move into a different folder within the file system. Use it as follows:
+
+```bash
+cd <directory>
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir tdAnnotation
+cd tdAnnotation
+```
+:::
+
+## Copying and displaying file
+
+### Creating Symbolic Links
+
+Create an alias of the file with reads in your directory for easy access. For that, use the command `ln`, which create links between files. Links are pointers to files, allowing multiple references (aliases) to the same file. This way, you don't need to duplicate large files, saving storage space and making file management easier. 
+
+```bash
+ln -s <path_to_original_file> <path_to_link_file> 
+``` 
+
+The option `-s`stands for "symbolic link." A symbolic link is like a shortcut that points to the original file, enabling easy access. Unlike hard links, symbolic links can span different file systems, and if the original file is moved, the symbolic link can still point to it if it is relocated in the same system.
+
+Create an alias for the reads (original paths:`/data/bacteria/genome/sulcia.tfa`) inside a new directory called `sulcia`.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir sulcia
+ln -s /data/bacteria/genome/sulcia.tfa sulcia
+```
+Creates symbolic links for the file `sulcia.tfa` in the `sulcia` directory. 
+:::
+
+### Display a regular file
+
+You can display the reference file the command `more`.
+
+The `more` command is used to display the contents of a file one screen at a time. This is useful for viewing large files like FASTQ files, where the data is too big to fit on a single screen.
+
+```bash
+more <path_file_to_display>
+```
+
+::: {.callout-note}
+## Navigation keys in more
+
+- **space**: pressing the *space* key advances the display by one full screen, allowing you to scroll through the content quickly.
+- **enter**: Ppressing *enter* moves the display down by one line. This is useful if you want to slowly scroll through the content line by line.
+- **q**: pressing *q* will quit the more command and return you to the terminal prompt. You can use this key if you're done viewing the file or don't want to scroll through the entire file.
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+more sulcia/sulcia.tfa
+```
+:::
+
+## Localization of non coding RNA genes
+
+### Localization of tRNA genes
+
+You will use the `tRNAscan-SE` program. It is a tool used to detect and annotate tRNA genes in genomic sequences and can distinguish them from pseudogenes.
+
+To see options: 
+```bash	
+tRNAscan-SE -help
+```
+
+Create a directory called `tRNA` to save the output files, then use the command with the necessary options to identify tRNA sequences and **their secondary structures** in the genome of *S. muelleri*.
+
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+cd tRNA
+tRNAscan-SE -B -o sulcia.trnascan -f sulcia_structure.trnascan ../sulcia/sulcia.tfa
+```
+
+- `../sulcia/sulcia.tfa`: This is the path to the input file, indicating that it is located in the sulcia directory, which is one level up from the current directory.
+
+:::
+
+::: {#exr-1 .custom}
+How many genes are found? Are all amino acid represented? Is there redundancy (several tRNA genes with the same anti-codon)?
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+# View the contents of the output file
+more sulcia.trnascan
+
+# Count the number of lines in the output file (then subtract 3 for the header)
+wc -l sulcia.trnascan
+```
+:::
+
+
+Reformat the file containing the secondary structure using the house tool ` format_trnascan.sh` (refer to the help for usage instructions). Then, select some sequences and visualize their structures using the online tool [FORNA](http://rna.tbi.univie.ac.at/forna/).
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+format_trnascan.sh -i sulcia_structure.trnascan -o sulcia_structure.trnascan
+```
+:::
+
+::: {#exr-1 .custom}
+Are their structures consistent with the known tRNA structures?
+:::
+
+### Search for rRNA genes by similarity
+
+We want to find the approximate positions of rRNA genes on the *S. muelleri* genome by similarity using BLASTN and rRNA sequences from *Sulcia* or closely related species. Thus, we have to construct a BLAST database from the Sulcia genomic sequence.
+
+####  Creation of the S. muelleri genome BLAST database
+
+Before conducting a similarity search with BLAST, it is essential to create a BLAST database from your sequence data. This database serves as the reference against which your queries will be compared.
+
+```bash
+makeblastdb -in <sequence_file> -dbtype <type> -out <name>
+```
+
+Explanation of the command options:
+
+- `-in <sequence_file`>: Specifies the input file containing the sequences you want to include in the database. This file should be in FASTA or other supported formats.
+- `-dbtype <type>`: Indicates the type of sequences in the input file. Use `nucl` for nucleotide sequences and `prot` for protein sequences.
+- `-out <name>`: Defines the name for the output database files. The program will create several files with this base name, which will be used for subsequent BLAST searches.
+
+Go to `sulcia` directory and create blast database. 
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+cd ../sulcia
+makeblastdb -in sulcia.tfa -dbtype nucl -out sulcia
+```
+:::
+
+####  Similarity searches using BLASTN
+
+The sequences of rRNA genes are available in FASTA format in the directory `/data/bacteria/rRNA`. 
+
+- 5S of *Sulcia muelleri*
+- 23S of *Myroides odoratus* (m62807) 
+- 16S of *Coleomegilla maculata endosymbiont* (y13889)
+
+In a new directory called `rRNA` (at the same level as `sulcia` and `tRNA` directories), create symbolic links to acces easely to the files. 
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+cd ../
+mkdir rRNA
+cd rRNA
+ln -s /data/bacteria/rRNA/5S_Sulcia.tfa .
+ln -s /data/bacteria/rRNA/23S_Myroides.tfa .
+ln -s /data/bacteria/rRNA/16S_Coleo.tfa .
+
+The dot (`.`) refers to the current working directory. When you execute the command, this tells the system to create the symbolic link (alias) for chrom22.fastq in the current directory where you are running the command.
+```
+:::
+
+For each rRNA, you will perform a BLASTN search in the *sulcia* using the `blastn` command. To see the list of parameters of this command use:
+
+```bash
+blastn -help
+```
+
+Construct the BLASTN command and execute it for each of the rRNA sequences.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+blastn -db ../sulcia/sulcia -query 5S_Sulcia.tfa -out 5S.blastn
+blastn -db ../sulcia/sulcia -query 16S_Coleo.tfa -out 16S.blastn
+blastn -db ../sulcia/sulcia -query 23S_Myroides.tfa -out 23S.blastn
+```
+:::
+
+::: {#exr-1 .custom}
+How many copies of each rRNA gene do you find? Comment on gene organization (do not forget to consider positions of tRNA genes).
+:::
+
+Use `more` to display them.
+
+::: {.callout-tip collapse="true"}
+## Solution
+``` bash
+more 5S.blastn
+more 16S.blastn
+more 23S.blastn
+```
+:::
+
+## Localization of protein genes
+
+### *Ab initio* prediction using GLIMMER
+
+Glimmer is a gene-finding program designed for the identification of protein-coding genes in prokaryotic genomes by utilizing a combination of statistical models and machine learning techniques.
+
+Create a directory called `protein` (at the same level as `sulcia`, `tRNA` and `rRNA` directories). 
+
+Refer to the help documentation of `run-glimmer2` to understand its usage, and then execute Glimmer on the genome of *Sulcia muelleri*.
+
+::: {.callout-tip collapse="true"}
+## Solution
+``` bash
+mkdir ../protein
+cd ../protein
+run-glimmer2 ../sulcia/sulcia.tfa
+```
+:::
+
+4 files will be created by glimmer:
+
+- `tmp.coord` and `tmp.train` contain coordinates and sequences of reference genes from the training set
+- `tmp.model` contains the model built by glimmer (binary format, do not open it!)
+- the last file `g2.coord` contains genes predicted by glimmer.
+
+You can display `tmp.coord` and `tmp.train`.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+more tmp.coord
+more tmp.train
+```
+:::
+
+::: {#exr-1 .custom}
+How many genes have been used to build the model (file `tmp.coord`)? Use the command `wc -l`.
+:::
+
+**wc**
+
+The `wc` (word count) command in Unix/Linux is a utility used to count lines, words, and bytes in a file or input stream.
+
+ Here are its main options:
+
+- `-l`: Counts the number of lines.
+- `-w`: Counts the number of words.
+- `-c`: Counts the number of bytes.
+- `-m`: Counts the number of characters.
+- `-L`: Reports the length of the longest line.
+
+```bash
+wc [options] <file>
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+more tmp.train |wc -l
+```
+:::
+
+::: {#exr-1 .custom}
+What do you think about the number of predicted genes? The coding density?
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+more g2.coord |wc -l
+```
+:::
+
+::: {#exr-1 .custom}
+How the percentage of GC content may influence the quality of glimmer predictions? Use `seqkit fx2tab` to calculate it.
+:::
+
+**seqkit**
+
+SeqKit is a toolkit for manipulating biological sequence data in various formats, including FASTA and FASTQ. It offers a wide range of functionalities such as filtering, converting, and summarizing sequences. 
+
+One of the useful commands in SeqKit is `seqkit fx2tab`, which converts FASTA or FASTQ files into a tabular format, and provide various information. 
+
+Consult the help documentation to understand how to use the tool effectively. To streamline the output, **exclude the sequence** from the results.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+seqkit fx2tab -n -g ../sulcia/sulcia.tfa
+```
+:::
+
+### Correction of glimmer predictions by similarity searches
+
+#### Over-predictions and error in initiation codon definition
+
+Some genes predicted by glimmer exhibit important overlaps. Some examples of these genes have been translated (*protein_sequences.txt* available on moodle). 
+
+::: {#exr-1 .custom}
+Consider genomic context and similarity searches ([NCBI BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi), `refseq_protein database`, excluding *Candidatus Sulcia*) to validate or invalidate the existence or propose a correction for the following overlapping genes: **SMU001/SMU002** and **SMU023/SMU024**.
+:::
+
+#### Under-predictions
+
+::: {#exr-1 .custom}
+Check if the following long intergenic regions (available on Moodle) contain a protein coding gene (using [NCBI BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) pages, `refseq_protein database` and excluding *Candidatus Sulcia*): **SMU043/SMU044**, **SMU204/SMU206** and **SMU183/SMU184**.
+:::
+
+## Functional annotation
+
+::: {#exr-1 .custom}
+Assign a function of the following protein (available on Moodle) sequences using [NCBI BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) (`refseq_protein database` and excluding *Candidatus Sulcia*): **SMU138** et **SMU140**. 
+:::
+
+::: {#exr-1 .custom}
+What additional research would be needed in this case?
+:::

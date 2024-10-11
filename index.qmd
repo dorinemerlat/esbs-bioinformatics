@@ -10,48 +10,48 @@ In addition to the exercise sheets, the site also provides useful resources such
 ## Practical sessions
 
 ### 1A - Introduction to Bioinformatics
-Here are the tutorials for first-year students. They cover fundamental concepts and essential tools in bioinformatics with an introduction to the command line interface (CLI):
+Here are the practicals for first-year students. They cover fundamental concepts and essential tools in bioinformatics with an introduction to the command line interface (CLI):
 
-- **[1 - Database exploration](tutorials-1A/tutorial1.qmd)**
-- **[2 - Functional analysis of a gene list and sequence comparison](tutorials-1A/tutorial2.qmd)**
-- **[3 - Similarity searches](tutorials-1A/tutorial3.qmd)**
-- **[4 - Analysis of protein families](tutorials-1A/tutorial4.qmd)**
-- **[5 - Multiple alignment and molecular phylogeny](tutorials-1A/tutorial5.qmd)**
+- **[1 - Database exploration](practicals-1A/practical1.qmd)**
+- **[2 - Functional analysis of a gene list and sequence comparison](practicals-1A/practical2.qmd)**
+- **[3 - Similarity searches](practicals-1A/practical3.qmd)**
+- **[4 - Analysis of protein families](practicals-1A/practical4.qmd)**
+- **[5 - Multiple alignment and molecular phylogeny](practicals-1A/practical5.qmd)**
 
 ### 2A - Genomics and Epigenomics
-The Genomics and Epigenomics tutorials are aimed at second-year students. They will guide you through several analyses commonly used in genomics:
+The Genomics and Epigenomics practicals are aimed at second-year students. They will guide you through several analyses commonly used in genomics:
 
-- **[1 - Pre-processing of sequencing reads](tutorials-2A/tutorial1.qmd)**
-- **[2 - Read mapping on a reference genome](tutorials-2A/tutorial2.qmd)**
-- **[3 - De novo assembly](tutorials-2A/tutorial3.qmd)**
-- **[4 - Annotation of a complete prokaryotic genome](tutorials-2A/tutorial4.qmd)**
-- **[5 - Analysis of eukaryotic sequences](tutorials-2A/tutorial5.qmd)**
+- **[1 - Pre-processing of sequencing reads](practicals-2A/practical1.qmd)**
+- **[2 - Read mapping on a reference genome](practicals-2A/practical2.qmd)**
+- **[3 - De novo assembly](practicals-2A/practical3.qmd)**
+- **[4 - Annotation of a complete prokaryotic genome](practicals-2A/practical4.qmd)**
+- **[5 - Analysis of eukaryotic sequences](practicals-2A/practical5.qmd)**
 
 ### 3A - Comparative and Medical Genomics
-These advanced tutorials are intended for third-year students:
+These advanced practicals are intended for third-year students:
 
-- **[2 - Exome analysis](tutorials-3A/tutorial2.qmd)**
-- **[3 - Personal genomics: variants](tutorials-3A/tutorial3.qmd)**
+- **[2 - Exome analysis](practicals-3A/practical2.qmd)**
+- **[3 - Personal genomics: variants](practicals-3A/practical3.qmd)**
 
 ### Pharma - Introduction to Bioinformatics
-These tutorials for fifth-year pharmacy students introduce some of the bioinformatics tools and techniques needed in pharmaceutical
+These practicals for fifth-year pharmacy students introduce some of the bioinformatics tools and techniques needed in pharmaceutical
 
-- **[1 - Pre-processing of sequencing reads](tutorials-pharma/tutorial1.qmd)**
-- **[2 - Database exploration](tutorials-pharma/tutorial2.qmd)**
-- **[3 - Functional analysis of a gene list and sequence comparison](tutorials-pharma/tutorial3.qmd)**
-- **[4 - Similarity searches](tutorials-pharma/tutorial4.qmd)**
-- **[5 - Multiple alignment](tutorials-pharma/tutorial5.qmd)**
+- **[1 - Pre-processing of sequencing reads](practicals-2A/practical1.qmd)**
+- **[2 - Database exploration](practicals-pharma/practical2.qmd)**
+- **[3 - Functional analysis of a gene list and sequence comparison](practicals-pharma/practical3.qmd)**
+- **[4 - Similarity searches](practicals-pharma/practical4.qmd)**
+- **[5 - Analysis of Protein Families](practicals-pharma/practical5.qmd)**
 
 ## Help and Support
 
-If you need additional guidance, visit our **Help** section where you’ll find detailed resources to assist you with the technical aspects of the tutorials, as well as external links to bioinformatics courses:
+If you need additional guidance, visit our **Help** section where you’ll find detailed resources to assist you with the technical aspects of the practicals, as well as external links to bioinformatics courses:
 
-- **[Galaxy Help](help/galaxy-help.qmd)**: Get familiar with the Galaxy platform, a popular tool for conducting bioinformatics analyses without extensive programming knowledge.
-- **[CLI Help](help/cli-help.qmd)**: This guide will help you master the command-line tools essential for bioinformatics workflows.
+- **[Galaxy Help](help/galaxy.qmd)**: Get familiar with the Galaxy platform, a popular tool for conducting bioinformatics analyses without extensive programming knowledge.
+- **[CLI Help](help/cli.qmd)**: This guide will help you master the command-line tools essential for bioinformatics workflows.
 - **[Server Connection Guide](help/server_connection_guide.qmd)**: Step-by-step instructions to connect to the server used in the practical sessions.
   
 Additionally, you will find links to other existing bioinformatics courses and external resources to enhance your learning experience.
 
 ---
 
-We hope these tutorials and resources will guide you in your bioinformatics journey, helping you develop the skills and knowledge needed for your academic and research projects.
+We hope these practicals and resources will guide you in your bioinformatics journey, helping you develop the skills and knowledge needed for your academic and research projects.

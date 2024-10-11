@@ -11,46 +11,46 @@ website:
       href: index.qmd
     - text: "1A"
       menu:
-      - text: "1 - Pre-processing of sequencing reads"
-        href: tutorials-1A/tutorial1.qmd
-      - text: "2 - Read mapping on a reference genome"
-        href: tutorials-1A/tutorial2.qmd
-      - text: "3 - De novo assembly"
-        href: tutorials-1A/tutorial3.qmd
-      - text: "4 - Annotation of a complete prokaryotic genome"
-        href: tutorials-1A/tutorial4.qmd
-      - text: "5 - Analysis of eukaryotic sequences"
-        href: tutorials-1A/tutorial5.qmd
+      - text: "1 - Exploring sequence database"
+        href: practicals-1A/practical1.qmd
+      - text: "2 - Functional analysis of a gene list and sequence comparison"
+        href: practicals-1A/practical2.qmd
+      - text: "3 - Similary searches"
+        href: practicals-1A/practical3.qmd
+      - text: "4 - Analysis of Protein Families"
+        href: practicals-1A/practical4.qmd
+      - text: "5 - Multiple Alignment & Phylogeny"
+        href: practicals-1A/practical5.qmd
     - text: "2A"
       menu:
       - text: "1 - Pre-processing of sequencing reads"
-        href: tutorials-2A/tutorial1.qmd
+        href: practicals-2A/practical1.qmd
       - text: "2 - Read mapping on a reference genome"
-        href: tutorials-2A/tutorial2.qmd
+        href: practicals-2A/practical2.qmd
       - text: "3 - De novo assembly"
-        href: tutorials-2A/tutorial3.qmd
+        href: practicals-2A/practical3.qmd
       - text: "4 - Annotation of a complete prokaryotic genome"
-        href: tutorials-2A/tutorial4.qmd
+        href: practicals-2A/practical4.qmd
       - text: "5 - Analysis of eukaryotic sequences"
-        href: tutorials-2A/tutorial5.qmd
+        href: practicals-2A/practical5.qmd
     - text: "3A"
       menu:
       - text: "2 - Exome analysis"
-        href: tutorials-3A/tutorial2.qmd
+        href: practicals-3A/practical2.qmd
       - text: "3 - Personal genomics: variants"
-        href: tutorials-3A/tutorial3.qmd
+        href: practicals-3A/practical3.qmd
     - text: "Pharma"
       menu:
       - text: "1 - Pre-processing of sequencing reads"
-        href: tutorials-pharma/tutorial1.qmd
-      - text: "2 - Read mapping on a reference genome"
-        href: tutorials-pharma/tutorial2.qmd
-      - text: "3 - De novo assembly"
-        href: tutorials-pharma/tutorial3.qmd
-      - text: "4 - Annotation of a complete prokaryotic genome"
-        href: tutorials-pharma/tutorial4.qmd
-      - text: "5 - Analysis of eukaryotic sequences"
-        href: tutorials-pharma/tutorial5.qmd
+        href: practicals-2A/practical1.qmd
+      - text: "2 - Exploring sequence database"
+        href: practicals-pharma/practical2.qmd
+      - text: "3 - Functional analysis of a gene list and sequence comparison"
+        href: practicals-pharma/practical3.qmd
+      - text: "4 - Similary searchese"
+        href: practicals-pharma/practical4.qmd
+      - text: "5 - Analysis of Protein Families"
+        href: practicals-pharma/practical5.qmd
     - text: "Help"
       menu:      
       - text: "Galaxy Help"
@@ -81,7 +81,6 @@ format:
     theme:
       light: flatly
       dark: darkly
-    css: styles.css
     toc: true
-
+    include-after-body: custom.html
 

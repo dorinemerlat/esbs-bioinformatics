@@ -102,7 +102,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -132,23 +131,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-a">    
         <li>
-    <a class="dropdown-item" href="../tutorials-1A/tutorial1.html">
+    <a class="dropdown-item" href="../practicals-1A/practical1.html">
  <span class="dropdown-text">1 - Pre-processing of sequencing reads</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../tutorials-1A/tutorial2.html">
+    <a class="dropdown-item" href="../practicals-1A/practical2.html">
  <span class="dropdown-text">2 - Read mapping on a reference genome</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../tutorials-1A/tutorial3.html">
+    <a class="dropdown-item" href="../practicals-1A/practical3.html">
  <span class="dropdown-text">3 - De novo assembly</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../tutorials-1A/tutorial4.html">
+    <a class="dropdown-item" href="../practicals-1A/practical4.html">
  <span class="dropdown-text">4 - Annotation of a complete prokaryotic genome</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../tutorials-1A/tutorial5.html">
+    <a class="dropdown-item" href="../practicals-1A/practical5.html">
  <span class="dropdown-text">5 - Analysis of eukaryotic sequences</span></a>
   </li>  
     </ul>
@@ -159,23 +158,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-a-1">    
         <li>
-    <a class="dropdown-item" href="../tutorials-2A/tutorial1.html">
+    <a class="dropdown-item" href="../practicals-2A/practical1.html">
  <span class="dropdown-text">1 - Pre-processing of sequencing reads</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../tutorials-2A/tutorial2.html">
+    <a class="dropdown-item" href="../practicals-2A/practical2.html">
  <span class="dropdown-text">2 - Read mapping on a reference genome</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../tutorials-2A/tutorial3.html">
+    <a class="dropdown-item" href="../practicals-2A/practical3.html">
  <span class="dropdown-text">3 - De novo assembly</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../tutorials-2A/tutorial4.html">
+    <a class="dropdown-item" href="../practicals-2A/practical4.html">
  <span class="dropdown-text">4 - Annotation of a complete prokaryotic genome</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../tutorials-2A/tutorial5.html">
+    <a class="dropdown-item" href="../practicals-2A/practical5.html">
  <span class="dropdown-text">5 - Analysis of eukaryotic sequences</span></a>
   </li>  
     </ul>
@@ -186,11 +185,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-a-2">    
         <li>
-    <a class="dropdown-item" href="../tutorials-3A/tutorial2.html">
+    <a class="dropdown-item" href="../practicals-3A/practical2.html">
  <span class="dropdown-text">2 - Exome analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../tutorials-3A/tutorial3.html">
+    <a class="dropdown-item" href="../practicals-3A/practical3.html">
  <span class="dropdown-text">3 - Personal genomics: variants</span></a>
   </li>  
     </ul>
@@ -201,23 +200,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pharma">    
         <li>
-    <a class="dropdown-item" href="../tutorials-pharma/tutorial1.html">
+    <a class="dropdown-item" href="../practicals-pharma/practical1.html">
  <span class="dropdown-text">1 - Pre-processing of sequencing reads</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../tutorials-pharma/tutorial2.html">
+    <a class="dropdown-item" href="../practicals-pharma/practical2.html">
  <span class="dropdown-text">2 - Read mapping on a reference genome</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../tutorials-pharma/tutorial3.html">
+    <a class="dropdown-item" href="../practicals-pharma/practical3.html">
  <span class="dropdown-text">3 - De novo assembly</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../tutorials-pharma/tutorial4.html">
+    <a class="dropdown-item" href="../practicals-pharma/practical4.html">
  <span class="dropdown-text">4 - Annotation of a complete prokaryotic genome</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../tutorials-pharma/tutorial5.html">
+    <a class="dropdown-item" href="../practicals-pharma/practical5.html">
  <span class="dropdown-text">5 - Analysis of eukaryotic sequences</span></a>
   </li>  
     </ul>
@@ -339,6 +338,21 @@ Important
 </section>
 
 </main> <!-- /main -->
+<script>
+
+    var custom_title = document.querySelectorAll('.custom .theorem-title');
+
+    
+
+    for (let i = 0; i < custom_title.length; i++ ) {
+
+       var mod_name = custom_title[i].innerHTML;
+
+       custom_title[i].innerHTML = mod_name.replace("Exercise", "Question");
+
+    };
+
+    </script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

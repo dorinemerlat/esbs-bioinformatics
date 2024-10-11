@@ -1,0 +1,513 @@
+# Practical - Pre-processing of Sequencing Reads
+
+The objective of this practicle is to explore variability within Saccharomyces cerevisiae by comparing the CBS2165a strain (used in Ale brewing) to the reference genome (S. cerevisiae S288C strain).
+
+## Reference genome and reads
+
+Search for the reference genome of S. cerevisiae S288C in the Genome database ([NCBI](https://www.ncbi.nlm.nih.gov/datasets/genome/)).
+
+::: {#exr-1 .custom}
+How many chromosomes in the yeast genome?
+:::
+
+::: {#exr-1 .custom}
+For practical reasons, we will focus only on chromosome 3 for the mapping part. What is the size of chromosome?
+:::
+
+## Connection to the server
+
+To learn how to connect to the server for practical work, refer to the [Server Connection Guide](../help/server_connection_guide.qmd).
+
+Once you're connected, start by creating a working directory for this session and navigate into it.
+
+**mkdir**
+
+The mkdir command stands for "make directory", is used to create a new folder in the file system. You can create your directory like this:
+
+```bash
+mkdir <directory_name>
+```
+
+**cd**
+
+The cd command stands for "change directory", allows you to move into a different folder within the file system. Use it as follows:
+
+```bash
+cd <directory>
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir tdMapping
+cd tdMapping
+```
+:::
+
+::: {.callout-note}
+## Help
+If you need help with a command, display its help using:
+ - `<command-h` or `<command--help` for short help messages.
+ - `man <command>` to display the full manual of a command.
+:::
+
+## Copying and displaying files
+
+### Creating Symbolic Links
+
+Create an alias of the file with reads in your directory for easy access. For that, use the command `ln`, which create links between files. Links are pointers to files, allowing multiple references (aliases) to the same file. This way, you don't need to duplicate large files, saving storage space and making file management easier.
+
+```bash
+ln -s <path_to_original_file> <path_to_link_file> 
+``` 
+
+The option `-s`stands for "symbolic link." A symbolic link is like a shortcut that points to the original file, enabling easy access. Unlike hard links, symbolic links can span different file systems, and if the original file is moved, the symbolic link can still point to it if it is relocated in the same system.
+
+Create an alias for the reads (original paths:`/data/yeast/reads/chrIII/AAC_1.fq.gz` and `/data/yeast/reads/chrIII/AAC_2.fq.gz`) inside a new directory called `reads`.
+
+::: {.callout-note}
+## The Wildcard 
+The `*` symbol is a wildcard character used to represent "zero or more characters" in file or directory names. When used in commands, it allows you to work with multiple files or patterns at once.
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir reads
+ln -s /data/yeast/reads/chrIII/AAC_*.fq.gz reads
+```
+Creates symbolic links for all files starting with `AAC_` and ending with `.fq.gz` in the `reads` directory. 
+:::
+
+Create a directory for the reference genome of the yeast (original path: `/data/yeast/reference/sace_ref.fasta`) and create an alias for the file.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir reference
+ln -s data/yeast/reference/sace_ref.fasta reference
+```
+:::
+
+### Display a regular file
+
+You can display the reference file the command `more`.
+
+The `more` command is used to display the contents of a file one screen at a time. This is useful for viewing large files like FASTQ files, where the data is too big to fit on a single screen.
+
+```bash
+more <path_file_to_display>
+```
+
+::: {.callout-note}
+## Navigation keys in more
+
+- **space**: pressing the *space* key advances the display by one full screen, allowing you to scroll through the content quickly.
+- **enter**: Ppressing *enter* moves the display down by one line. This is useful if you want to slowly scroll through the content line by line.
+- **q**: pressing *q* will quit the more command and return you to the terminal prompt. You can use this key if you're done viewing the file or don't want to scroll through the entire file.
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+more reference/sace_ref.fasta
+```
+:::
+
+### Display a compressed file
+
+FASTQ files are often compressed for storage efficiency and faster processing. Since you cannot read them directly with commands like `more`, you need to use the `zcat` command.
+
+**zcat**
+
+The `zcat` command is used to display the contents of compressed files, specifically those with `.gz` extensions, without needing to decompress them first. It reads the contents of the compressed file and outputs them to the terminal.
+
+```bash
+zcat <file.gz>
+```
+
+`zcat`display in one time all the contents of the file. You can also combine `zcat` with other commands like `more` to make the output easier to scroll through:
+
+```bash
+zcat <file.gz> | more
+```
+
+::: {.callout-note}
+## The pipe (|)
+
+The **pipe** symbol (`|`) is used to connect the output of one command directly into the input of another. This allows for the chaining of commands, enabling you to perform complex tasks efficiently without the need to create intermediate files.
+
+```bash
+command1 | command2
+```
+:::
+
+**head**
+
+The `head` command is used to display the first few lines of a file, which is helpful when you want to quickly preview its content without opening the entire file.
+
+```bash
+head <file>
+```
+
+By default, head shows the first 10 lines of the file. You can customize the number of lines displayed using the `-n` option. This option allows you to specify the exact number of lines to display.
+
+```bash
+head -n 20 <file>
+```
+
+This command will display the first 20 lines of the file. You can adjust the number of lines according to your needs.
+
+Combine the `zcat` and `head` commands to display the first 12 lines of each reads file.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+zcat reads/AAC_1.fq.gz | head -n 12
+zcat reads/AAC_2.fq.gz | head -n 12
+```
+:::
+
+## FastQC
+
+The [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) program returns a report on the quality of readings.
+
+```bash
+fastqc -o <output_directory_path> <reads_path>
+```
+
+- `-o <output_directory_path>`: Specifies the directory where the FastQC reports will be saved.
+- `<reads_path>`: Indicates the path to the input FASTQ files you want to analyze.
+
+
+Create a directory to store FastQC outputs and run `fastqc`.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir fastQCReport
+fastqc -o fastQCReport reads/AAC*.fq.gz
+```
+:::
+
+An HTML file is generated by FastQC, which contains lines of code for displaying web pages. While you can attempt to view it using the `more` command, it's not well-suited for direct reading. To properly inspect the quality metrics and identify potential issues with the sequencing data, it's best to open the HTML reports in a web browser. Before doing so, you will need to transfer the file from the server to your local computer.
+
+**scp**
+
+The `scp` command stands for "secure copy protocol." It is used to securely transfer files between a local computer and a remote server or between two remote servers over an encrypted SSH connection. This ensures that the data is protected during transfer.
+
+To copy file from a server to your computer, **open a new terminal** and use scp like this:
+```bash
+scp <username>@<server_adress>:<source_file_path> <target_file_path>
+```
+
+::: {.callout-note}
+## View the path of a file
+If you not sure of the path .html file, use the command `realpath` to known it.
+`realpath <file>` 
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+scp <username>@tp.lbgi.fr:~/TdExome/FastQCReport/chrom22_fastqc.html .
+```
+
+*Note: Replace `<login>` with your username. The tilde `~` is a shortcut for your home directory `/home/<username>`.*
+:::
+
+Now that the HTML file is on your computer, you can access it like any other file using your file explorer.
+
+In the terminal where you used the `scp` command, run the `pwd` command to check your current directory. This will help you locate the file in your file explorer.
+
+::: {#exr-1 .custom}
+What do you think of the quality of the reads? Do we need to process the reads?
+:::
+
+::: {#exr-1 .custom}
+What is the range of sequence length? What is the size of most reads?
+:::
+
+::: {#exr-1 .custom}
+How many reads are available? Knowing that reads come from chromosome 3 (~316 Kb), provide an estimate of the average sequencing depth.
+:::
+
+## Read mapping using BWA
+
+Before we can align sequencing reads to a reference genome, we must prepare the reference file using two key tools: `bwa index` and `samtools faidx`.
+
+**bwa index**: The bwa index command is used to create an index of the reference genome (in this case, human_genome.fasta). This index allows the BWA algorithm to efficiently search and align sequencing reads to the reference. Without the index, BWA would not be able to quickly identify where in the genome each read belongs, making the alignment process slow or impossible. The index is essential for speeding up the read mapping process.
+
+```bash
+bwa index <reference_file>
+```
+
+**samtools faidx**: Similarly, samtools faidx generates an index for the reference FASTA file. This index allows samtools and other bioinformatics tools to quickly retrieve specific sequences or regions from the reference genome. This is useful when working with large genomes where extracting specific chromosomes or regions manually would be inefficient. The .fai file generated by this command is used by downstream tools for fast reference lookups.
+
+```bash
+samtools faidx <reference_file>
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+cd reference
+bwa index sace_ref.fasta
+samtools faidx sace_ref.fasta
+cd ..
+```
+::: 
+
+You get a lots of new files, forming a small database that you will use to align reads.
+
+::: {.callout-note}
+## Know where you are
+To find out your current location within the directory structure, use the command `pwd` (stands for "print working directory"). It outputs the full path of the directory you are currently in, helping you confirm your current location in the file system. 
+
+```bash
+pwd
+```
+::: 
+
+### Alignment using BWA
+
+**bwa**
+
+Create a mapping directory (at the same level as `reference` and `fastQCReport` directories), move there and run BWA with the **maximum exact matches (MEM)** algorithm. This algorithm is faster and more accurate than previous BWA algorithms for aligning high-throughput sequencing data.
+
+The command `bwa mem` uses BWA use the MEM algorithm:
+
+```bash
+bwa mem -o <path_of_output> <path_of_reference> <path_of_reads>
+```
+
+Parameters:
+
+- `-o`: This option specifies the output file. In this case, the aligned reads will be saved in the mapping directory as chrom22.sam.
+- `<path_of_reference>`: This is the reference genome file against which the reads will be aligned.
+- `<path_of_reads>`: This is the input file containing the sequencing reads that you want to align to the reference genome.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+mkdir mapping
+bwa mem -o mapping/AAC.sam reference/sace_ref.fasta reads/AAC_*.fq.gz
+```
+:::
+
+View the file built by BWA.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+more mapping/AAC.sam
+```
+:::
+
+::: {#exr-1 .custom}
+What is the format of this file? What information can be found in it?
+:::
+
+::: {#exr-1 .custom}
+In what order are the sequences presented?
+:::
+
+To manipulate the mapping file, we'll use [SAMtools](http://www.htslib.org/).
+
+**samtools view**
+This command is specifically used to convert between these formats and to filter, extract, or manipulate alignments.
+
+To transform SAM file into BAM use the command like this:
+
+```bash
+samtools view -S -b -o <name_of_BAM_output> <name_of_SAM_input>
+```
+
+With: 
+
+- `-S`: indicate that the input file is in SAM format.
+- `-b`: tell samtools to output the result in BAM format.
+- `-o`: specify the name of the output file. 
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+cd mapping 
+samtools view -S -b -o AAC.bam AAC.sam 
+```
+:::
+
+::: {#exr-1 .custom}
+What does the BAM file represent in relation to the SAM file?
+:::
+
+
+**ls**
+
+The `ls` command is used to list the contents of a directory in Linux. It provides a way to see files and subdirectories within the specified directory.
+
+```bash
+ls [-l] <directory>
+```
+Options:
+
+- `-l`: This option provides a detailed listing. In this format, additional information about each file or directory is displayed, including:
+    1. File permissions
+    2. Number of links
+    3. Owner name
+    4. Owner group
+    5. File size (in bytes)
+    6. Last modified date and time
+    7. File or directory name
+
+::: {#exr-1 .custom}
+Compare the size of the SAM and BAM files. 
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+ls -l 
+```
+:::
+
+The file now needs to be sorted and indexed with `samtools sort` and `samtools index`.
+
+**samtools sort**
+
+The samtools sort command is used to sort a BAM file. Sorting is essential for many downstream analyses, such as variant calling, as it organizes the reads in a way that allows for efficient processing. The command takes the following parameters:
+
+```bash
+samtools sort <name_of_BAM_file> -o <name_of_sorted_BAM_file>
+```
+
+**samtools index**
+
+The samtools index command is used to create an index file for a sorted BAM file. Indexing allows for fast random access to data in the BAM file, making it easier and quicker to retrieve specific regions of interest during analysis. The command takes the following parameter:
+
+```bash
+samtools index <name_of_sorted_BAM_file>
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+samtools sort AAC.bam -o AAC.sorted.bam
+samtools index AAC.sorted.bam
+```
+:::
+
+::: {#exr-1 .custom}
+How is the file sorted now? To view its contents, use the command `samtools view`.
+:::
+
+```bash
+samtools view <file_name> | more
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+samtools view AAC.sorted.bam | more
+```
+:::
+
+To view few statistics about the mapping, use idxStats:
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+samtools idxstats AAC.sorted.bam
+```
+:::
+
+::: {#exr-1 .custom}
+On which chromosome are the readings mainly mapped? Why are there so few on chromosome 17?
+:::
+
+Select the part of the alignment corresponding to chromosome 3. To filter the file, use again the command `samtools view` but add the region.
+
+```bash
+samtools view -b -o <name_of_BAM_output> <name_of_BAM_input> <region>
+```
+
+- `-b`: This option indicates that the output should be in BAM format.
+- `-o <name_of_BAM_output>`: This specifies the name of the output BAM file.
+- `<name_of_BAM_input>`: This is the name of the input BAM file you want to filter.
+- `<region>`: Specify the region you want to extract, such as `chrIV` or `chrIV:1-1000000` to limit the output to a specific range on chromosome 3.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+samtools view -b -o AAC.sorted.filter.bam AAC.sorted.bam chrIII
+```
+:::
+
+Then index this file with `samtools index` as previously.
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+samtools index AAC.sorted.filter.bam
+```
+:::
+
+Download the two 2 bam files of the alignment of chromosome 22 (the `.bam` and the `.bam.bai`).
+
+::: {.callout-tip collapse="true"}
+## Solution
+```bash
+scp <login>@tp.lbgi.fr:~/tdMapping/mapping/AAC.sorted.filter.bam* .
+```
+
+*Note: Replace `<login>` with your username. The tilde `~` is a shortcut for your home directory `/home/<username>`.*
+:::
+
+## Visualization of the mapping with IGV
+
+Use the [IGV-web application](https://igv.org/app/) to visualize the mapping into details.
+
+- Select the genome of *S. cerevisiae* in the `genome` panel (in the top black bar), then select the `chrIII` in the the gray bar. 
+- Load the bam file `AAC.sorted.filter.bam` and `AAC.sorted.filter.bam` with `Tracks` > `Local`. 
+
+You should obtain the mapping on the annotated genome, which includes genes. To effectively visualize the reads, you'll need to zoom in significantly, as the reads are much shorter compared to the entire chromosome size. This will allow you to see the reads clearly.
+
+#### Display the region chrIII:53,000-58,000
+
+::: {#exr-1 .custom}
+What is the approximate depth of coverage in this region?
+:::
+
+::: {#exr-1 .custom}
+How can you discriminate sequencing errors and real variations between strains?
+:::
+
+::: {#exr-1 .custom}
+Give an example of an homozygous Single Nucleotide Variant (SNV) and of an heterozygous SNV in the ATG2 gene.
+:::
+
+::: {#exr-1 .custom}
+What can you say about the region chrIII:55,696-55,701 in the ATG2 gene?
+:::
+
+::: {#exr-1 .custom}
+What can we see at the location 54924? Is it a homozygous or heterozygous variant?
+:::
+
+#### Display the region chrIII:298,000-300,000
+
+::: {#exr-1 .custom}
+What is the approximate depth of coverage in this region? Do you find heterozygous variants? How do you interpret it?
+:::
+
+#### Display the region chrIII:250,000-260,000
+
+::: {#exr-1 .custom}
+What is the approximate depth of coverage in this region? How do you interpret it?
+:::
+
+#### Display the region chrIII:303,000-308,000.
+
+::: {#exr-1 .custom}
+What is the maximum depth of coverage in this region? What can be said about the YCR102C gene? Check the function of the gene in the Saccharomyces genome database. 
+:::

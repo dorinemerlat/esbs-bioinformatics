@@ -127,5 +127,72 @@
   },
   "help/server_connection_guide.qmd": {
     "server_connection_guide.html": "40c1165e"
+  },
+  "practical-2A/practical1.qmd": {
+    "practical1.html": "a68cbe7b"
+  },
+  "practical-2A/practical2.qmd": {
+    "practical2.html": "d51b4edc"
+  },
+  "practical-2A/practical3.qmd": {
+    "practical3.html": "f93f1c58"
+  },
+  "practical-2A/practical4.qmd": {
+    "practical4.html": "9ea069d9"
+  },
+  "practical-2A/practical5.qmd": {
+    "practical5.html": "2a74585f"
+  },
+  "practicals-1A/practical1.qmd": {
+    "practical1.html": "e3b10de1"
+  },
+  "practicals-1A/practical2.qmd": {
+    "practical2.html": "883336d7"
+  },
+  "practicals-1A/practical3.qmd": {
+    "practical3.html": "6825224c"
+  },
+  "practicals-1A/practical4.qmd": {
+    "practical4.html": "a0319f5e"
+  },
+  "practicals-1A/practical5.qmd": {
+    "practical5.html": "e232fb4c"
+  },
+  "practicals-3A/practical2.qmd": {
+    "practical2.html": "f4b077ac"
+  },
+  "practicals-3A/practical3.qmd": {
+    "practical3.html": "9b11cca8"
+  },
+  "practicals-pharma/practical1.qmd": {
+    "practical1.html": "3b63eb89"
+  },
+  "practicals-pharma/practical2.qmd": {
+    "practical2.html": "a305b6da"
+  },
+  "practicals-pharma/practical3.qmd": {
+    "practical3.html": "a1ce88ac"
+  },
+  "practicals-pharma/practical4.qmd": {
+    "practical4.html": "a025d58e"
+  },
+  "practicals-pharma/practical5.qmd": {
+    "practical5.html": "c36abe1c"
+  },
+  "practicals-2A/practical2.qmd": {
+    "practical2.html": "5c005b9f"
+  },
+  "practicals-2A/practical1.qmd": {
+    "practical1.html": "1da7a5d8"
+  },
+  "practicals-2A/practical3.qmd": {
+    "practical3.html": "bb03f554",
+    "practical3.tex": "1dc817c3"
+  },
+  "practicals-2A/practical4.qmd": {
+    "practical4.html": "09a0147b"
+  },
+  "practicals-2A/practical5.qmd": {
+    "practical5.html": "ce0a9b92"
   }
 }

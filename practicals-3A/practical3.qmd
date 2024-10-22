@@ -1,4 +1,6 @@
-# Practical - Structural variant
+# Practical - Personnal genomics, variants
+
+## Structural variant
 
 Go to [dbVar](https://www.ncbi.nlm.nih.gov/dbvar/) (Database of Genomic Structural Variation) at NCBI.
 

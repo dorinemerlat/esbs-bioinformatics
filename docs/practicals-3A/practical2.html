@@ -286,7 +286,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#calling-single-nucleotide-variations-snvs-pileup-interval-and-bed-files" id="toc-calling-single-nucleotide-variations-snvs-pileup-interval-and-bed-files" class="nav-link" data-scroll-target="#calling-single-nucleotide-variations-snvs-pileup-interval-and-bed-files">Calling single nucleotide variations (SNVs) – pileup, interval and BED files</a>
   <ul class="collapse">
   <li><a href="#generation-of-a-pileup-file" id="toc-generation-of-a-pileup-file" class="nav-link" data-scroll-target="#generation-of-a-pileup-file">Generation of a Pileup file</a></li>
+  <li><a href="#filtering-pileup-to-get-a-list-of-snvs" id="toc-filtering-pileup-to-get-a-list-of-snvs" class="nav-link" data-scroll-target="#filtering-pileup-to-get-a-list-of-snvs">Filtering pileup to get a list of SNVs</a></li>
   </ul></li>
+  <li><a href="#annotation-of-variants" id="toc-annotation-of-variants" class="nav-link" data-scroll-target="#annotation-of-variants">Annotation of variants</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -870,28 +872,8 @@ Solution
 <section id="calling-single-nucleotide-variations-snvs-pileup-interval-and-bed-files" class="level2">
 <h2 class="anchored" data-anchor-id="calling-single-nucleotide-variations-snvs-pileup-interval-and-bed-files">Calling single nucleotide variations (SNVs) – pileup, interval and BED files</h2>
 <section id="generation-of-a-pileup-file" class="level3">
-<h3 class="anchored">Generation of a Pileup file</h3>
+<h3 class="anchored" data-anchor-id="generation-of-a-pileup-file">Generation of a Pileup file</h3>
 <p>At the same level as <code>reference</code>, <code>FastQCReport</code> and <code>mapping</code> directories, create a directory <code>variantCalling</code>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-29" class="callout-29-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> variantCalling</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>A pileup is a column wise representation of the aligned read - at the base level - to the reference. The pileup file summarizes all data from the reads at each genomic region that is covered by at least one read.</p>
-<p>To generate a pileup file using SAMtools, use <code>samtools mpileup</code> command with the specified options.</p>
-<p><strong>samtools mpileup</strong></p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> mpileup <span class="at">-f</span> <span class="op">&lt;</span>reference_file<span class="op">&gt;</span> <span class="op">&lt;</span>bam_file<span class="op">&gt;</span> <span class="op">&gt;</span> <span class="op">&lt;</span>pileup_output<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Parameters: - <code>-f &lt;reference_file&gt;</code>: Specifies the reference genome file to which the reads are aligned. - <code>&lt;bam_file&gt;</code>: The input BAM file that contains the aligned reads. It must be sorted and indexed for efficient querying. - <code>&gt;</code>: Redirects the standard output (stdout) to a file, saving the results of the command into the specified file rather than displaying them in the terminal. - <code>&lt;pileup_output&gt;</code>: This writes the output to the specified pileup file.</p>
-<p>Generate the pileup file and adjust the mapping quality to 50.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -904,13 +886,37 @@ Solution
 </div>
 <div id="callout-25" class="callout-25-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> variantCalling</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>A pileup is a column wise representation of the aligned read - at the base level - to the reference. The pileup file summarizes all data from the reads at each genomic region that is covered by at least one read.</p>
+<p>To generate a pileup file using SAMtools, use <code>samtools mpileup</code> command with the specified options.</p>
+<p><strong>samtools mpileup</strong></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> mpileup <span class="at">-f</span> <span class="op">&lt;</span>reference_file<span class="op">&gt;</span> <span class="op">&lt;</span>bam_file<span class="op">&gt;</span> <span class="op">&gt;</span> <span class="op">&lt;</span>pileup_output<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Parameters: - <code>-f &lt;reference_file&gt;</code>: Specifies the reference genome file to which the reads are aligned. - <code>&lt;bam_file&gt;</code>: The input BAM file that contains the aligned reads. It must be sorted and indexed for efficient querying. - <code>&gt;</code>: Redirects the standard output (stdout) to a file, saving the results of the command into the specified file rather than displaying them in the terminal. - <code>&lt;pileup_output&gt;</code>: This writes the output to the specified pileup file.</p>
+<p>Generate the pileup file and adjust the mapping quality to 50.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> mpileup <span class="at">-f</span> reference/human_genome.fasta <span class="at">-C</span> 50 aligned_reads.bam <span class="op">&gt;</span> variantCalling/chrom22.pileup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <p>Search online for the significance of each column.</p>
+</section>
 <section id="filtering-pileup-to-get-a-list-of-snvs" class="level3">
-<h3 class="anchored">Filtering pileup to get a list of SNVs</h3>
+<h3 class="anchored" data-anchor-id="filtering-pileup-to-get-a-list-of-snvs">Filtering pileup to get a list of SNVs</h3>
 <p>The pileup described all aligned positions. To call SNVs, we have to filter:</p>
 <ul>
 <li>Aligned positions that differ from the reference base</li>
@@ -918,7 +924,7 @@ Solution
 <li>Sites with variants with sufficient quality base scores</li>
 </ul>
 <section id="first-filter-depth-of-coverage-and-read-base-quality" class="level4">
-<h4 class="anchored">First filter: depth of coverage and read base quality</h4>
+<h4 class="anchored" data-anchor-id="first-filter-depth-of-coverage-and-read-base-quality">First filter: depth of coverage and read base quality</h4>
 <p>This command generates an interval format file.</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perl</span> /bin/pileup_parser.pl <span class="op">&lt;</span>input_pileup<span class="op">&gt;</span> <span class="op">&lt;</span>ref_base_column<span class="op">&gt;</span> <span class="op">&lt;</span>read_bases_column<span class="op">&gt;</span> <span class="op">&lt;</span>base_quality_column<span class="op">&gt;</span> <span class="op">&lt;</span>coverage column<span class="op">&gt;</span> <span class="op">&lt;</span>qv cutoff<span class="op">&gt;</span> <span class="op">&lt;</span>coverage cutoff<span class="op">&gt;</span> <span class="op">&lt;</span>SNPs only<span class="pp">?</span><span class="op">&gt;</span> <span class="op">&lt;</span>output bed<span class="pp">?</span><span class="op">&gt;</span> <span class="op">&lt;</span>coord_column<span class="op">&gt;</span> <span class="op">&lt;</span>out_file<span class="op">&gt;</span> <span class="op">&lt;</span>total_diff<span class="op">&gt;</span> <span class="op">&lt;</span>print_qual_bases<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Arguments:</p>
@@ -948,23 +954,6 @@ Solution
 <li>Print the quality bases.</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-28" class="callout-28-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> variantCalling/</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/bin/pileup_parser.pl</span> chrom22.pileup 3 5 6 4 20 10 Yes No 2 chrom22.pileup.parsed No Yes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 18</strong></span> How many regions do you obtain? Use the command <code>wc -l</code> to count the number of lines.</p>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -976,15 +965,16 @@ Solution
 </div>
 <div id="callout-27" class="callout-27-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> chrom22.pileup.parsed </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="second-filter-snv-quality-50" class="level4">
-<h4 class="anchored" data-anchor-id="second-filter-snv-quality-50">Second filter: SNV quality (&gt;50)</h4>
-<p>In the interval file, SNV quality is indicated in column 7. Use awk to keep only lines where column 7 &gt; 50, combine with wc -l to count the number of keeped lines.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> variantCalling/</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/bin/pileup_parser.pl</span> chrom22.pileup 3 5 6 4 20 10 Yes No 2 chrom22.pileup.parsed No Yes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 19</strong></span> How many reliable SNVs have been called? Use awk to keep only lines where column 7 &gt; 50, combine with wc -l to count the number of keeped lines.</p>
+<p><span class="theorem-title"><strong>Exercise 18</strong></span> How many regions do you obtain? Use the command <code>wc -l</code> to count the number of lines.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -993,12 +983,37 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> chrom22.pileup.parsed </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="second-filter-snv-quality-50" class="level4">
+<h4 class="anchored" data-anchor-id="second-filter-snv-quality-50">Second filter: SNV quality (&gt;50)</h4>
+<p>In the interval file, SNV quality is indicated in column 7. Use awk to keep only lines where column 7 &gt; 50, combine with wc -l to count the number of keeped lines.</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 19</strong></span> How many reliable SNVs have been called? Use awk to keep only lines where column 7 &gt; 50, combine with wc -l to count the number of keeped lines.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'$7 &gt; 50'</span>  chrom22.pileup.parsed2 <span class="kw">|</span><span class="fu">wc</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
+</section>
+</section>
 </section>
 <section id="annotation-of-variants" class="level2">
 <h2 class="anchored" data-anchor-id="annotation-of-variants">Annotation of variants</h2>
@@ -1022,19 +1037,6 @@ Solution
 </div>
 
 
-</section>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</section>
-</div>
-</div>
-</div>
-</section>
 </section>
 </section>
 

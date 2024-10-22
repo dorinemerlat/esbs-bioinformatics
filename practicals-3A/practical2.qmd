@@ -498,6 +498,7 @@ At the same level as `reference`, `FastQCReport` and `mapping` directories, crea
 cd ..
 mkdir variantCalling
 ```
+:::
 
 A pileup is a column wise representation of the aligned read - at the base level - to the reference. The pileup file summarizes all data from the reads at each genomic region that is covered by at least one read.
 
@@ -575,6 +576,7 @@ Use this command to parse the pileup file by filling with the correct columns an
 cd variantCalling/
 /bin/pileup_parser.pl chrom22.pileup 3 5 6 4 20 10 Yes No 2 chrom22.pileup.parsed No Yes
 ```
+:::
 
 ::: {#exr-1 .custom}
 How many regions do you obtain? Use the command `wc -l` to count the number of lines. 
@@ -585,6 +587,7 @@ How many regions do you obtain? Use the command `wc -l` to count the number of l
 ```bash
 wc -l chrom22.pileup.parsed 
 ```
+:::
 
 #### Second filter: SNV quality (>50)
 

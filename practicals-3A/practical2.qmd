@@ -33,8 +33,10 @@ cd TdExome
 ::: {.callout-note}
 ## Help
 If you need help with a command, display its help using:
- - `<command-h` or `<command--help` for short help messages.
- - `man <command>` to display the full manual of a command.
+
+- `<command-h` or `<command--help` for short help messages.
+- `man <command>` to display the full manual of a command.
+
 :::
 
 
@@ -469,6 +471,7 @@ scp <login>@tp.lbgi.fr:~/TdExome/mapping/chrom22.sorted.filter.bam* .
 BAM files can be visualized using a browser. Display the filtered BAM data using [IGV](https://igv.org/app/) with Human hg38.
 
 You can use your own files or used files available online.
+
 - Load the bam file `chrom22.sorted.filter.bam` and `chrom22.sorted.filter.bam.bai` with Local (Tracks > Local). 
 - Load the bam file https://lbgi.fr/~merlat/TD3/chr22_filter.bam & the index file https://lbgi.fr/~merlat/TD3/chr22_filter.bai with URL (Tracks > URL). 
 
@@ -511,6 +514,7 @@ samtools mpileup -f <reference_file> <bam_file> > <pileup_output>
 ```
 
 Parameters: 
+
 - `-f <reference_file>`: Specifies the reference genome file to which the reads are aligned.
 - `<bam_file>`: The input BAM file that contains the aligned reads. It must be sorted and indexed for efficient querying.
 - `>`: Redirects the standard output (stdout) to a file, saving the results of the command into the specified file rather than displaying them in the terminal.
@@ -610,12 +614,14 @@ Go to Variant Effect Predictor : http://grch37.ensembl.org/Homo_sapiens/Tools/VE
 Click on Ensembl default below the white frame for input data
 
 Paste the URL : http://lbgi.fr/~weber/GC/TD3/2_VCF/chr22_filter.vcf.gz corresponding to the chr22 VCF file in the URL field.
+
 Select the following options :
+
 - Transcript database to use
 - RefSeq transcripts
 - Additional configuration
 - Variants and frequency data
-- Frequency data for co-located variants:s
+- Frequency data for co-located variants:
 - **DISABLE** 1000 Genomes global minor allele frequency
 - **ENABLE** gnomAD (exomes) allele frequencies
 - Predictions

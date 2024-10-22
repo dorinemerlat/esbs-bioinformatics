@@ -338,7 +338,11 @@ Help
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you need help with a command, display its help using: - <code>&lt;command-h</code> or <code>&lt;command--help</code> for short help messages. - <code>man &lt;command&gt;</code> to display the full manual of a command.</p>
+<p>If you need help with a command, display its help using:</p>
+<ul>
+<li><code>&lt;command-h</code> or <code>&lt;command--help</code> for short help messages.</li>
+<li><code>man &lt;command&gt;</code> to display the full manual of a command.</li>
+</ul>
 </div>
 </div>
 </section>
@@ -856,7 +860,11 @@ Solution
 <section id="visualization-of-the-bam-file" class="level3">
 <h3 class="anchored" data-anchor-id="visualization-of-the-bam-file">Visualization of the BAM file</h3>
 <p>BAM files can be visualized using a browser. Display the filtered BAM data using <a href="https://igv.org/app/">IGV</a> with Human hg38.</p>
-<p>You can use your own files or used files available online. - Load the bam file <code>chrom22.sorted.filter.bam</code> and <code>chrom22.sorted.filter.bam.bai</code> with Local (Tracks &gt; Local). - Load the bam file https://lbgi.fr/~merlat/TD3/chr22_filter.bam &amp; the index file https://lbgi.fr/~merlat/TD3/chr22_filter.bai with URL (Tracks &gt; URL).</p>
+<p>You can use your own files or used files available online.</p>
+<ul>
+<li>Load the bam file <code>chrom22.sorted.filter.bam</code> and <code>chrom22.sorted.filter.bam.bai</code> with Local (Tracks &gt; Local).</li>
+<li>Load the bam file https://lbgi.fr/~merlat/TD3/chr22_filter.bam &amp; the index file https://lbgi.fr/~merlat/TD3/chr22_filter.bai with URL (Tracks &gt; URL).</li>
+</ul>
 <p>Zoom in to display a small region of chromosome 22 (or a gene such as APOL5). Configure the display to highlight mismatches.</p>
 <div id="exr-1" class="custom theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 15</strong></span> Are reads exclusively mapped on exonic regions? Why?</p>
@@ -895,7 +903,13 @@ Solution
 <p>To generate a pileup file using SAMtools, use <code>samtools mpileup</code> command with the specified options.</p>
 <p><strong>samtools mpileup</strong></p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> mpileup <span class="at">-f</span> <span class="op">&lt;</span>reference_file<span class="op">&gt;</span> <span class="op">&lt;</span>bam_file<span class="op">&gt;</span> <span class="op">&gt;</span> <span class="op">&lt;</span>pileup_output<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Parameters: - <code>-f &lt;reference_file&gt;</code>: Specifies the reference genome file to which the reads are aligned. - <code>&lt;bam_file&gt;</code>: The input BAM file that contains the aligned reads. It must be sorted and indexed for efficient querying. - <code>&gt;</code>: Redirects the standard output (stdout) to a file, saving the results of the command into the specified file rather than displaying them in the terminal. - <code>&lt;pileup_output&gt;</code>: This writes the output to the specified pileup file.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>-f &lt;reference_file&gt;</code>: Specifies the reference genome file to which the reads are aligned.</li>
+<li><code>&lt;bam_file&gt;</code>: The input BAM file that contains the aligned reads. It must be sorted and indexed for efficient querying.</li>
+<li><code>&gt;</code>: Redirects the standard output (stdout) to a file, saving the results of the command into the specified file rather than displaying them in the terminal.</li>
+<li><code>&lt;pileup_output&gt;</code>: This writes the output to the specified pileup file.</li>
+</ul>
 <p>Generate the pileup file and adjust the mapping quality to 50.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
@@ -1019,7 +1033,23 @@ Solution
 <h2 class="anchored" data-anchor-id="annotation-of-variants">Annotation of variants</h2>
 <p>Go to Variant Effect Predictor : http://grch37.ensembl.org/Homo_sapiens/Tools/VEP</p>
 <p>Click on Ensembl default below the white frame for input data</p>
-<p>Paste the URL : http://lbgi.fr/~weber/GC/TD3/2_VCF/chr22_filter.vcf.gz corresponding to the chr22 VCF file in the URL field. Select the following options : - Transcript database to use - RefSeq transcripts - Additional configuration - Variants and frequency data - Frequency data for co-located variants:s - <strong>DISABLE</strong> 1000 Genomes global minor allele frequency - <strong>ENABLE</strong> gnomAD (exomes) allele frequencies - Predictions - Pathogenicity predictions - <strong>ENABLE</strong> CADD - Filtering options - Filters - Restrict results: Show one selected consequence per gene</p>
+<p>Paste the URL : http://lbgi.fr/~weber/GC/TD3/2_VCF/chr22_filter.vcf.gz corresponding to the chr22 VCF file in the URL field.</p>
+<p>Select the following options :</p>
+<ul>
+<li>Transcript database to use</li>
+<li>RefSeq transcripts</li>
+<li>Additional configuration</li>
+<li>Variants and frequency data</li>
+<li>Frequency data for co-located variants:</li>
+<li><strong>DISABLE</strong> 1000 Genomes global minor allele frequency</li>
+<li><strong>ENABLE</strong> gnomAD (exomes) allele frequencies</li>
+<li>Predictions</li>
+<li>Pathogenicity predictions</li>
+<li><strong>ENABLE</strong> CADD</li>
+<li>Filtering options</li>
+<li>Filters</li>
+<li>Restrict results: Show one selected consequence per gene</li>
+</ul>
 <p>Then RUN !</p>
 <div id="exr-1" class="custom theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 20</strong></span> How many missense variants are there in this file ? (approximately)</p>

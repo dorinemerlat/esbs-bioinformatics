@@ -97,6 +97,7 @@ Create a directory called `tRNA` to save the output files, then use the command 
 ::: {.callout-tip collapse="true"}
 ## Solution
 ```bash
+mkdir tRNA
 cd tRNA
 tRNAscan-SE -B -o sulcia.trnascan -f sulcia_structure.trnascan ../sulcia/sulcia.tfa
 ```

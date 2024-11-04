@@ -127,7 +127,7 @@ Reformat the file containing the secondary structure using the house tool ` form
 ::: {.callout-tip collapse="true"}
 ## Solution
 ```bash
-format_trnascan.sh -i sulcia_structure.trnascan -o sulcia_structure.trnascan
+format_trnascan.sh -i sulcia_structure.trnascan -o sulcia_structure.trnascan.reformated
 ```
 :::
 

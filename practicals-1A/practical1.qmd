@@ -13,12 +13,10 @@ What is it? How long is the genome?
 :::
 
 ::: {#exr-1 .custom}
-Consult the How field. Which bank does this sequence come from? Is it reliable? What sequencing technology was used? What can you say about this entry compared with the initial GenBank entry (1st sequence of the SARS-Cov-2 genome)?
+Consult the *Comment* field. Which bank does this sequence come from? Is it reliable? What sequencing technology was used? What can you say about this entry compared with the initial GenBank entry (1st sequence of the SARS-Cov-2 genome)?
 :::
 
-::: {#exr-1 .custom}
 Look for the coding region corresponding to the N protein (nucleocapsid phosphoprotein).
-:::
 
 ::: {#exr-1 .custom}
 What do you think of the composition of this protein? What problems might such a sequence pose in a similarity search?
@@ -36,32 +34,31 @@ Search Nucleotide for sequences containing the BRCA1 gene for Homo sapiens, usin
 Why are there several sequences in RefSeq? in Genbank?
 :::
 
-Among all the results, one of the sequences is a fragment of the gene in a breast cancer patient. To find it more easily, search for KT152889. in the search bar.
+Among all the results, one of the sequences is a fragment of the gene in a breast cancer patient. To find it more easily, search for `KT152889` **with the search bar**.
 
 ::: {#exr-1 .custom}
 Quickly position the annotated gene elements on a drawing. What is the position of the variation on the sequence? What does it correspond to?
 :::
 
-::: {#exr-1 .custom}
 Among the features, the sequence source provides a cross-reference to NCBI’s Taxonomy bank. Follow this link.
-:::
 
-## Taxonomy bank
 
-::: {#exr-1 .custom}
-Which human subspecies are listed in the Taxonomy bank?
-:::
+### Taxonomy bank
 
 ::: {#exr-1 .custom}
-Which other organisms are listed in the Hominina e ?
+What human subspecies are listed in the Taxonomy bank?
 :::
 
 ::: {#exr-1 .custom}
-Which orders are closest to the primate order? Which has the most available proteins?
+What other organisms are listed in the Homininae ?
 :::
 
 ::: {#exr-1 .custom}
-How many genomes are available in the Genome Bank for Animals, Fungi, Viridiplantae and Eukaryotes? Please comment.
+What orders are closest to the primate order? Which has the most available proteins?
+:::
+
+::: {#exr-1 .custom}
+How many genomes are available in the Genome Bank for Animals (Metazoa), Fungi, Viridiplantae and Eukaryotes? Comment.
 :::
 
 ## Protein sequence search in UniprotKB
@@ -75,7 +72,7 @@ How many human protein sequences are listed in UniprotKB? in SwissProt?
 :::
 
 ::: {#exr-1 .custom}
-Search for the protein associated with the BRCA1 gene. Compare the results. Which is the best solution?
+Search for the protein associated with the BRCA1 gene in human. Compare the results. Which is the best entry?
 :::
 
 ### Example of a SwissProt entry
@@ -83,7 +80,7 @@ Search for the protein associated with the BRCA1 gene. Compare the results. Whic
 Search for the MUC1_HUMAN protein
 
 ::: {#exr-1 .custom}
-Has the existence of this protein been established (see Protein existence at the top of the page)?
+Has the existence of this protein been established (see *Protein existence* at the top of the page)?
 :::
 
 ::: {#exr-1 .custom}
@@ -91,8 +88,8 @@ Compare the default format, the text format and the fasta format (available in D
 :::
 
 ::: {#exr-1 .custom}
-How many isoforms are described for this protein (see Sequences)? Align the isoforms and see how they differ. For that, click on *align isoforms$ and launch the alignment.
-:::
+How many isoforms are described for this protein (see *Sequences & Isoforms*)? Align the isoforms and see how they differ. For that, click on *align isoforms* and launch the alignment.
+::: 
 
 ### Function - GO annotations
 
@@ -129,7 +126,7 @@ Why are there so many more links to EMBL/GenBank/DDBJ than to RefSeq?
 #### Families and domains in INTERPRO database
 
 
-Display the graphical representation (View protein in InterPro). 
+Display the graphical representation (*View protein in InterPro*). 
 
 ::: {#exr-1 .custom}
 How many distinct protein domains are there in this protein?
@@ -143,18 +140,12 @@ From which banks do the 3 signatures associated with this InterPro domain origin
 
 You can get more information by passing the mouse over the colored bars, to open the domain in the associated bank, click on the corresponding link on the right.
 
-Follow the link to the associated PFAM signature. Display the signature (click on the signature tab).
+::: {#exr-1 .custom}
+Follow the link to the associated PFAM signature. Display the signature (click on the *Profile HMM* tab). Comment the signature.
+:::
 
 In a new tab, search for the BRCA1_HUMAN protein in InterProScan.
 
 ::: {#exr-1 .custom}
 How many distinct protein domains are there in this protein?
-:::
-
-Follow the link to the PFAM signature associated with the Zinc finger, C3HC4 type (RING finger). Display the signature and compare it with the SEA domain of MUC1.
-
-Look at the ProSite signature associated with the Zinc finger RING-type signature. Once on the Prosite page, open View PS00518 in PROSITE patterns.
-
-::: {#exr-1 .custom}
-What’s the main problem with the pattern?
 :::

@@ -36,7 +36,7 @@ These advanced practicals are intended for third-year students:
 ### Pharma - Introduction to Bioinformatics
 These practicals for fifth-year pharmacy students introduce some of the bioinformatics tools and techniques needed in pharmaceutical
 
-- **[1 - Pre-processing of sequencing reads](practicals-2A/practical1.qmd)**
+- **[1 - Pre-processing of sequencing reads](practicals-pharma/practical1.qmd)**
 - **[2 - Database exploration](practicals-pharma/practical2.qmd)**
 - **[3 - Functional analysis of a gene list and sequence comparison](practicals-pharma/practical3.qmd)**
 - **[4 - Similarity searches](practicals-pharma/practical4.qmd)**

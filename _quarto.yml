@@ -55,8 +55,6 @@ website:
       menu:      
       - text: "Galaxy Help"
         href: help/galaxy.qmd
-      - text: "CLI Help"
-        href: help/cli.qmd
       - text: "Server Connection Guide"
         href: help/server_connection_guide.qmd
     tools:

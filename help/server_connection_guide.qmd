@@ -24,7 +24,7 @@ After typing the command, press **Enter**.
 You will be prompted to enter a password. The password for everyone is:
 
 ```bash
-genomics2024
+TPgenomics2025
 ```
 
 ::: {.callout-important}

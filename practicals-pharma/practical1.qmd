@@ -2,33 +2,37 @@
 
 ## NCBI - Interrogation of databases by Entrez
 
+The **NCBI (National Center for Biotechnology Information)** is a key resource for genomic data and bioinformatics tools. It hosts databases like **GenBank**, **Nucleotide**, **PubMed**, **Taxonomy**... In this first part of the practical, we will explore several of the databases hosted by the NCBI.
+
 Go to the [NCBI website](http://www.ncbi.nlm.nih.gov/).
 
 ### Use access number
 
-Select Nucleotide on the NCBI website and search for the sequence `NC_045512`.
+Select **Nucleotide** database on the NCBI website and search for the sequence `NC_045512`.
 
 ::: {#exr-1 .custom}
-What is it? How long is the genome?
+What is this sequence? How long is it?
 :::
 
 ::: {#exr-1 .custom}
 Consult the *Comment* field. Which bank does this sequence come from? Is it reliable? What sequencing technology was used? What can you say about this entry compared with the initial GenBank entry (1st sequence of the SARS-Cov-2 genome)?
 :::
 
-Look for the coding region corresponding to the N protein (nucleocapsid phosphoprotein).
+Look for the coding region of the N protein, also known as nucleocapsid phosphoprotein (you can find it by searching the scientific name on the page).
 
 ::: {#exr-1 .custom}
 What do you think of the composition of this protein? What problems might such a sequence pose in a similarity search?
 :::
 
 ::: {#exr-1 .custom}
-Display the genome sequence in fasta format. How does this format compare with the RefSeq format?
+Display the genome sequence in *fasta* format. How does this format compare with the *RefSeq* format?
 :::
 
 ### Search by annotation (Filters/Advanced)
 
-Search Nucleotide for sequences containing the BRCA1 gene for Homo sapiens, using filters or the advanced search.
+Breast cancer is a common cancer influenced by genetic factors, including **BRCA1** or **BRCA2**.. Another critical gene is **MUC1**, often overexpressed in breast cancers, where it promotes tumor growth and metastasis. This exercise will explore the nucleotide sequences of **MUC1** in humans using the NCBI database.
+
+Search in Nucleotide for sequences containing the **MUC1** gene for *Homo sapiens*, using filters or the advanced search.
 
 ::: {#exr-1 .custom}
 Why are there several sequences in RefSeq? in Genbank?
@@ -37,11 +41,10 @@ Why are there several sequences in RefSeq? in Genbank?
 Among all the results, one of the sequences is a fragment of the gene in a breast cancer patient. To find it more easily, search for `KT152889` **with the search bar**.
 
 ::: {#exr-1 .custom}
-Quickly position the annotated gene elements on a drawing. What is the position of the variation on the sequence? What does it correspond to?
+Quickly position the annotated gene elements on a schema. What is the position of the variation on the sequence? What does it correspond to?
 :::
 
-Among the features, the sequence source provides a cross-reference to NCBI’s Taxonomy bank. Follow this link.
-
+Among the features, the *source* field provides a cross-reference to NCBI’s Taxonomy bank. Follow this link.
 
 ### Taxonomy bank
 
@@ -54,14 +57,31 @@ What other organisms are listed in the Homininae ?
 :::
 
 ::: {#exr-1 .custom}
-What orders are closest to the primate order? Which has the most available proteins?
+What orders are closest to the primate order? Which has the most available proteins? 
 :::
+
+::: {.callout-note}
+## Help
+Check the *Protein* box under the search bar to display the number of proteins for each group. By default, 3 sublevels are displayed, but you can change it to *1* to make the information easier to read. Don't forget to click *Display* to update the page.
+
+:::
+
 
 ::: {#exr-1 .custom}
 How many genomes are available in the Genome Bank for Animals (Metazoa), Fungi, Viridiplantae and Eukaryotes? Comment.
 :::
 
+::: {.callout-note}
+## Help
+Check the *Datasets Genome* box under the search bar to display the number of genomes for each group. 
+
+:::
+
 ## Protein sequence search in UniprotKB
+
+In the second part of the practical, we will explore protein-related databases and resources, such as **UniProt**, **InterPro**, and **Pfam**.
+
+**UniProt** is a comprehensive protein sequence and functional information database, which includes **Swiss-Prot**, a curated, manually annotated section, and **TrEMBL**, a collection of computationally annotated protein sequences.
 
 Go to the [UniprotKB bank](https://www.uniprot.org/).
 
@@ -71,20 +91,20 @@ Go to the [UniprotKB bank](https://www.uniprot.org/).
 How many human protein sequences are listed in UniprotKB? in SwissProt?
 :::
 
-::: {#exr-1 .custom}
-Search for the protein associated with the BRCA1 gene in human. Compare the results. Which is the best entry?
-:::
-
 ### Example of a SwissProt entry
 
-Search for the MUC1_HUMAN protein
+::: {#exr-1 .custom}
+Search for the protein associated with the **MUC1** gene in **human**. Look the results. Which is the best entry?
+:::
+
+Open the entry you consider the most reliable.
 
 ::: {#exr-1 .custom}
 Has the existence of this protein been established (see *Protein existence* at the top of the page)?
 :::
 
 ::: {#exr-1 .custom}
-Compare the default format, the text format and the fasta format (available in Download).
+Compare the default format, the text format and the fasta format (available in *Download*).
 :::
 
 ::: {#exr-1 .custom}
@@ -132,8 +152,6 @@ Display the graphical representation (*View protein in InterPro*).
 How many distinct protein domains are there in this protein?
 :::
 
-Domain: IPR000082 SEA domain
-
 ::: {#exr-1 .custom}
 From which banks do the 3 signatures associated with this InterPro domain originate?
 :::
@@ -144,7 +162,7 @@ You can get more information by passing the mouse over the colored bars, to open
 Follow the link to the associated PFAM signature. Display the signature (click on the *Profile HMM* tab). Comment the signature.
 :::
 
-In a new tab, search for the BRCA1_HUMAN protein in InterProScan.
+In a new tab, search for the `BRCA1_HUMAN` protein in InterProScan.
 
 ::: {#exr-1 .custom}
 How many distinct protein domains are there in this protein?

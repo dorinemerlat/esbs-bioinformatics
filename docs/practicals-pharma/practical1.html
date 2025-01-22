@@ -98,23 +98,23 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-a">    
         <li>
     <a class="dropdown-item" href="../practicals-1A/practical1.html">
- <span class="dropdown-text">1 - Pre-processing of sequencing reads</span></a>
+ <span class="dropdown-text">1 - Exploring sequence database</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../practicals-1A/practical2.html">
- <span class="dropdown-text">2 - Read mapping on a reference genome</span></a>
+ <span class="dropdown-text">2 - Functional analysis of a gene list and sequence comparison</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../practicals-1A/practical3.html">
- <span class="dropdown-text">3 - De novo assembly</span></a>
+ <span class="dropdown-text">3 - Similary searches</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../practicals-1A/practical4.html">
- <span class="dropdown-text">4 - Annotation of a complete prokaryotic genome</span></a>
+ <span class="dropdown-text">4 - Analysis of Protein Families</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../practicals-1A/practical5.html">
- <span class="dropdown-text">5 - Analysis of eukaryotic sequences</span></a>
+ <span class="dropdown-text">5 - Multiple Alignment &amp; Phylogeny</span></a>
   </li>  
     </ul>
   </li>
@@ -166,24 +166,24 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pharma">    
         <li>
-    <a class="dropdown-item" href="../practicals-pharma/practical1.html">
+    <a class="dropdown-item" href="../practicals-2A/practical1.html">
  <span class="dropdown-text">1 - Pre-processing of sequencing reads</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../practicals-pharma/practical2.html">
- <span class="dropdown-text">2 - Read mapping on a reference genome</span></a>
+ <span class="dropdown-text">2 - Exploring sequence database</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../practicals-pharma/practical3.html">
- <span class="dropdown-text">3 - De novo assembly</span></a>
+ <span class="dropdown-text">3 - Functional analysis of a gene list and sequence comparison</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../practicals-pharma/practical4.html">
- <span class="dropdown-text">4 - Annotation of a complete prokaryotic genome</span></a>
+ <span class="dropdown-text">4 - Similary searchese</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../practicals-pharma/practical5.html">
- <span class="dropdown-text">5 - Analysis of eukaryotic sequences</span></a>
+ <span class="dropdown-text">5 - Analysis of Protein Families</span></a>
   </li>  
     </ul>
   </li>
@@ -233,8 +233,30 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#practical---exploring-sequence-database" id="toc-practical---exploring-sequence-database" class="nav-link active" data-scroll-target="#practical---exploring-sequence-database">Practical - Exploring sequence database</a>
+  <ul class="collapse">
+  <li><a href="#ncbi---interrogation-of-databases-by-entrez" id="toc-ncbi---interrogation-of-databases-by-entrez" class="nav-link" data-scroll-target="#ncbi---interrogation-of-databases-by-entrez">NCBI - Interrogation of databases by Entrez</a>
+  <ul class="collapse">
+  <li><a href="#use-access-number" id="toc-use-access-number" class="nav-link" data-scroll-target="#use-access-number">Use access number</a></li>
+  <li><a href="#search-by-annotation-filtersadvanced" id="toc-search-by-annotation-filtersadvanced" class="nav-link" data-scroll-target="#search-by-annotation-filtersadvanced">Search by annotation (Filters/Advanced)</a></li>
+  <li><a href="#taxonomy-bank" id="toc-taxonomy-bank" class="nav-link" data-scroll-target="#taxonomy-bank">Taxonomy bank</a></li>
+  </ul></li>
+  <li><a href="#protein-sequence-search-in-uniprotkb" id="toc-protein-sequence-search-in-uniprotkb" class="nav-link" data-scroll-target="#protein-sequence-search-in-uniprotkb">Protein sequence search in UniprotKB</a>
+  <ul class="collapse">
+  <li><a href="#advanced-search-fields" id="toc-advanced-search-fields" class="nav-link" data-scroll-target="#advanced-search-fields">Advanced search fields</a></li>
+  <li><a href="#example-of-a-swissprot-entry" id="toc-example-of-a-swissprot-entry" class="nav-link" data-scroll-target="#example-of-a-swissprot-entry">Example of a SwissProt entry</a></li>
+  <li><a href="#function---go-annotations" id="toc-function---go-annotations" class="nav-link" data-scroll-target="#function---go-annotations">Function - GO annotations</a></li>
+  <li><a href="#structure" id="toc-structure" class="nav-link" data-scroll-target="#structure">Structure</a></li>
+  <li><a href="#tab-external-links-top-of-page" id="toc-tab-external-links-top-of-page" class="nav-link" data-scroll-target="#tab-external-links-top-of-page">Tab External links (top of page)</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -242,8 +264,163 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="practical---exploring-sequence-database" class="level1">
+<h1>Practical - Exploring sequence database</h1>
+<section id="ncbi---interrogation-of-databases-by-entrez" class="level2">
+<h2 class="anchored" data-anchor-id="ncbi---interrogation-of-databases-by-entrez">NCBI - Interrogation of databases by Entrez</h2>
+<p>The <strong>NCBI (National Center for Biotechnology Information)</strong> is a key resource for genomic data and bioinformatics tools. It hosts databases like <strong>GenBank</strong>, <strong>Nucleotide</strong>, <strong>PubMed</strong>, <strong>Taxonomy</strong>… In this first part of the practical, we will explore several of the databases hosted by the NCBI.</p>
+<p>Go to the <a href="http://www.ncbi.nlm.nih.gov/">NCBI website</a>.</p>
+<section id="use-access-number" class="level3">
+<h3 class="anchored" data-anchor-id="use-access-number">Use access number</h3>
+<p>Select <strong>Nucleotide</strong> database on the NCBI website and search for the sequence <code>NC_045512</code>.</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1</strong></span> What is this sequence? How long is it?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2</strong></span> Consult the <em>Comment</em> field. Which bank does this sequence come from? Is it reliable? What sequencing technology was used? What can you say about this entry compared with the initial GenBank entry (1st sequence of the SARS-Cov-2 genome)?</p>
+</div>
+<p>Look for the coding region of the N protein, also known as nucleocapsid phosphoprotein (you can find it by searching the scientific name on the page).</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3</strong></span> What do you think of the composition of this protein? What problems might such a sequence pose in a similarity search?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4</strong></span> Display the genome sequence in <em>fasta</em> format. How does this format compare with the <em>RefSeq</em> format?</p>
+</div>
+</section>
+<section id="search-by-annotation-filtersadvanced" class="level3">
+<h3 class="anchored" data-anchor-id="search-by-annotation-filtersadvanced">Search by annotation (Filters/Advanced)</h3>
+<p>Breast cancer is a common cancer influenced by genetic factors, including <strong>BRCA1</strong> or <strong>BRCA2</strong>.. Another critical gene is <strong>MUC1</strong>, often overexpressed in breast cancers, where it promotes tumor growth and metastasis. This exercise will explore the nucleotide sequences of <strong>MUC1</strong> in humans using the NCBI database.</p>
+<p>Search in Nucleotide for sequences containing the <strong>MUC1</strong> gene for <em>Homo sapiens</em>, using filters or the advanced search.</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5</strong></span> Why are there several sequences in RefSeq? in Genbank?</p>
+</div>
+<p>Among all the results, one of the sequences is a fragment of the gene in a breast cancer patient. To find it more easily, search for <code>KT152889</code> <strong>with the search bar</strong>.</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6</strong></span> Quickly position the annotated gene elements on a schema. What is the position of the variation on the sequence? What does it correspond to?</p>
+</div>
+<p>Among the features, the <em>source</em> field provides a cross-reference to NCBI’s Taxonomy bank. Follow this link.</p>
+</section>
+<section id="taxonomy-bank" class="level3">
+<h3 class="anchored" data-anchor-id="taxonomy-bank">Taxonomy bank</h3>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7</strong></span> What human subspecies are listed in the Taxonomy bank?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8</strong></span> What other organisms are listed in the Homininae ?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9</strong></span> What orders are closest to the primate order? Which has the most available proteins?</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Help
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Check the <em>Protein</em> box under the search bar to display the number of proteins for each group. By default, 3 sublevels are displayed, but you can change it to <em>1</em> to make the information easier to read. Don’t forget to click <em>Display</em> to update the page.</p>
+</div>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 10</strong></span> How many genomes are available in the Genome Bank for Animals (Metazoa), Fungi, Viridiplantae and Eukaryotes? Comment.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Help
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Check the <em>Datasets Genome</em> box under the search bar to display the number of genomes for each group.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="protein-sequence-search-in-uniprotkb" class="level2">
+<h2 class="anchored" data-anchor-id="protein-sequence-search-in-uniprotkb">Protein sequence search in UniprotKB</h2>
+<p>In the second part of the practical, we will explore protein-related databases and resources, such as <strong>UniProt</strong>, <strong>InterPro</strong>, and <strong>Pfam</strong>.</p>
+<p><strong>UniProt</strong> is a comprehensive protein sequence and functional information database, which includes <strong>Swiss-Prot</strong>, a curated, manually annotated section, and <strong>TrEMBL</strong>, a collection of computationally annotated protein sequences.</p>
+<p>Go to the <a href="https://www.uniprot.org/">UniprotKB bank</a>.</p>
+<section id="advanced-search-fields" class="level3">
+<h3 class="anchored" data-anchor-id="advanced-search-fields">Advanced search fields</h3>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 11</strong></span> How many human protein sequences are listed in UniprotKB? in SwissProt?</p>
+</div>
+</section>
+<section id="example-of-a-swissprot-entry" class="level3">
+<h3 class="anchored" data-anchor-id="example-of-a-swissprot-entry">Example of a SwissProt entry</h3>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 12</strong></span> Search for the protein associated with the <strong>MUC1</strong> gene in <strong>human</strong>. Look the results. Which is the best entry?</p>
+</div>
+<p>Open the entry you consider the most reliable.</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 13</strong></span> Has the existence of this protein been established (see <em>Protein existence</em> at the top of the page)?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 14</strong></span> Compare the default format, the text format and the fasta format (available in <em>Download</em>).</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 15</strong></span> How many isoforms are described for this protein (see <em>Sequences &amp; Isoforms</em>)? Align the isoforms and see how they differ. For that, click on <em>align isoforms</em> and launch the alignment.</p>
+</div>
+</section>
+<section id="function---go-annotations" class="level3">
+<h3 class="anchored" data-anchor-id="function---go-annotations">Function - GO annotations</h3>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 16</strong></span> The Go ontology can be used to describe proteins in 3 ways. Which are they?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 17</strong></span> Follow the link to the entry “negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator”. What is it? What type of GO is it? How often is it used to describe proteins?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 18</strong></span> Are there any synonyms for the term GO?</p>
+</div>
+</section>
+<section id="structure" class="level3">
+<h3 class="anchored" data-anchor-id="structure">Structure</h3>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 19</strong></span> What can you say about the structures obtained experimentally for the protein?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 20</strong></span> What can you say about the reliability of the AlphaFold prediction for this protein?</p>
+</div>
+</section>
+<section id="tab-external-links-top-of-page" class="level3">
+<h3 class="anchored" data-anchor-id="tab-external-links-top-of-page">Tab External links (top of page)</h3>
+<section id="sequence-databases" class="level4">
+<h4 class="anchored" data-anchor-id="sequence-databases">Sequence databases</h4>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 21</strong></span> Why are there so many more links to EMBL/GenBank/DDBJ than to RefSeq?</p>
+</div>
+</section>
+<section id="families-and-domains-in-interpro-database" class="level4">
+<h4 class="anchored" data-anchor-id="families-and-domains-in-interpro-database">Families and domains in INTERPRO database</h4>
+<p>Display the graphical representation (<em>View protein in InterPro</em>).</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 22</strong></span> How many distinct protein domains are there in this protein?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 23</strong></span> From which banks do the 3 signatures associated with this InterPro domain originate?</p>
+</div>
+<p>You can get more information by passing the mouse over the colored bars, to open the domain in the associated bank, click on the corresponding link on the right.</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 24</strong></span> Follow the link to the associated PFAM signature. Display the signature (click on the <em>Profile HMM</em> tab). Comment the signature.</p>
+</div>
+<p>In a new tab, search for the <code>BRCA1_HUMAN</code> protein in InterProScan.</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 25</strong></span> How many distinct protein domains are there in this protein?</p>
+</div>
 
 
+</section>
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script>

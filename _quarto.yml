@@ -42,7 +42,7 @@ website:
     - text: "Pharma"
       menu:
       - text: "1 - Pre-processing of sequencing reads"
-        href: practicals-2A/practical1.qmd
+        href: practicals-pharma/practical1.qmd
       - text: "2 - Exploring sequence database"
         href: practicals-pharma/practical2.qmd
       - text: "3 - Functional analysis of a gene list and sequence comparison"

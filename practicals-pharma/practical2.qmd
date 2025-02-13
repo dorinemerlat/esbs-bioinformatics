@@ -1,5 +1,10 @@
 # Practical - Exploring sequence database
 
+::: {.callout-note}
+## Navigation Tip
+The bioinformatics page contains a lot of data and can be quite long; don't hesitate to use `Ctrl + F` to quickly find the information you need.
+:::
+
 ## NCBI - Interrogation of databases by Entrez
 
 The **NCBI (National Center for Biotechnology Information)** is a key resource for genomic data and bioinformatics tools. It hosts databases like **GenBank**, **Nucleotide**, **PubMed**, **Taxonomy**... In this first part of the practical, we will explore several of the databases hosted by the NCBI.

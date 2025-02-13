@@ -166,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pharma">    
         <li>
-    <a class="dropdown-item" href="../practicals-2A/practical1.html">
+    <a class="dropdown-item" href="../practicals-pharma/practical1.html">
  <span class="dropdown-text">1 - Pre-processing of sequencing reads</span></a>
   </li>  
         <li>
@@ -195,10 +195,6 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="../help/galaxy.html">
  <span class="dropdown-text">Galaxy Help</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../help/cli.html">
- <span class="dropdown-text">CLI Help</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../help/server_connection_guide.html">
@@ -238,21 +234,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#practical---exploring-sequence-database" id="toc-practical---exploring-sequence-database" class="nav-link active" data-scroll-target="#practical---exploring-sequence-database">Practical - Exploring sequence database</a>
+  <li><a href="#practical---pre-processing-of-sequencing-reads" id="toc-practical---pre-processing-of-sequencing-reads" class="nav-link active" data-scroll-target="#practical---pre-processing-of-sequencing-reads">Practical - Pre-processing of Sequencing Reads</a>
   <ul class="collapse">
-  <li><a href="#ncbi---interrogation-of-databases-by-entrez" id="toc-ncbi---interrogation-of-databases-by-entrez" class="nav-link" data-scroll-target="#ncbi---interrogation-of-databases-by-entrez">NCBI - Interrogation of databases by Entrez</a>
+  <li><a href="#illumina-se" id="toc-illumina-se" class="nav-link" data-scroll-target="#illumina-se">Illumina SE</a>
   <ul class="collapse">
-  <li><a href="#use-access-number" id="toc-use-access-number" class="nav-link" data-scroll-target="#use-access-number">Use access number</a></li>
-  <li><a href="#search-by-annotation-filtersadvanced" id="toc-search-by-annotation-filtersadvanced" class="nav-link" data-scroll-target="#search-by-annotation-filtersadvanced">Search by annotation (Filters/Advanced)</a></li>
-  <li><a href="#taxonomy-bank" id="toc-taxonomy-bank" class="nav-link" data-scroll-target="#taxonomy-bank">Taxonomy bank</a></li>
+  <li><a href="#raw-data-fastq-file" id="toc-raw-data-fastq-file" class="nav-link" data-scroll-target="#raw-data-fastq-file">Raw data: FASTQ file</a></li>
+  <li><a href="#quality-control-using-fastq" id="toc-quality-control-using-fastq" class="nav-link" data-scroll-target="#quality-control-using-fastq">Quality control using FASTQ</a></li>
+  <li><a href="#read-processing-using-trimmomatic" id="toc-read-processing-using-trimmomatic" class="nav-link" data-scroll-target="#read-processing-using-trimmomatic">Read processing using Trimmomatic</a></li>
   </ul></li>
-  <li><a href="#protein-sequence-search-in-uniprotkb" id="toc-protein-sequence-search-in-uniprotkb" class="nav-link" data-scroll-target="#protein-sequence-search-in-uniprotkb">Protein sequence search in UniprotKB</a>
+  <li><a href="#pacbio-hifi" id="toc-pacbio-hifi" class="nav-link" data-scroll-target="#pacbio-hifi">PacBio Hifi</a>
   <ul class="collapse">
-  <li><a href="#advanced-search-fields" id="toc-advanced-search-fields" class="nav-link" data-scroll-target="#advanced-search-fields">Advanced search fields</a></li>
-  <li><a href="#example-of-a-swissprot-entry" id="toc-example-of-a-swissprot-entry" class="nav-link" data-scroll-target="#example-of-a-swissprot-entry">Example of a SwissProt entry</a></li>
-  <li><a href="#function---go-annotations" id="toc-function---go-annotations" class="nav-link" data-scroll-target="#function---go-annotations">Function - GO annotations</a></li>
-  <li><a href="#structure" id="toc-structure" class="nav-link" data-scroll-target="#structure">Structure</a></li>
-  <li><a href="#tab-external-links-top-of-page" id="toc-tab-external-links-top-of-page" class="nav-link" data-scroll-target="#tab-external-links-top-of-page">Tab External links (top of page)</a></li>
+  <li><a href="#import-the-file-into-galaxy" id="toc-import-the-file-into-galaxy" class="nav-link" data-scroll-target="#import-the-file-into-galaxy">Import the file into Galaxy:</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis:</a></li>
+  </ul></li>
+  <li><a href="#nanopore" id="toc-nanopore" class="nav-link" data-scroll-target="#nanopore">NanoPore</a>
+  <ul class="collapse">
+  <li><a href="#import-the-files-into-galaxy" id="toc-import-the-files-into-galaxy" class="nav-link" data-scroll-target="#import-the-files-into-galaxy">Import the files into Galaxy:</a></li>
+  <li><a href="#perform-quality-control-with-pycoqc" id="toc-perform-quality-control-with-pycoqc" class="nav-link" data-scroll-target="#perform-quality-control-with-pycoqc">Perform quality control with PycoQC</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -264,160 +262,124 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="practical---exploring-sequence-database" class="level1">
-<h1>Practical - Exploring sequence database</h1>
-<section id="ncbi---interrogation-of-databases-by-entrez" class="level2">
-<h2 class="anchored" data-anchor-id="ncbi---interrogation-of-databases-by-entrez">NCBI - Interrogation of databases by Entrez</h2>
-<p>The <strong>NCBI (National Center for Biotechnology Information)</strong> is a key resource for genomic data and bioinformatics tools. It hosts databases like <strong>GenBank</strong>, <strong>Nucleotide</strong>, <strong>PubMed</strong>, <strong>Taxonomy</strong>… In this first part of the practical, we will explore several of the databases hosted by the NCBI.</p>
-<p>Go to the <a href="http://www.ncbi.nlm.nih.gov/">NCBI website</a>.</p>
-<section id="use-access-number" class="level3">
-<h3 class="anchored" data-anchor-id="use-access-number">Use access number</h3>
-<p>Select <strong>Nucleotide</strong> database on the NCBI website and search for the sequence <code>NC_045512</code>.</p>
+<section id="practical---pre-processing-of-sequencing-reads" class="level1">
+<h1>Practical - Pre-processing of Sequencing Reads</h1>
+<p>To practise quality control and pre-processing of raw NGS data, we will use small datasets. The tools are available in Galaxy, a platform for omics data analysis.</p>
+<p>First step: log on to https://usegalaxy.fr</p>
+<p>then, to ensure you have sufficient resources, go to the url:</p>
+<p>https://usegalaxy.fr/join-training/td1genomics/</p>
+<p>You can then return to galaxy.</p>
+<section id="illumina-se" class="level2">
+<h2 class="anchored" data-anchor-id="illumina-se">Illumina SE</h2>
+<p>You can rename your history (right panel).</p>
+<p>The 1st data set concerns a metagenomic study of the microbiome of the oral cavity of a snake. After extraction and fragmentation of the sample DNA, part of the 16S rRNA gene was amplified and sequenced (Illumina Single End) in order to identify the bacteria present. Due to time constraints, only part of the data will be analysed.</p>
+<section id="raw-data-fastq-file" class="level3">
+<h3 class="anchored" data-anchor-id="raw-data-fastq-file">Raw data: FASTQ file</h3>
+<ol type="1">
+<li>Import the FASTQ file from the zenodo server:</li>
+</ol>
+<p>Copy the address of the link: https://zenodo.org/record/3977236/files/female_oral2.fastq-4143.gz</p>
+<p>In Galaxy, use the Upload Data button (top left) then Paste/Fetch data, copy the link and launch (start).</p>
+<ol start="2" type="1">
+<li>Look at the file (eye icon).</li>
+</ol>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1</strong></span> What is this sequence? How long is it?</p>
+<p><span class="theorem-title"><strong>Exercise 1</strong></span> What are the characteristics of the FASTQ format?</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2</strong></span> Consult the <em>Comment</em> field. Which bank does this sequence come from? Is it reliable? What sequencing technology was used? What can you say about this entry compared with the initial GenBank entry (1st sequence of the SARS-Cov-2 genome)?</p>
-</div>
-<p>Look for the coding region of the N protein, also known as nucleocapsid phosphoprotein (you can find it by searching the scientific name on the page).</p>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3</strong></span> What do you think of the composition of this protein? What problems might such a sequence pose in a similarity search?</p>
-</div>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4</strong></span> Display the genome sequence in <em>fasta</em> format. How does this format compare with the <em>RefSeq</em> format?</p>
+<p><span class="theorem-title"><strong>Exercise 2</strong></span> Given that the scores are encoded using the SANGER/Illumina 1.8+ system, what is the score value for most of the bases at the start of the 1st read? Is this satisfactory?</p>
 </div>
 </section>
-<section id="search-by-annotation-filtersadvanced" class="level3">
-<h3 class="anchored" data-anchor-id="search-by-annotation-filtersadvanced">Search by annotation (Filters/Advanced)</h3>
-<p>Breast cancer is a common cancer influenced by genetic factors, including <strong>BRCA1</strong> or <strong>BRCA2</strong>.. Another critical gene is <strong>MUC1</strong>, often overexpressed in breast cancers, where it promotes tumor growth and metastasis. This exercise will explore the nucleotide sequences of <strong>MUC1</strong> in humans using the NCBI database.</p>
-<p>Search in Nucleotide for sequences containing the <strong>MUC1</strong> gene for <em>Homo sapiens</em>, using filters or the advanced search.</p>
+<section id="quality-control-using-fastq" class="level3">
+<h3 class="anchored" data-anchor-id="quality-control-using-fastq">Quality control using FASTQ</h3>
+<p>Open the FASTQ Quality Control toolbox (left panel) and choose FastQC.</p>
+<p><strong>FastQC</strong></p>
+<p>Explore the quality of reads with FastQC (default settings). See the FastQC website for help and examples of analysis.</p>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5</strong></span> Why are there several sequences in RefSeq? in Genbank?</p>
+<p><span class="theorem-title"><strong>Exercise 3</strong></span> Per Base Sequence Quality: How long are the reads? How does the quality evolve along the reads?</p>
 </div>
-<p>Among all the results, one of the sequences is a fragment of the gene in a breast cancer patient. To find it more easily, search for <code>KT152889</code> <strong>with the search bar</strong>.</p>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 6</strong></span> Quickly position the annotated gene elements on a schema. What is the position of the variation on the sequence? What does it correspond to?</p>
+<p><span class="theorem-title"><strong>Exercise 4</strong></span> Per sequence quality scores: What can be deduced from this graph?</p>
 </div>
-<p>Among the features, the <em>source</em> field provides a cross-reference to NCBI’s Taxonomy bank. Follow this link.</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5</strong></span> Per base sequence content: In the case of genome sequencing (without specific amplification), what should this graph look like? Is the result obtained normal in our case?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6</strong></span> Adapter content: Which adapter is detected?</p>
+</div>
 </section>
-<section id="taxonomy-bank" class="level3">
-<h3 class="anchored" data-anchor-id="taxonomy-bank">Taxonomy bank</h3>
+<section id="read-processing-using-trimmomatic" class="level3">
+<h3 class="anchored" data-anchor-id="read-processing-using-trimmomatic">Read processing using Trimmomatic</h3>
+<ol type="1">
+<li>Use Trimmomatic (FASTQ Quality control section) to improve the quality of reads:</li>
+</ol>
+<ul>
+<li>Perform initial IllUMINACLIP step? Yes, select Nextera</li>
+<li>Sliding window trimming (proposed by default)</li>
+<li>Drop reads below a specific length (MINLEN): 20</li>
+</ul>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7</strong></span> What human subspecies are listed in the Taxonomy bank?</p>
-</div>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8</strong></span> What other organisms are listed in the Homininae ?</p>
-</div>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9</strong></span> What orders are closest to the primate order? Which has the most available proteins?</p>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Help
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Check the <em>Protein</em> box under the search bar to display the number of proteins for each group. By default, 3 sublevels are displayed, but you can change it to <em>1</em> to make the information easier to read. Don’t forget to click <em>Display</em> to update the page.</p>
-</div>
+<p><span class="theorem-title"><strong>Exercise 7</strong></span> Perform FastQC analysis again on the processed reads and compare the results to the raw data. Is the result acceptable?</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10</strong></span> How many genomes are available in the Genome Bank for Animals (Metazoa), Fungi, Viridiplantae and Eukaryotes? Comment.</p>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Help
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Check the <em>Datasets Genome</em> box under the search bar to display the number of genomes for each group.</p>
-</div>
+<p><span class="theorem-title"><strong>Exercise 8</strong></span> What would be the next step to identify the microbial species present in the snake’s oral cavity from these reads?</p>
 </div>
 </section>
 </section>
-<section id="protein-sequence-search-in-uniprotkb" class="level2">
-<h2 class="anchored" data-anchor-id="protein-sequence-search-in-uniprotkb">Protein sequence search in UniprotKB</h2>
-<p>In the second part of the practical, we will explore protein-related databases and resources, such as <strong>UniProt</strong>, <strong>InterPro</strong>, and <strong>Pfam</strong>.</p>
-<p><strong>UniProt</strong> is a comprehensive protein sequence and functional information database, which includes <strong>Swiss-Prot</strong>, a curated, manually annotated section, and <strong>TrEMBL</strong>, a collection of computationally annotated protein sequences.</p>
-<p>Go to the <a href="https://www.uniprot.org/">UniprotKB bank</a>.</p>
-<section id="advanced-search-fields" class="level3">
-<h3 class="anchored" data-anchor-id="advanced-search-fields">Advanced search fields</h3>
+<section id="pacbio-hifi" class="level2">
+<h2 class="anchored" data-anchor-id="pacbio-hifi">PacBio Hifi</h2>
+<p>This dataset contains 50,000 PacBio HiFi reads from the sequencing of a human genome (PacBio - GIAB sample HG002).</p>
+<section id="import-the-file-into-galaxy" class="level3">
+<h3 class="anchored" data-anchor-id="import-the-file-into-galaxy">Import the file into Galaxy:</h3>
+<p>https://zenodo.org/api/files/ff9aa6e3-3d69-451f-9798-7ea69b475989/m64011_190830_220126.Q20.subsample.fastq.gz</p>
+<ol start="2" type="1">
+<li>Perform quality control with Nanoplot (available in Nanopore). This tool can only be used for long reads (PacBio or Nanopore):</li>
+</ol>
+<ul>
+<li>Options for customizing the plot created:</li>
+<li>Specify the bivariate format of the plots: dot</li>
+<li>Show the N50 mark in the read length histogram: Yes</li>
+</ul>
+</section>
+<section id="analysis" class="level3">
+<h3 class="anchored" data-anchor-id="analysis">Analysis:</h3>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 11</strong></span> How many human protein sequences are listed in UniprotKB? in SwissProt?</p>
+<p><span class="theorem-title"><strong>Exercise 9</strong></span> What is the average length of reads? Significant variations in read size are observed in the PacBio data, unlike the Illumina data. Why?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 10</strong></span> What does N5O represent in this case?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 11</strong></span> How useful can the Yield by length chart be?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 12</strong></span> Read length vs Average read qualiy plot using dots: No read is observed with Q&lt;20. Why? Is there a link between read size and quality?</p>
 </div>
 </section>
-<section id="example-of-a-swissprot-entry" class="level3">
-<h3 class="anchored" data-anchor-id="example-of-a-swissprot-entry">Example of a SwissProt entry</h3>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12</strong></span> Search for the protein associated with the <strong>MUC1</strong> gene in <strong>human</strong>. Look the results. Which is the best entry?</p>
-</div>
-<p>Open the entry you consider the most reliable.</p>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 13</strong></span> Has the existence of this protein been established (see <em>Protein existence</em> at the top of the page)?</p>
-</div>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 14</strong></span> Compare the default format, the text format and the fasta format (available in <em>Download</em>).</p>
-</div>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 15</strong></span> How many isoforms are described for this protein (see <em>Sequences &amp; Isoforms</em>)? Align the isoforms and see how they differ. For that, click on <em>align isoforms</em> and launch the alignment.</p>
-</div>
 </section>
-<section id="function---go-annotations" class="level3">
-<h3 class="anchored" data-anchor-id="function---go-annotations">Function - GO annotations</h3>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 16</strong></span> The Go ontology can be used to describe proteins in 3 ways. Which are they?</p>
-</div>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 17</strong></span> Follow the link to the entry “negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator”. What is it? What type of GO is it? How often is it used to describe proteins?</p>
-</div>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 18</strong></span> Are there any synonyms for the term GO?</p>
-</div>
+<section id="nanopore" class="level2">
+<h2 class="anchored" data-anchor-id="nanopore">NanoPore</h2>
+<p>The last set corresponds to nanopore reads obtained from a plant genome. We will use PycoQC for quality control. This only works with Nanopores readings; it requires specific information provided by nanopore basecallers such as Guppy.</p>
+<section id="import-the-files-into-galaxy" class="level3">
+<h3 class="anchored" data-anchor-id="import-the-files-into-galaxy">Import the files into Galaxy:</h3>
+<p>https://zenodo.org/api/files/ff9aa6e3-3d69-451f-9798-7ea69b475989/nanopore_basecalled-guppy.fastq.gz https://zenodo.org/api/files/ff9aa6e3-3d69-451f-9798-7ea69b475989/sequencing_summary.txt</p>
 </section>
-<section id="structure" class="level3">
-<h3 class="anchored" data-anchor-id="structure">Structure</h3>
+<section id="perform-quality-control-with-pycoqc" class="level3">
+<h3 class="anchored" data-anchor-id="perform-quality-control-with-pycoqc">Perform quality control with PycoQC</h3>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 19</strong></span> What can you say about the structures obtained experimentally for the protein?</p>
+<p><span class="theorem-title"><strong>Exercise 13</strong></span> How many reads are available? How many bases does this represent?</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 20</strong></span> What can you say about the reliability of the AlphaFold prediction for this protein?</p>
-</div>
-</section>
-<section id="tab-external-links-top-of-page" class="level3">
-<h3 class="anchored" data-anchor-id="tab-external-links-top-of-page">Tab External links (top of page)</h3>
-<section id="sequence-databases" class="level4">
-<h4 class="anchored" data-anchor-id="sequence-databases">Sequence databases</h4>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 21</strong></span> Why are there so many more links to EMBL/GenBank/DDBJ than to RefSeq?</p>
-</div>
-</section>
-<section id="families-and-domains-in-interpro-database" class="level4">
-<h4 class="anchored" data-anchor-id="families-and-domains-in-interpro-database">Families and domains in INTERPRO database</h4>
-<p>Display the graphical representation (<em>View protein in InterPro</em>).</p>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 22</strong></span> How many distinct protein domains are there in this protein?</p>
+<p><span class="theorem-title"><strong>Exercise 14</strong></span> How do you explain the discrepancy between median reading size and N50?</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 23</strong></span> From which banks do the 3 signatures associated with this InterPro domain originate?</p>
+<p><span class="theorem-title"><strong>Exercise 15</strong></span> Basecalled reads length: what can you say about the distribution of lengths?</p>
 </div>
-<p>You can get more information by passing the mouse over the colored bars, to open the domain in the associated bank, click on the corresponding link on the right.</p>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 24</strong></span> Follow the link to the associated PFAM signature. Display the signature (click on the <em>Profile HMM</em> tab). Comment the signature.</p>
-</div>
-<p>In a new tab, search for the <code>BRCA1_HUMAN</code> protein in InterProScan.</p>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 25</strong></span> How many distinct protein domains are there in this protein?</p>
+<p><span class="theorem-title"><strong>Exercise 16</strong></span> Basecalled reads quality: What range do most quality scores fall into?</p>
 </div>
 
 
-</section>
 </section>
 </section>
 </section>

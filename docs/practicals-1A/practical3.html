@@ -200,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pharma">    
         <li>
-    <a class="dropdown-item" href="../practicals-2A/practical1.html">
+    <a class="dropdown-item" href="../practicals-pharma/practical1.html">
  <span class="dropdown-text">1 - Pre-processing of sequencing reads</span></a>
   </li>  
         <li>
@@ -229,10 +229,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../help/galaxy.html">
  <span class="dropdown-text">Galaxy Help</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../help/cli.html">
- <span class="dropdown-text">CLI Help</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../help/server_connection_guide.html">
@@ -274,17 +270,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#practical---similary-searches" id="toc-practical---similary-searches" class="nav-link active" data-scroll-target="#practical---similary-searches">Practical - Similary searches</a>
   <ul class="collapse">
-  <li><a href="#search-for-homologous-proteins-using-blastp-ncbi-blast" id="toc-search-for-homologous-proteins-using-blastp-ncbi-blast" class="nav-link" data-scroll-target="#search-for-homologous-proteins-using-blastp-ncbi-blast">Search for homologous proteins using BLASTP (NCBI BLAST)</a>
+  <li><a href="#blast-online" id="toc-blast-online" class="nav-link" data-scroll-target="#blast-online">Blast online</a>
   <ul class="collapse">
-  <li><a href="#composition" id="toc-composition" class="nav-link" data-scroll-target="#composition">Composition</a></li>
-  <li><a href="#databases" id="toc-databases" class="nav-link" data-scroll-target="#databases">Databases</a></li>
-  <li><a href="#blastp-parameters" id="toc-blastp-parameters" class="nav-link" data-scroll-target="#blastp-parameters">BLASTP parameters</a></li>
-  <li><a href="#perform-the-similarity-search-swissprot-e10-default-for-other-parameters" id="toc-perform-the-similarity-search-swissprot-e10-default-for-other-parameters" class="nav-link" data-scroll-target="#perform-the-similarity-search-swissprot-e10-default-for-other-parameters">Perform the similarity search (SwissProt, E≤10, default for other parameters)</a></li>
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#search-for-homologous-proteins-using-blastp-ncbi-blast" id="toc-search-for-homologous-proteins-using-blastp-ncbi-blast" class="nav-link" data-scroll-target="#search-for-homologous-proteins-using-blastp-ncbi-blast">Search for homologous proteins using BLASTP (NCBI BLAST)</a></li>
+  <li><a href="#localisation-of-a-transcript-on-a-genome-and-search-for-a-cds" id="toc-localisation-of-a-transcript-on-a-genome-and-search-for-a-cds" class="nav-link" data-scroll-target="#localisation-of-a-transcript-on-a-genome-and-search-for-a-cds">Localisation of a transcript on a genome and search for a CDS</a></li>
+  <li><a href="#identifying-species-in-a-metagenomic-sample-using-blast" id="toc-identifying-species-in-a-metagenomic-sample-using-blast" class="nav-link" data-scroll-target="#identifying-species-in-a-metagenomic-sample-using-blast">Identifying Species in a Metagenomic Sample Using BLAST</a></li>
   </ul></li>
-  <li><a href="#localisation-of-a-transcript-on-a-genome-and-search-for-a-cds" id="toc-localisation-of-a-transcript-on-a-genome-and-search-for-a-cds" class="nav-link" data-scroll-target="#localisation-of-a-transcript-on-a-genome-and-search-for-a-cds">Localisation of a transcript on a genome and search for a CDS</a>
+  <li><a href="#blast-in-command" id="toc-blast-in-command" class="nav-link" data-scroll-target="#blast-in-command">Blast in command</a>
   <ul class="collapse">
-  <li><a href="#localization-of-a-mrna-sequence-on-a-genome" id="toc-localization-of-a-mrna-sequence-on-a-genome" class="nav-link" data-scroll-target="#localization-of-a-mrna-sequence-on-a-genome">Localization of a mRNA sequence on a genome</a></li>
+  <li><a href="#connection-to-the-server" id="toc-connection-to-the-server" class="nav-link" data-scroll-target="#connection-to-the-server">Connection to the Server</a></li>
+  <li><a href="#understand-blast-in-command-line-with-a-small-dataset" id="toc-understand-blast-in-command-line-with-a-small-dataset" class="nav-link" data-scroll-target="#understand-blast-in-command-line-with-a-small-dataset">Understand BLAST in Command Line with a small dataset</a></li>
+  <li><a href="#apply-blast-on-real-datasets-optional" id="toc-apply-blast-on-real-datasets-optional" class="nav-link" data-scroll-target="#apply-blast-on-real-datasets-optional">Apply BLAST on real datasets (optional)</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -298,15 +294,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="practical---similary-searches" class="level1">
 <h1>Practical - Similary searches</h1>
-<section id="search-for-homologous-proteins-using-blastp-ncbi-blast" class="level2">
-<h2 class="anchored" data-anchor-id="search-for-homologous-proteins-using-blastp-ncbi-blast">Search for homologous proteins using BLASTP (NCBI BLAST)</h2>
+<section id="blast-online" class="level2">
+<h2 class="anchored" data-anchor-id="blast-online">Blast online</h2>
+<section id="search-for-homologous-proteins-using-blastp-ncbi-blast" class="level3">
+<h3 class="anchored" data-anchor-id="search-for-homologous-proteins-using-blastp-ncbi-blast">Search for homologous proteins using BLASTP (NCBI BLAST)</h3>
 <p>We want to find homologs of a bat protein sequence available on moodle.</p>
-<section id="composition" class="level3">
-<h3 class="anchored" data-anchor-id="composition">Composition</h3>
+<section id="composition" class="level4">
+<h4 class="anchored" data-anchor-id="composition">Composition</h4>
 <p>What can you say about the composition of this protein sequence? What problem can be encountered in a similarity search with such a composition?</p>
 </section>
-<section id="databases" class="level3">
-<h3 class="anchored" data-anchor-id="databases">Databases</h3>
+<section id="databases" class="level4">
+<h4 class="anchored" data-anchor-id="databases">Databases</h4>
 <div id="exr-1" class="custom theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1</strong></span> Which databases are available for the search?</p>
 </div>
@@ -315,8 +313,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="theorem-title"><strong>Exercise 2</strong></span> Will the search be exhaustive?</p>
 </div>
 </section>
-<section id="blastp-parameters" class="level3">
-<h3 class="anchored" data-anchor-id="blastp-parameters">BLASTP parameters</h3>
+<section id="blastp-parameters" class="level4">
+<h4 class="anchored" data-anchor-id="blastp-parameters">BLASTP parameters</h4>
 <p>See Algorithm parameters, at the bottom of the page.</p>
 <div id="exr-1" class="custom theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3</strong></span> How many sequences can you get?</p>
@@ -331,10 +329,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="theorem-title"><strong>Exercise 6</strong></span> How are regions of low complexity processed?</p>
 </div>
 </section>
-<section id="perform-the-similarity-search-swissprot-e10-default-for-other-parameters" class="level3">
-<h3 class="anchored" data-anchor-id="perform-the-similarity-search-swissprot-e10-default-for-other-parameters">Perform the similarity search (SwissProt, E≤10, default for other parameters)</h3>
-<section id="graphic-summary" class="level4">
-<h4 class="anchored" data-anchor-id="graphic-summary">Graphic summary</h4>
+<section id="perform-the-similarity-search-swissprot-e10-default-for-other-parameters" class="level4">
+<h4 class="anchored" data-anchor-id="perform-the-similarity-search-swissprot-e10-default-for-other-parameters">Perform the similarity search (SwissProt, E≤10, default for other parameters)</h4>
+<section id="graphic-summary" class="level5">
+<h5 class="anchored" data-anchor-id="graphic-summary">Graphic summary</h5>
 <div id="exr-1" class="custom theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 7</strong></span> How many sequences do you obtain with E≤10?</p>
 </div>
@@ -343,13 +341,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="description" class="level3">
-<h3 class="anchored" data-anchor-id="description">Description</h3>
+<section id="description" class="level4">
+<h4 class="anchored" data-anchor-id="description">Description</h4>
 <div id="exr-1" class="custom theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 9</strong></span> Which families are detected?</p>
 </div>
-<section id="taxonomy" class="level4">
-<h4 class="anchored" data-anchor-id="taxonomy">Taxonomy</h4>
+<section id="taxonomy" class="level5">
+<h5 class="anchored" data-anchor-id="taxonomy">Taxonomy</h5>
 <div id="exr-1" class="custom theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 10</strong></span> In which organisms do you find hits?</p>
 </div>
@@ -357,8 +355,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="theorem-title"><strong>Exercise 11</strong></span> In which species is the closest sequence found?</p>
 </div>
 </section>
-<section id="alignments" class="level4">
-<h4 class="anchored" data-anchor-id="alignments">Alignments</h4>
+<section id="alignments" class="level5">
+<h5 class="anchored" data-anchor-id="alignments">Alignments</h5>
 <div id="exr-1" class="custom theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 12</strong></span> Identify a conserved motif in the superfamily.</p>
 </div>
@@ -366,8 +364,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="theorem-title"><strong>Exercise 13</strong></span> According to the alignments, are the detected sequences all homologous to our query?</p>
 </div>
 </section>
-<section id="decrease-in-the-word-size" class="level4">
-<h4 class="anchored" data-anchor-id="decrease-in-the-word-size">Decrease in the word size</h4>
+<section id="decrease-in-the-word-size" class="level5">
+<h5 class="anchored" data-anchor-id="decrease-in-the-word-size">Decrease in the word size</h5>
 <div id="exr-1" class="custom theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 14</strong></span> What might be the consequences of a decrease in word size?</p>
 </div>
@@ -381,8 +379,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="localisation-of-a-transcript-on-a-genome-and-search-for-a-cds" class="level2">
-<h2 class="anchored" data-anchor-id="localisation-of-a-transcript-on-a-genome-and-search-for-a-cds">Localisation of a transcript on a genome and search for a CDS</h2>
+<section id="localisation-of-a-transcript-on-a-genome-and-search-for-a-cds" class="level3">
+<h3 class="anchored" data-anchor-id="localisation-of-a-transcript-on-a-genome-and-search-for-a-cds">Localisation of a transcript on a genome and search for a CDS</h3>
 <p>A gene has been detected as being over-expressed in several patients with esophageal cancer. The sequence of the transcript is provided below.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>human <span class="ex">mRNA</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">GTGTGGACACTCCTAGGTTAGAAAGTTTGGTATGTTGCTATACCTTTGCTTCTCCCACCT</span></span>
@@ -399,18 +397,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">CTGTCGACCCTGGATGTTGAATTGCCACCTGTTTGCTGTGACATAGATATTTAAATTTCT</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">TAGTGCTTCAGAGTTTGTGTGTATTTGTATTAATAAAGCATTCTTTATCAGAAAAAAAAA</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">AAAAAAA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="localization-of-a-mrna-sequence-on-a-genome" class="level3">
-<h3 class="anchored" data-anchor-id="localization-of-a-mrna-sequence-on-a-genome">Localization of a mRNA sequence on a genome</h3>
+<section id="localization-of-a-mrna-sequence-on-a-genome" class="level4">
+<h4 class="anchored" data-anchor-id="localization-of-a-mrna-sequence-on-a-genome">Localization of a mRNA sequence on a genome</h4>
 <p>Localize the corresponding gene on the human genome with BLAST (BLAST Genomes section, at the bottom of the page). Use the GRCh38.p14 reference assembly.</p>
-<section id="program" class="level4">
-<h4 class="anchored" data-anchor-id="program">Program</h4>
+<section id="program" class="level5">
+<h5 class="anchored" data-anchor-id="program">Program</h5>
 <p>MEGABLAST is proposed by default.</p>
 <div id="exr-1" class="custom theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 17</strong></span> What is the word size in MEGABLAST? Can we use MegaBLAST in our case or should we use BLASTN?</p>
 </div>
 </section>
-<section id="analysis" class="level4">
-<h4 class="anchored" data-anchor-id="analysis">Analysis</h4>
+<section id="analysis" class="level5">
+<h5 class="anchored" data-anchor-id="analysis">Analysis</h5>
 <div id="exr-1" class="custom theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 18</strong></span> Comment obtained results (number of hits, conservation…)</p>
 </div>
@@ -427,8 +425,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="theorem-title"><strong>Exercise 22</strong></span> Which program can be used to improve your results? Compare results.</p>
 </div>
 </section>
-<section id="localization-of-the-coding-sequence-cds" class="level4">
-<h4 class="anchored" data-anchor-id="localization-of-the-coding-sequence-cds">Localization of the coding sequence (CDS)</h4>
+<section id="localization-of-the-coding-sequence-cds" class="level5">
+<h5 class="anchored" data-anchor-id="localization-of-the-coding-sequence-cds">Localization of the coding sequence (CDS)</h5>
 <div id="exr-1" class="custom theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 23</strong></span> How could we localize the coding region of this transcript?</p>
 </div>
@@ -437,6 +435,566 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div id="exr-1" class="custom theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 25</strong></span> What are the boundaries and reading frame of the CDS?</p>
+</div>
+</section>
+</section>
+</section>
+<section id="identifying-species-in-a-metagenomic-sample-using-blast" class="level3">
+<h3 class="anchored" data-anchor-id="identifying-species-in-a-metagenomic-sample-using-blast">Identifying Species in a Metagenomic Sample Using BLAST</h3>
+</section>
+</section>
+<section id="blast-in-command" class="level2">
+<h2 class="anchored" data-anchor-id="blast-in-command">Blast in command</h2>
+<section id="connection-to-the-server" class="level3">
+<h3 class="anchored" data-anchor-id="connection-to-the-server">Connection to the Server</h3>
+<p>To learn how to connect to the server for practical work, refer to the <a href="../help/server_connection_guide.html">Server Connection Guide</a>.</p>
+<p>Once you’re connected, start by creating a working directory for this session and navigating into it.</p>
+<p><strong>mkdir</strong></p>
+<p>The <code>mkdir</code> command stands for “make directory” and is used to create a new folder in the file system. You can create your directory like this:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="op">&lt;</span>directory_name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>cd</strong></p>
+<p>The cd command stands for “change directory”, allows you to move into a different folder within the file system. Use it as follows:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="op">&lt;</span>directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> tp3</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> tp3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Help
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you need help with a command, display its help using: - <code>&lt;command-h</code> or <code>&lt;command--help</code> for short help messages. - <code>man &lt;command&gt;</code> to display the full manual of a command.</p>
+</div>
+</div>
+</section>
+<section id="understand-blast-in-command-line-with-a-small-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="understand-blast-in-command-line-with-a-small-dataset">Understand BLAST in Command Line with a small dataset</h3>
+<section id="exploring-data" class="level4">
+<h4 class="anchored" data-anchor-id="exploring-data">Exploring data</h4>
+<p>This exercise, along with the next one, is based on content from <a href="https://blast-crash-course.readthedocs.io/en/latest/index.html">A Quick Guide to Getting Started with Shell and BLAST</a>.</p>
+<p>The materials used in these exercises are located in the directory <code>/data/blast_tp/</code>.</p>
+<p><strong>ls</strong></p>
+<p>The <code>ls</code> command is used to list the contents of a directory in Linux. It provides a way to see files and subdirectories within the specified directory.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="op">&lt;</span>directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>tree</strong></p>
+<p>The <code>tree</code>command is used to display the contents of a directory in a hierarchical structure. It provides a visual representation of files and subdirectories within the specified directory.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tree</span> <span class="op">&lt;</span>directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 26</strong></span> What are in in <code>/data/blast_tp/</code> ? Use <code>ls</code>command. Explore the subdirectory with the <code>tree</code> command and map out the directory structure.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /data/blast_tp/</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">tree</span> /data/blast_tp/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>Navigate to small_blast directory thanks to <code>cd</code> command.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /data/blast_tp/small_blast/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>This directory contains:</p>
+<ul>
+<li><code>gene_db/</code>: a folder containing a nucleotide sequence file of 50 nifh genes (<code>nifh-ref.fa</code>), it’s the <strong>database</strong>.</li>
+<li><code>query_gene/</code>: a folder contains a nucleotide sequence file of the gene you generated from the lab (<code>single_gene_mylab.fa</code>), it’s the <strong>query</strong>.</li>
+</ul>
+<p><strong>head</strong></p>
+<p>The <code>head</code> command is used to display the first few lines of a file, which is helpful when you want to quickly preview its content without opening the entire file.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="op">&lt;</span>file<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>By default, head shows the first 10 lines of the file. You can customize the number of lines displayed using the <code>-n</code> option. This option allows you to specify the exact number of lines to display.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 20 <span class="op">&lt;</span>file<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This command will display the first 20 lines of the file. You can adjust the number of lines according to your needs.</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 27</strong></span> How does sequence fasta file look like? Use the command <code>head</code> to display the begining of each file.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> gene_db/nifh-ref.fa</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> query_gene/single_gene_mylab.fa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><strong>grep</strong></p>
+<p><code>grep</code>, short for “global regular expression print”, is a command used for searching and matching text patterns in files contained in the regular expressions.</p>
+<p>Display the lines with a pattern:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"&lt;pattern&gt;"</span> <span class="op">&lt;</span>file_path<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This command searches through the specified file and outputs the lines that contain the given pattern.</p>
+<p>Count the lines with a pattern:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"&lt;pattern&gt;"</span> <span class="op">&lt;</span>file_path<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The -c option tells grep to count the number of lines that match the specified pattern rather than displaying them. This is useful for quickly determining how many occurrences of the pattern exist in the file.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of sequences in the query file</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"&gt;"</span> gene_db/nifh-ref.fa</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of sequences in the database file</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"&gt;"</span> query_gene/single_gene_mylab.fa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="make-database" class="level4">
+<h4 class="anchored" data-anchor-id="make-database">Make database</h4>
+<p><strong>makeblastdb</strong></p>
+<p>The <code>makeblastdb</code> command is used to create a BLAST database from your sequence data, which serves as the reference for comparing queries. Creating a database for genes is an efficient way to index gene sequences, allowing for much faster searches and comparisons against the database.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">makeblastdb</span> <span class="at">-in</span> <span class="op">&lt;</span>sequence_file<span class="op">&gt;</span> -dbtype <span class="op">&lt;</span>type<span class="op">&gt;</span> -out <span class="op">&lt;</span>name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Explanation of the command options:</p>
+<ul>
+<li><code>-in &lt;sequence_file</code>&gt;: Specifies the input file containing the sequences you want to include in the database. This file should be in FASTA or other supported formats.</li>
+<li><code>-dbtype &lt;type&gt;</code>: Indicates the type of sequences in the input file. Use <code>nucl</code> for nucleotide sequences and <code>prot</code> for protein sequences.</li>
+<li><code>-out &lt;name&gt;</code>: Defines the name for the output database files. The program will create several files with this base name, which will be used for subsequent BLAST searches.</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">makeblastdb</span> <span class="at">-in</span> <span class="op">&lt;</span>sequence_file<span class="op">&gt;</span> -dbtype <span class="op">&lt;</span>type<span class="op">&gt;</span> -out <span class="op">&lt;</span>name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Navigate back to the directory of the current practical, create a directory <code>small_blast</code> and construct the BLAST database.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/td3/</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> small_blast</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> small_blast</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ex">makeblastdb</span> <span class="at">-in</span> /data/blast_tp/small_blast/gene_db/nifh-ref.fa <span class="at">-dbtype</span> nucl <span class="at">-out</span> nifh-db.fa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Note: The tilde <code>~</code> is a shortcut for your home directory <code>/home/&lt;username&gt;</code>.</em></p>
+</div>
+</div>
+</div>
+<p>Look the files generared. Use <code>ls</code> command.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="blast" class="level4">
+<h4 class="anchored" data-anchor-id="blast">BLAST</h4>
+<p>Now, we can perform a BLAST search of the gene sequence against this database. BLAST offers different algorithms depending on the type of query and the database:</p>
+<ul>
+<li><strong>blastn</strong>: Used for nucleotide sequence queries against a nucleotide database.</li>
+<li><strong>blastp</strong>: Used for protein sequence queries against a protein database.</li>
+<li><strong>blastx</strong>: Used for translating a nucleotide query to protein and comparing it against a protein database.</li>
+<li><strong>tblastn</strong>: Used for protein queries against a translated nucleotide database.</li>
+<li><strong>tblastx</strong>: Used for translating both the nucleotide query and the database sequences, comparing them in protein space.</li>
+</ul>
+<p>To see the list of parameters of this command use:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">blastn</span> <span class="at">-help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For this practical, we need of theses options:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">blastn</span> <span class="at">-query</span> <span class="op">&lt;</span>query_file<span class="op">&gt;</span> -db <span class="op">&lt;</span>db_file<span class="op">&gt;</span> -out <span class="op">&lt;</span>name_of_output<span class="op">&gt;</span> -outfmt <span class="op">&lt;</span>format<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Explanation of options:</p>
+<ul>
+<li><code>query &lt;query_file&gt;</code>: Specifies the input file with the sequence to search.</li>
+<li><code>db &lt;db_file&gt;</code>: Specifies the BLAST database to search against.</li>
+<li><code>out &lt;name_of_output&gt;</code>: Defines the output file for the results.</li>
+<li><code>outfmt &lt;format&gt;</code>: Sets the output format to tabular for easier parsing. Format <code>6</code> provides tabular output, which includes information like query sequence, subject sequence, percent identity, alignment length, and e-value. It is commonly used for further parsing and analysis of the results. We can have a good understanding of <code>-outfmt 6</code> format from this <a href="https://sites.google.com/site/wiki4metagenomics/tools/blast/blastn-output-format-6">webpage</a>.</li>
+</ul>
+<p>Launch BLAST.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">blastn</span> <span class="at">-query</span> /data/blast_tp/small_blast/query_gene/single_gene_mylab.fa <span class="at">-db</span> nifh-db.fa.ndb <span class="at">-out</span> single_gene_mylab.out <span class="at">-outfmt</span> 6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 28</strong></span> How many results do you get? Use the <code>wc -l</code>.</p>
+</div>
+<p><strong>wc</strong></p>
+<p>The <code>wc</code> (word count) command in Unix/Linux is a utility used to count lines, words, and bytes in a file or input stream.</p>
+<p>Here are its main options:</p>
+<ul>
+<li><code>-l</code>: Counts the number of lines.</li>
+<li><code>-w</code>: Counts the number of words.</li>
+<li><code>-c</code>: Counts the number of bytes.</li>
+<li><code>-m</code>: Counts the number of characters.</li>
+<li><code>-L</code>: Reports the length of the longest line.</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="pp">[</span><span class="ss">options</span><span class="pp">]</span> <span class="op">&lt;</span>file<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> single_gene_mylab.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 29</strong></span> What is the range of percentage identity for the results? Similarly, what is the range of e-values? Use <code>more</code>command.</p>
+</div>
+<p><strong>more</strong></p>
+<p>You can display the reference file the command <code>more</code>.</p>
+<p>The <code>more</code> command is used to display the contents of a file one screen at a time. This is useful for viewing large files like FASTQ files, where the data is too big to fit on a single screen.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span> <span class="op">&lt;</span>path_file_to_display<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span> single_gene_mylab.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="apply-blast-on-real-datasets-optional" class="level3">
+<h3 class="anchored" data-anchor-id="apply-blast-on-real-datasets-optional">Apply BLAST on real datasets (optional)</h3>
+<section id="exploring-data-1" class="level4">
+<h4 class="anchored" data-anchor-id="exploring-data-1">Exploring data</h4>
+<p>Instead of just one gene as shown in Project 1, we may need to compare a large amount of sequences with a database in reality. In this project, we will try to identify the existence of 50 nifh genes in three different soil metagenomes. To do that, we will align sequences from metagenome against the nifh gene database.</p>
+<p>Navigate to the folder <code>/data/blast_tp/big_blast/</code> first, then list files and directories in this folder.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /data/blast_tp/big_blast/</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">tree</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>This directory contains:</p>
+<ul>
+<li><code>nifh_db/</code>: a folder contains nucleotide sequence file for nitrogen fixation genes (`nifh-ref.fa), it’s the <strong>database</strong>.</li>
+<li><code>metags/</code>: a folder contains metagenome files from three different Iowa crop soils (<code>corn.fa</code>, <code>soybean.fa</code>, and <code>prairie.fa</code>), they are <strong>queries</strong>.</li>
+</ul>
+<p>The objective is to identify the existence of nitrogen fixation genes in soil metagenome files.</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 30</strong></span> How many sequences are there in the fasta file?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> nifh_db/nifh-ref.fa </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> metags/<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The Wildcard
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>*</code> symbol is a wildcard character used to represent “zero or more characters” in file or directory names. When used in commands, it allows you to work with multiple files or patterns at once.</p>
+</div>
+</div>
+</section>
+<section id="make-database-1" class="level4">
+<h4 class="anchored" data-anchor-id="make-database-1">Make database</h4>
+<p>We want to find the existence of nifh genes in soil metagenome samples. Making a database for nifh genes is a smart way to index the gene sequences so that it can search and compare metagenome sequences (query) with nifh gene sequences much faster.</p>
+<p>Navigate back to the directory of the current practical, create a directory <code>big_blast</code> and construct the BLAST database.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">makeblastdb</span> <span class="at">-in</span> <span class="op">&lt;</span>sequence_file<span class="op">&gt;</span> -dbtype <span class="op">&lt;</span>type<span class="op">&gt;</span> -out <span class="op">&lt;</span>name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/td3/</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> big_blast</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> big_blast</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="ex">makeblastdb</span> <span class="at">-in</span> /data/blast_tp/big_blast/nifh_db/nifh-ref.fa <span class="at">-dbtype</span> nucl <span class="at">-out</span> nifh-db.fa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="blast-1" class="level4">
+<h4 class="anchored" data-anchor-id="blast-1">Blast</h4>
+<p>Now we can BLAST the metagenome files to nifh gene database. Run one BLAST for each query.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">blastn</span> <span class="at">-query</span> <span class="op">&lt;</span>query_file<span class="op">&gt;</span> -db <span class="op">&lt;</span>db_file<span class="op">&gt;</span> -out <span class="op">&lt;</span>name_of_output<span class="op">&gt;</span> -outfmt <span class="op">&lt;</span>format<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">blastn</span> <span class="at">-query</span> /data/blast_tp/big_blast/metags/corn.fa <span class="at">-db</span> nifh-db.fa <span class="at">-out</span> corn.out <span class="at">-outfmt</span> 6</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="ex">blastn</span> <span class="at">-query</span> /data/blast_tp/big_blast/metags/prairie.fa <span class="at">-db</span> nifh-db.fa <span class="at">-out</span> prairie.out <span class="at">-outfmt</span> 6</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="ex">blastn</span> <span class="at">-query</span> /data/blast_tp/big_blast/metags/soybean.fa <span class="at">-db</span> nifh-db.fa <span class="at">-out</span> soybean.out <span class="at">-outfmt</span> 6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="playing-around-blast-output" class="level4">
+<h4 class="anchored" data-anchor-id="playing-around-blast-output">Playing around BLAST output</h4>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 31</strong></span> How many results do you get for each fasta file? Use the <code>wc -l</code>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> <span class="pp">*</span>.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The wildcard <code>*</code> matches all files ending with <code>.out</code>.</p>
+</div>
+</div>
+</div>
+<p>To understand the meaning of each column in the BLAST output (format 6), refer to this <a href="https://sites.google.com/site/wiki4metagenomics/tools/blast/blastn-output-format-6">webpage</a>.</p>
+<p>We will some new command to manipulate the output file.</p>
+<p><strong>sort</strong></p>
+<p>The <code>sort</code> command is used to sort the lines of a file or input stream based on specified criteria. It can sort in ascending or descending order and handle various types of data.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="pp">[</span><span class="ss">options</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">file</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Common Options:</p>
+<ul>
+<li><code>-n</code>: Sort numerically.</li>
+<li><code>-r</code>: Sort in reverse order.</li>
+<li><code>-k &lt;key&gt;</code>: Specifies the key (column) to sort by.</li>
+<li><code>-u</code>: Remove duplicate lines.</li>
+</ul>
+<p><strong>cut</strong></p>
+<p>The <code>cut</code> command is used to extract specific sections or columns from each line of a file or input stream. It is particularly useful for parsing delimited files, such as CSV or tab-separated files.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="pp">[</span><span class="ss">options</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">file</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Common Options:</p>
+<ul>
+<li><code>-d &lt;delimiter&gt;</code>: Specifies the delimiter character (default is tab).</li>
+<li><code>-f &lt;fields&gt;</code>: Specifies the fields to extract (e.g., -f 1,3 to extract the first and third fields).</li>
+</ul>
+<p><strong>uniq</strong></p>
+<p>The <code>uniq</code> command is used to remove (or keep) consecutive duplicate lines from a sorted file or input stream. It is often used in conjunction with sort to ensure that the input is sorted.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">uniq</span> <span class="pp">[</span><span class="ss">options</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">file</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Common Options:</p>
+<ul>
+<li><code>-c</code>: Prefix lines with the number of occurrences.</li>
+<li><code>-d</code>: Only print duplicate lines.</li>
+<li><code>-u</code>: Only print unique lines.</li>
+</ul>
+<p><strong>grep</strong></p>
+<p>The <code>grep</code> command is used to search for patterns within files or input streams. It stands for “global regular expression print” and is highly versatile for text processing.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="pp">[</span><span class="ss">options</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">pattern</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">file</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Common Options:</p>
+<ul>
+<li><code>-i</code>: Ignore case.</li>
+<li><code>-v</code>: Invert match (show lines that do not match the pattern).</li>
+<li><code>-c</code>: Count the number of matching lines.</li>
+<li><code>-n</code>: Show line numbers.</li>
+<li><code>-r</code>: Recursively search directories.</li>
+</ul>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 32</strong></span> How many uniq nifh genes were hit by sequences from soybean metagenome?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>There are several ways to do this:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f</span> 2 soybean.out <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f</span> 2 soybean.out <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-u</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 33</strong></span> How many uniq sequences from prairie metagenome can hit nifh genes?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>There are several ways to do this:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f</span> 1 prairie.out <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-u</span> <span class="kw">|</span><span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f</span> 1 prairie.out <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 34</strong></span> How to get the <code>sseqid</code>, <code>sstart</code>, and <code>send</code> column (column 2, 9, 10) from the soybean blast output file?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f</span> 2,9,10 soybean.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 35</strong></span> How many times was gene <code>gi|909637271|emb|LN713523.1|</code> hit by sequences from corn metagenome sample:</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"gi|909637271|emb|LN713523.1|"</span> corn.out <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </div>
 
 

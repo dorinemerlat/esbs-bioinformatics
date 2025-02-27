@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -166,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pharma">    
         <li>
-    <a class="dropdown-item" href="../practicals-2A/practical1.html">
+    <a class="dropdown-item" href="../practicals-pharma/practical1.html">
  <span class="dropdown-text">1 - Pre-processing of sequencing reads</span></a>
   </li>  
         <li>
@@ -195,10 +229,6 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="../help/galaxy.html">
  <span class="dropdown-text">Galaxy Help</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../help/cli.html">
- <span class="dropdown-text">CLI Help</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../help/server_connection_guide.html">
@@ -246,12 +276,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#comparison-of-2-myotubularin-sequences" id="toc-comparison-of-2-myotubularin-sequences" class="nav-link" data-scroll-target="#comparison-of-2-myotubularin-sequences">Comparison of 2 myotubularin sequences</a></li>
   <li><a href="#self-comparison-of-a-protein-sequence" id="toc-self-comparison-of-a-protein-sequence" class="nav-link" data-scroll-target="#self-comparison-of-a-protein-sequence">Self-comparison of a protein sequence</a></li>
   </ul></li>
-  <li><a href="#search-for-homologous-proteins-using-blastp-ncbi-blast" id="toc-search-for-homologous-proteins-using-blastp-ncbi-blast" class="nav-link" data-scroll-target="#search-for-homologous-proteins-using-blastp-ncbi-blast">Search for homologous proteins using BLASTP (NCBI BLAST)</a>
-  <ul class="collapse">
-  <li><a href="#composition" id="toc-composition" class="nav-link" data-scroll-target="#composition">Composition</a></li>
-  <li><a href="#databases" id="toc-databases" class="nav-link" data-scroll-target="#databases">Databases</a></li>
-  <li><a href="#blastp-parameters" id="toc-blastp-parameters" class="nav-link" data-scroll-target="#blastp-parameters">BLASTP parameters</a></li>
-  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -288,7 +312,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="dotplot-and-optimal-alignments-with-emboss-tools" class="level2">
 <h2 class="anchored" data-anchor-id="dotplot-and-optimal-alignments-with-emboss-tools">Dotplot and optimal alignments (with EMBOSS tools)</h2>
-<p>EMBOSS: tool package for sequence analysis, available for instance at: https://www.ebi.ac.uk/Tools/emboss/</p>
+<p>EMBOSS: tool package for sequence analysis, available for instance at: https://www.ebi.ac.uk/jdispatcher/emboss</p>
 <section id="comparison-of-2-myotubularin-sequences" class="level3">
 <h3 class="anchored" data-anchor-id="comparison-of-2-myotubularin-sequences">Comparison of 2 myotubularin sequences</h3>
 <p>Search for <strong>MTMR3_HUMAN</strong> (Q13615) and <strong>Q9W1Q6_DROME</strong> (Q9W1Q6) sequences in UniProt and compare them with:</p>
@@ -313,53 +337,151 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="self-comparison-of-a-protein-sequence" class="level3">
 <h3 class="anchored" data-anchor-id="self-comparison-of-a-protein-sequence">Self-comparison of a protein sequence</h3>
-<p>Search for the protein sequence corresponding to the aef1 gene of <em>Drosophila melanogaster</em> in UniProt.</p>
+<p>Search for the entries corresponding to the <em>aef1 gene</em> of <em>Drosophila melanogaster</em> in <a href="https://www.uniprot.org/">UniProt</a>. Open the <strong>SwissProt</strong> protein.</p>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10</strong></span> Which domain(s) are present?</p>
+<p><span class="theorem-title"><strong>Exercise 10</strong></span> Which domain(s) are present? To identify the domain(s) present, use the InterPro links from UniProt by navigating to <code>External links -&gt; View protein in InterPro</code>.</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 11</strong></span> Represent schematically the result of a self-comparison of this sequence using the dotplot method.</p>
 </div>
-<p>Perform the self-comparison using dotmatcher (with w=10, s=30 for instance).</p>
+<section id="connection-to-the-server" class="level4">
+<h4 class="anchored" data-anchor-id="connection-to-the-server">Connection to the Server</h4>
+<p>For many bioinformatics tools, there is a command-line alternative. These alternatives are often faster, more powerful, and more flexible.</p>
+<p>To learn how to connect to the server for practical work, refer to the <a href="../help/server_connection_guide.html">Server Connection Guide</a>.</p>
+<p>Once you’re connected, start by creating a working directory for this session and navigating into it.</p>
+<p><strong>mkdir</strong></p>
+<p>The <code>mkdir</code> command stands for “make directory” and is used to create a new folder in the file system. You can create your directory like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="op">&lt;</span>directory_name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>cd</strong></p>
+<p>The cd command stands for “change directory”, allows you to move into a different folder within the file system. Use it as follows:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="op">&lt;</span>directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> tp3</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> tp3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Help
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you need help with a command, display its help using: - <code>&lt;command-h</code> or <code>&lt;command--help</code> for short help messages. - <code>man &lt;command&gt;</code> to display the full manual of a command.</p>
+</div>
+</div>
+</section>
+<section id="download-of-protein-sequence" class="level4">
+<h4 class="anchored" data-anchor-id="download-of-protein-sequence">Download of protein sequence</h4>
+<p>You can download the sequence on the server. On the UniProt page of the protein, click on <code>Download</code>, and choose <code>Format (canonical)</code>. To download directly on the server, use Generate URL for API and copy the URL.</p>
+<p><strong>wget</strong></p>
+<p>The <code>wget</code> command is a tool used to download files from the web via HTTP, HTTPS, or FTP protocols directly from the command line.</p>
+<p>An <em>API</em> (Application Programming Interface) is a system that allows you to send requests to a server. In biology, servers like NCBI or UniProt can be accessed through APIs to retrieve data and perform analyses.</p>
+<p>To use <code>wget</code>, simply run the command followed by the URL of the file you want to download. For example:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> http://example.com/file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will download the file file.txt from the specified URL to your current directory.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://rest.uniprot.org/uniprotkb/P39413.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dotmatcher" class="level4">
+<h4 class="anchored" data-anchor-id="dotmatcher">Dotmatcher</h4>
+<p>Run EMBOSS in the command line to perform a self-comparison of this sequence using the dotmatcher with windowsize of 10, and a threshold of 30.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dotmatcher</span> <span class="at">-asequence</span> <span class="op">&lt;</span>fastaA<span class="op">&gt;</span> -bsequence <span class="op">&lt;</span>fastaB<span class="op">&gt;</span> -windowsize <span class="op">&lt;</span>size<span class="op">&gt;</span> -threshold <span class="op">&lt;</span>threshold<span class="op">&gt;</span> -graph <span class="op">&lt;</span>graph_type<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Options: - <code>asequence</code>: The first sequence file to compare (in FASTA format). Example: <code>-asequence sequenceA.fasta</code> - <code>bsequence</code>: The second sequence file to compare (in FASTA format). Example: <code>-asequence sequenceB.fasta</code> - <code>windowsize</code>: The number of characters considered for matching at each position. - <code>threshold</code>: The minimum similarity score for a match to be considered significant. - <code>graph</code>: The format for the output graph (e.g., <code>png</code>, <code>pdf</code>, <code>svg</code>).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dotmatcher</span> <span class="at">-asequence</span> P39413.fasta <span class="at">-bsequence</span> P39413.fasta <span class="at">-windowsize</span> 10 <span class="at">-threshold</span> 30 <span class="at">-graph</span> png</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>You can check the output has been generated by using the <code>ls</code> command.</p>
+<p><strong>ls</strong></p>
+<p>The <code>ls</code> command is used to list the contents of a directory in Linux. It provides a way to see files and subdirectories within the specified directory.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="op">&lt;</span>directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you want display the content of the current directory, use only:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The following files are in the current directory: - <code>P39413.fasta</code> - <code>dotmatcher.1.png</code></p>
+<p>To view the PNG file, it’s best to open it locally. Transfer it from the server to your computer first.</p>
+<p><strong>scp</strong></p>
+<p>The <code>scp</code> command stands for “secure copy protocol.” It is used to securely transfer files between a local computer and a remote server or between two remote servers over an encrypted SSH connection. This ensures that the data is protected during transfer.</p>
+<p>To copy file from a server to your computer, <strong>open a new terminal</strong> and use <code>scp</code> like this:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@<span class="op">&lt;</span>server_adress<span class="op">&gt;</span>:<span class="op">&lt;</span>source_file_path<span class="op">&gt;</span> <span class="op">&lt;</span>target_file_path<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+View the path of a file
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you not sure of the path .png file, use the command <code>realpath</code> to known it. <code>realpath &lt;file&gt;</code></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@tp.lbgi.fr:~/tp3/dotmatcher.1.png .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Note: Replace <code>&lt;login&gt;</code> with your username. The tilde <code>~</code> is a shortcut for your home directory <code>/home/&lt;username&gt;</code>.</em></p>
+</div>
+</div>
+</div>
+<p>Now that the HTML file is on your computer, you can access it like any other file using your file explorer.</p>
 <div id="exr-1" class="custom theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 12</strong></span> Is the result in agreement with your expectations? Which additional information appears?</p>
 </div>
-</section>
-</section>
-<section id="search-for-homologous-proteins-using-blastp-ncbi-blast" class="level2">
-<h2 class="anchored" data-anchor-id="search-for-homologous-proteins-using-blastp-ncbi-blast">Search for homologous proteins using BLASTP (NCBI BLAST)</h2>
-<p>We want to find homologs of a bat protein sequence available on moodle.</p>
-<section id="composition" class="level3">
-<h3 class="anchored" data-anchor-id="composition">Composition</h3>
-<p>What can you say about the composition of this protein sequence? What problem can be encountered in a similarity search with such a composition?</p>
-</section>
-<section id="databases" class="level3">
-<h3 class="anchored" data-anchor-id="databases">Databases</h3>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 13</strong></span> Which databases are available for the search?</p>
-</div>
-<p>Select the SwissProt database.</p>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 14</strong></span> Will the search be exhaustive?</p>
-</div>
-</section>
-<section id="blastp-parameters" class="level3">
-<h3 class="anchored" data-anchor-id="blastp-parameters">BLASTP parameters</h3>
-<p>See Algorithm parameters, at the bottom of the page.</p>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 15</strong></span> How many sequences can you get?</p>
-</div>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 16</strong></span> What is the Expect threshold to display sequences? Modify the Expect threshold to obtain results with E≤10.</p>
-</div>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 17</strong></span> What are the gap penalties? The word size?</p>
-</div>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 18</strong></span> How are regions of low complexity processed?</p>
-</div>
 
 
+</section>
 </section>
 </section>
 </section>

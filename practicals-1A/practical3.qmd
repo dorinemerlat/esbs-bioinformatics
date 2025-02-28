@@ -1,17 +1,15 @@
 # Practical - Similary searches
 
-## Blast online
-
-### Search for homologous proteins using BLASTP (NCBI BLAST)
+## Search for homologous proteins using BLASTP (NCBI BLAST)
 
 We want to find homologs of a bat protein sequence available on moodle.
 
-#### Composition
+### Composition
 
 What can you say about the composition of this protein sequence? What problem can be
 encountered in a similarity search with such a composition?
 
-#### Databases
+### Databases
 
 ::: {#exr-1 .custom}
 Which databases are available for the search?
@@ -23,7 +21,7 @@ Select the SwissProt database.
 Will the search be exhaustive?
 :::
 
-#### BLASTP parameters
+### BLASTP parameters
 
 See Algorithm parameters, at the bottom of the page.
 
@@ -43,9 +41,9 @@ What are the gap penalties? The word size?
 How are regions of low complexity processed?
 :::
 
-#### Perform the similarity search (SwissProt, E≤10, default for other parameters)
+### Perform the similarity search (SwissProt, E≤10, default for other parameters)
 
-##### Graphic summary
+#### Graphic summary
 
 ::: {#exr-1 .custom}
 How many sequences do you obtain with E≤10?
@@ -55,13 +53,13 @@ How many sequences do you obtain with E≤10?
 What can be deduced from the graphical representation of BLAST results? There is no alignment on the C-terminal region. Why?
 :::
 
-#### Description
+### Description
 
 ::: {#exr-1 .custom}
 Which families are detected?
 :::
 
-##### Taxonomy
+#### Taxonomy
 
 ::: {#exr-1 .custom}
 In which organisms do you find hits?
@@ -71,7 +69,7 @@ In which organisms do you find hits?
 In which species is the closest sequence found?
 :::
 
-##### Alignments
+#### Alignments
 
 ::: {#exr-1 .custom}
 Identify a conserved motif in the superfamily.
@@ -81,7 +79,7 @@ Identify a conserved motif in the superfamily.
 According to the alignments, are the detected sequences all homologous to our query?
 :::
 
-##### Decrease in the word size
+#### Decrease in the word size
 
 ::: {#exr-1 .custom}
 What might be the consequences of a decrease in word size?
@@ -97,7 +95,7 @@ How many "hits" are you getting now?
 In which taxon (taxa) are similar proteins found? 
 :::
 
-### Localisation of a transcript on a genome and search for a CDS
+## Localisation of a transcript on a genome and search for a CDS
 
 A gene has been detected as being over-expressed in several patients with esophageal cancer. The sequence of the transcript is provided below.
 
@@ -119,18 +117,18 @@ TAGTGCTTCAGAGTTTGTGTGTATTTGTATTAATAAAGCATTCTTTATCAGAAAAAAAAA
 AAAAAAA
 ```
 
-#### Localization of a mRNA sequence on a genome
+### Localization of a mRNA sequence on a genome
 
 Localize the corresponding gene on the human genome with BLAST (BLAST Genomes section, at the bottom of the page). Use the GRCh38.p14 reference assembly.
 
-##### Program
+#### Program
 MEGABLAST is proposed by default. 
 
 ::: {#exr-1 .custom}
 What is the word size in MEGABLAST? Can we use MegaBLAST in our case or should we use BLASTN?
 :::
 
-##### Analysis
+#### Analysis
 
 ::: {#exr-1 .custom}
 Comment obtained results (number of hits, conservation...)
@@ -153,7 +151,7 @@ Which program can be used to improve your results? Compare results.
 :::
 
 
-##### Localization of the coding sequence (CDS)
+#### Localization of the coding sequence (CDS)
 
 ::: {#exr-1 .custom}
 How could we localize the coding region of this transcript?
@@ -167,9 +165,11 @@ Perform the similarity search in SwissProt.
 What are the boundaries and reading frame of the CDS?
 :::
 
-### Identifying Species in a Metagenomic Sample Using BLAST
+## Gene identification in metagenomic data
 
-## Blast in command 
+This exercise is based on content from [A Quick Guide to Getting Started with Shell and BLAST](https://blast-crash-course.readthedocs.io/en/latest/index.html). 
+
+The objective is to identify the existence of **nitrogen fixation genes*** in **soil metagenome**.
 
 ### Connection to the Server
 
@@ -194,7 +194,7 @@ cd <directory>
 ```
 
 ::: {.callout-tip collapse="true"}
-## Solution
+# Solution
 ```bash
 mkdir tp3
 cd tp3
@@ -202,19 +202,17 @@ cd tp3
 :::
 
 ::: {.callout-note}
-## Help
+# Help
 If you need help with a command, display its help using:
  - `<command-h` or `<command--help` for short help messages.
  - `man <command>` to display the full manual of a command.
 :::
 
-### Understand BLAST in Command Line with a small dataset
+### Exploring data
 
-#### Exploring data
+The materials used in this are located in the directory `/data/blast_tp/`. 
 
-This exercise, along with the next one, is based on content from [A Quick Guide to Getting Started with Shell and BLAST](https://blast-crash-course.readthedocs.io/en/latest/index.html). 
-
-The materials used in these exercises are located in the directory `/data/blast_tp/`. 
+The objective is to identify the existence of **nitrogen fixation genes*** in **soil metagenome**.
 
 **ls**
 
@@ -237,26 +235,27 @@ What are in  in `/data/blast_tp/` ? Use `ls`command. Explore the subdirectory wi
 :::
 
 ::: {.callout-tip collapse="true"}
-## Solution
+# Solution
 ```bash
 ls /data/blast_tp/
 tree /data/blast_tp/
 ```
 :::
 
-Navigate to small_blast directory thanks to `cd` command.
+Navigate to `blast_tp` directory thanks to `cd` command.
 
 ::: {.callout-tip collapse="true"}
-## Solution
+# Solution
 ```bash
-cd /data/blast_tp/small_blast/
+cd /data/blast_tp/
 ```
 :::
 
 This directory contains: 
 
-- `gene_db/`: a folder containing a nucleotide sequence file of 50 nifh genes (`nifh-ref.fa`), it's the **database**. 
-- `query_gene/`: a folder contains a nucleotide sequence file of the gene you generated from the lab (`single_gene_mylab.fa`), it's the **query**.
+- `nifh_db/`: a folder containing a nucleotide sequence file of 50 nifh genes (`nifh-ref.fa`), it's the **database**. 
+- `query_gene/`: a folder contains metagenome files from three different Iowa crop soils (`corn.fa`, `soybean.fa`, and `prairie.fa`), there are the **queries**.
+
 
 **head**
 
@@ -280,12 +279,27 @@ How does sequence fasta file look like? Use the command `head` to display the be
 :::
 
 ::: {.callout-tip collapse="true"}
-## Solution
+# Solution
+
+You can display the contents of each file individually:
+
 ```bash
-head gene_db/nifh-ref.fa
-head query_gene/single_gene_mylab.fa
+head metags/corn.fa 
+head metags/prairie.fa 
+head metags/soybean.fa
+head nifh_db/nifh-ref.fa
 ```
+
+Or use `*` to apply the head command to all files at once:
+```bash
+head */*.fa
+```
+
+The `*` is a wildcard that matches multiple files. In this case: `*/*.fa` expands to **all .fa files located inside any subdirectory**.
+
+This approach is useful when working with multiple files in different directories, avoiding the need to list them manually.
 :::
+
 
 **grep**
 
@@ -307,18 +321,35 @@ grep -c "<pattern>" <file_path>
 
 The -c option tells grep to count the number of lines that match the specified pattern rather than displaying them. This is useful for quickly determining how many occurrences of the pattern exist in the file.
 
-::: {.callout-tip collapse="true"}
-## Solution
-```bash
-# Count the number of sequences in the query file
-grep -c ">" gene_db/nifh-ref.fa
-
-# Count the number of sequences in the database file
-grep -c ">" query_gene/single_gene_mylab.fa
-```
+::: {#exr-1 .custom}
+How many sequences are there in theses fasta files?
 :::
 
-#### Make database
+::: {.callout-tip collapse="true"}
+# Solution
+
+You can count for each file individually:
+
+```bash
+grep -c ">" metags/corn.fa 
+grep -c ">" metags/prairie.fa 
+grep -c ">" metags/soybean.fa
+grep -c ">" nifh_db/nifh-ref.fa
+```
+
+Or use `*` to apply the grep command to all files at once:
+```bash
+grep -c ">" */*.fa
+```
+
+The `*` is a wildcard that matches multiple files. In this case: `*/*.fa` expands to **all .fa files located inside any subdirectory**.
+
+This approach is useful when working with multiple files in different directories, avoiding the need to list them manually.
+:::
+
+### Make database
+
+We want to find the existence of nifh genes in soil metagenome samples. Making a database for nifh genes is a smart way to index the gene sequences so that it can search and compare metagenome sequences (query) with nifh gene sequences much faster.
 
 **makeblastdb**
 
@@ -338,15 +369,13 @@ Explanation of the command options:
 makeblastdb -in <sequence_file> -dbtype <type> -out <name>
 ```
 
-Navigate back to the directory of the current practical, create a directory `small_blast` and construct the BLAST database.
+Navigate back to the directory of the current practical and construct the BLAST database.
 
 ::: {.callout-tip collapse="true"}
-## Solution
+# Solution
 ```bash
 cd ~/td3/
-mkdir small_blast
-cd small_blast
-makeblastdb -in /data/blast_tp/small_blast/gene_db/nifh-ref.fa -dbtype nucl -out nifh-db.fa
+makeblastdb -in /data/blast_tp/nifh_db/nifh-ref.fa -dbtype nucl -out nifh-db.fa
 ```
 
 *Note: The tilde `~` is a shortcut for your home directory `/home/<username>`.*
@@ -355,13 +384,13 @@ makeblastdb -in /data/blast_tp/small_blast/gene_db/nifh-ref.fa -dbtype nucl -out
 Look the files generared. Use `ls` command.
 
 ::: {.callout-tip collapse="true"}
-## Solution
+# Solution
 ```bash
 ls
 ```
 :::
 
-#### BLAST
+### BLAST
 
 Now, we can perform a BLAST search of the gene sequence against this database. BLAST offers different algorithms depending on the type of query and the database:
 
@@ -390,17 +419,23 @@ Explanation of options:
 - `out <name_of_output>`: Defines the output file for the results.
 - `outfmt <format>`: Sets the output format to tabular for easier parsing. Format `6` provides tabular output, which includes information like query sequence, subject sequence, percent identity, alignment length, and e-value. It is commonly used for further parsing and analysis of the results. We can have a good understanding of `-outfmt 6` format from this [webpage](https://sites.google.com/site/wiki4metagenomics/tools/blast/blastn-output-format-6).
 
-Launch BLAST.
+Launch BLAST for each query file.
 
 ::: {.callout-tip collapse="true"}
 ## Solution
 ```bash
-blastn -query /data/blast_tp/small_blast/query_gene/single_gene_mylab.fa -db nifh-db.fa.ndb -out single_gene_mylab.out -outfmt 6
+blastn -query /data/blast_tp/metags/corn.fa -db nifh-db.fa -out corn.out -outfmt 6
+
+blastn -query /data/blast_tp/metags/prairie.fa -db nifh-db.fa -out prairie.out -outfmt 6
+
+blastn -query /data/blast_tp/metags/soybean.fa -db nifh-db.fa -out soybean.out -outfmt 6
 ```
 :::
 
+### Playing around BLAST output
+
 ::: {#exr-1 .custom}
-How many results do you get? Use the `wc -l`.
+How many results do you get for each metagenome? Use the `wc -l`.
 :::
 
 **wc**
@@ -422,119 +457,6 @@ wc [options] <file>
 ::: {.callout-tip collapse="true"}
 ## Solution
 ```bash
-wc -l single_gene_mylab.out
-```
-:::
-
-::: {#exr-1 .custom}
-What is the range of percentage identity for the results? Similarly, what is the range of e-values? Use `more`command.
-:::
-
-**more**
-
-You can display the reference file the command `more`.
-
-The `more` command is used to display the contents of a file one screen at a time. This is useful for viewing large files like FASTQ files, where the data is too big to fit on a single screen.
-
-```bash
-more <path_file_to_display>
-```
-
-::: {.callout-tip collapse="true"}
-## Solution
-```bash
-more single_gene_mylab.out
-```
-:::
-
-### Apply BLAST on real datasets (optional)
-
-#### Exploring data
-
-Instead of just one gene as shown in Project 1, we may need to compare a large amount of sequences with a database in reality. In this project, we will try to identify the existence of 50 nifh genes in three different soil metagenomes. To do that, we will align sequences from metagenome against the nifh gene database.
-
-Navigate to the folder `/data/blast_tp/big_blast/` first, then list files and directories in this folder.
-
-::: {.callout-tip collapse="true"}
-## Solution
-```bash
-cd /data/blast_tp/big_blast/
-tree
-```
-:::
-
-This directory contains: 
-
-- `nifh_db/`: a folder contains nucleotide sequence file for nitrogen fixation genes (`nifh-ref.fa), it's the **database**.
-- `metags/`: a folder contains metagenome files from three different Iowa crop soils (`corn.fa`, `soybean.fa`, and `prairie.fa`), they are **queries**. 
-
-The objective is to identify the existence of nitrogen fixation genes in soil metagenome files.
-
-::: {#exr-1 .custom}
-How many sequences are there in the fasta file?
-:::
-
-::: {.callout-tip collapse="true"}
-## Solution
-```bash
-wc -l nifh_db/nifh-ref.fa 
-wc -l metags/*
-```
-:::
-
-::: {.callout-note}
-## The Wildcard 
-The `*` symbol is a wildcard character used to represent "zero or more characters" in file or directory names. When used in commands, it allows you to work with multiple files or patterns at once.
-:::
-
-#### Make database
-
-We want to find the existence of nifh genes in soil metagenome samples. Making a database for nifh genes is a smart way to index the gene sequences so that it can search and compare metagenome sequences (query) with nifh gene sequences much faster.
-
-Navigate back to the directory of the current practical, create a directory `big_blast` and construct the BLAST database.
-
-```bash
-makeblastdb -in <sequence_file> -dbtype <type> -out <name>
-```
-
-::: {.callout-tip collapse="true"}
-## Solution
-```bash
-cd ~/td3/
-mkdir big_blast
-cd big_blast
-makeblastdb -in /data/blast_tp/big_blast/nifh_db/nifh-ref.fa -dbtype nucl -out nifh-db.fa
-```
-:::
-
-#### Blast
-
-Now we can BLAST the metagenome files to nifh gene database. Run one BLAST for each query.
-
-```bash
-blastn -query <query_file> -db <db_file> -out <name_of_output> -outfmt <format>
-```
-
-::: {.callout-tip collapse="true"}
-## Solution
-```bash
-blastn -query /data/blast_tp/big_blast/metags/corn.fa -db nifh-db.fa -out corn.out -outfmt 6
-
-blastn -query /data/blast_tp/big_blast/metags/prairie.fa -db nifh-db.fa -out prairie.out -outfmt 6
-
-blastn -query /data/blast_tp/big_blast/metags/soybean.fa -db nifh-db.fa -out soybean.out -outfmt 6
-```
-:::
-
-#### Playing around BLAST output
-
-::: {#exr-1 .custom}
-How many results do you get for each fasta file? Use the `wc -l`.
-:::
-
-::: {.callout-tip collapse="true"}
-## Solution
-```bash
 wc -l *.out
 ```
 
@@ -543,7 +465,26 @@ The wildcard `*` matches all files ending with `.out`.
 
 To understand the meaning of each column in the BLAST output (format 6), refer to this [webpage](https://sites.google.com/site/wiki4metagenomics/tools/blast/blastn-output-format-6).
 
-We will some new command to manipulate the output file.
+**more**
+
+You can display the file with the command `more`.
+
+The `more` command is used to display the contents of a file one screen at a time. This is useful for viewing large files like FASTQ files, where the data is too big to fit on a single screen.
+
+```bash
+more <path_file_to_display>
+```
+
+::: {#exr-1 .custom}
+What is the range of percentage identity for the results of BLAST of soybean metagenome?? Similarly, what is the range of e-values? Use `more`command.
+:::
+
+::: {.callout-tip collapse="true"}
+# Solution
+```bash
+more soybean.out
+```
+:::
 
 **sort**
 
@@ -577,7 +518,6 @@ Common Options:
 
 The `uniq` command is used to remove (or keep) consecutive duplicate lines from a sorted file or input stream. It is often used in conjunction with sort to ensure that the input is sorted.
 
-
 ```bash
 uniq [options] [file]
 ```
@@ -587,6 +527,51 @@ Common Options:
 - `-c`: Prefix lines with the number of occurrences.
 - `-d`: Only print duplicate lines.
 - `-u`: Only print unique lines.
+
+::: {#exr-1 .custom}
+How many uniq nifh genes were hit by sequences from soybean metagenome?
+:::
+
+::: {.callout-tip collapse="true"}
+# Solution
+
+There are several ways to do this:
+
+```bash
+cut -f 2 soybean.out | sort | uniq | wc -l
+
+cut -f 2 soybean.out | sort -u | wc -l
+```
+:::
+
+
+::: {#exr-1 .custom}
+How many uniq sequences from prairie metagenome can hit nifh genes?
+:::
+
+::: {.callout-tip collapse="true"}
+# Solution
+
+There are several ways to do this:
+
+```bash
+cut -f 1 prairie.out | sort -u |wc -l
+
+cut -f 1 prairie.out | sort | uniq | wc -l
+```
+:::
+
+
+::: {#exr-1 .custom}
+How to get the `sseqid`, `sstart`, and `send` column (column 2, 9, 10) from the soybean blast output file?
+:::
+
+::: {.callout-tip collapse="true"}
+# Solution
+```bash
+cut -f 2,9,10 soybean.out
+```
+:::
 
 **grep**
 
@@ -604,57 +589,13 @@ Common Options:
 - `-n`: Show line numbers.
 - `-r`: Recursively search directories.
 
-::: {#exr-1 .custom}
-How many uniq nifh genes were hit by sequences from soybean metagenome?
-:::
-
-::: {.callout-tip collapse="true"}
-## Solution
-
-There are several ways to do this:
-
-```bash
-cut -f 2 soybean.out | sort | uniq | wc -l
-
-cut -f 2 soybean.out | sort -u | wc -l
-```
-:::
-
-
-::: {#exr-1 .custom}
-How many uniq sequences from prairie metagenome can hit nifh genes?
-:::
-
-::: {.callout-tip collapse="true"}
-## Solution
-
-There are several ways to do this:
-
-```bash
-cut -f 1 prairie.out | sort -u |wc -l
-
-cut -f 1 prairie.out | sort | uniq | wc -l
-```
-:::
-
-
-::: {#exr-1 .custom}
-How to get the `sseqid`, `sstart`, and `send` column (column 2, 9, 10) from the soybean blast output file?
-:::
-
-::: {.callout-tip collapse="true"}
-## Solution
-```bash
-cut -f 2,9,10 soybean.out
-```
-:::
 
 ::: {#exr-1 .custom}
 How many times was gene `gi|909637271|emb|LN713523.1|` hit by sequences from corn metagenome sample:
 :::
 
 ::: {.callout-tip collapse="true"}
-## Solution
+# Solution
 ```bash
 grep "gi|909637271|emb|LN713523.1|" corn.out | wc -l
 ```

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,12 +69,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-d7ba9c6adfd1938aed2b9fb196500684.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-51e2c66856be53ee965980e392a92cdf.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": true,
@@ -281,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
@@ -416,7 +416,14 @@ Solution
 <h4 class="anchored" data-anchor-id="dotmatcher">Dotmatcher</h4>
 <p>Run EMBOSS in the command line to perform a self-comparison of this sequence using the dotmatcher with windowsize of 10, and a threshold of 30.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dotmatcher</span> <span class="at">-asequence</span> <span class="op">&lt;</span>fastaA<span class="op">&gt;</span> -bsequence <span class="op">&lt;</span>fastaB<span class="op">&gt;</span> -windowsize <span class="op">&lt;</span>size<span class="op">&gt;</span> -threshold <span class="op">&lt;</span>threshold<span class="op">&gt;</span> -graph <span class="op">&lt;</span>graph_type<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Options: - <code>asequence</code>: The first sequence file to compare (in FASTA format). Example: <code>-asequence sequenceA.fasta</code> - <code>bsequence</code>: The second sequence file to compare (in FASTA format). Example: <code>-asequence sequenceB.fasta</code> - <code>windowsize</code>: The number of characters considered for matching at each position. - <code>threshold</code>: The minimum similarity score for a match to be considered significant. - <code>graph</code>: The format for the output graph (e.g., <code>png</code>, <code>pdf</code>, <code>svg</code>).</p>
+<p>Options:</p>
+<ul>
+<li><code>asequence</code>: The first sequence file to compare (in FASTA format). Example: <code>-asequence sequenceA.fasta</code></li>
+<li><code>bsequence</code>: The second sequence file to compare (in FASTA format). Example: <code>-asequence sequenceB.fasta</code></li>
+<li><code>windowsize</code>: The number of characters considered for matching at each position.</li>
+<li><code>threshold</code>: The minimum similarity score for a match to be considered significant.</li>
+<li><code>graph</code>: The format for the output graph (e.g., <code>png</code>, <code>pdf</code>, <code>svg</code>).</li>
+</ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -439,7 +446,11 @@ Solution
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="op">&lt;</span>directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you want display the content of the current directory, use only:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The following files are in the current directory: - <code>P39413.fasta</code> - <code>dotmatcher.1.png</code></p>
+<p>The following files are in the current directory:</p>
+<ul>
+<li><code>P39413.fasta</code></li>
+<li><code>dotmatcher.1.png</code></li>
+</ul>
 <p>To view the PNG file, it’s best to open it locally. Transfer it from the server to your computer first.</p>
 <p><strong>scp</strong></p>
 <p>The <code>scp</code> command stands for “secure copy protocol.” It is used to securely transfer files between a local computer and a remote server or between two remote servers over an encrypted SSH connection. This ensures that the data is protected during transfer.</p>
@@ -488,19 +499,12 @@ Solution
 
 </main> <!-- /main -->
 <script>
-
     var custom_title = document.querySelectorAll('.custom .theorem-title');
-
     
-
     for (let i = 0; i < custom_title.length; i++ ) {
-
        var mod_name = custom_title[i].innerHTML;
-
        custom_title[i].innerHTML = mod_name.replace("Exercise", "Question");
-
     };
-
     </script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -728,8 +732,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -840,7 +842,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

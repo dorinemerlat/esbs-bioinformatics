@@ -32,7 +32,7 @@ To which major types of processes do the down-regulated genes belong?
 
 ## Dotplot and optimal alignments (with EMBOSS tools)
 
-EMBOSS: tool package for sequence analysis, available for instance at: https://www.ebi.ac.uk/jdispatcher/emboss
+We will use EMBOSS, a suite of tools for sequence analysis. You can access it [here](https://www.ebi.ac.uk/jdispatcher/emboss).
 
 ### Comparison of 2 myotubularin sequences
 
@@ -99,8 +99,8 @@ cd <directory>
 ::: {.callout-tip collapse="true"}
 ## Solution
 ```bash
-mkdir tp3
-cd tp3
+mkdir tp2
+cd tp2
 ```
 :::
 
@@ -145,7 +145,9 @@ Run EMBOSS in the command line to perform a self-comparison of this sequence usi
 dotmatcher -asequence <fastaA> -bsequence <fastaB> -windowsize <size> -threshold <threshold> -graph <graph_type>
 
 ```
+
 Options: 
+
 - `asequence`: The first sequence file to compare (in FASTA format). Example: `-asequence sequenceA.fasta`
 - `bsequence`: The second sequence file to compare (in FASTA format). Example: `-asequence sequenceB.fasta`
 - `windowsize`: The number of characters considered for matching at each position.
@@ -175,6 +177,7 @@ ls
 ```
 
 The following files are in the current directory:
+
 - `P39413.fasta`
 - `dotmatcher.1.png`
 
@@ -185,6 +188,7 @@ To view the PNG file, it's best to open it locally. Transfer it from the server 
 The `scp` command stands for "secure copy protocol." It is used to securely transfer files between a local computer and a remote server or between two remote servers over an encrypted SSH connection. This ensures that the data is protected during transfer.
 
 To copy file from a server to your computer, **open a new terminal** and use `scp` like this:
+
 ```bash
 scp <username>@<server_adress>:<source_file_path> <target_file_path>
 ```

@@ -169,7 +169,7 @@ What are the boundaries and reading frame of the CDS?
 
 This exercise is based on content from [A Quick Guide to Getting Started with Shell and BLAST](https://blast-crash-course.readthedocs.io/en/latest/index.html). 
 
-The objective is to identify the existence of **nitrogen fixation genes*** in **soil metagenome**.
+The objective is to identify the existence of **nitrogen fixation genes** in **soil metagenome**.
 
 ### Connection to the Server
 

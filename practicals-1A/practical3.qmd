@@ -6,8 +6,9 @@ We want to find homologs of a bat protein sequence available on moodle.
 
 ### Composition
 
-What can you say about the composition of this protein sequence? What problem can be
-encountered in a similarity search with such a composition?
+::: {#exr-1 .custom}
+What can you say about the composition of this protein sequence? What problem can be encountered in a similarity search with such a composition?
+:::
 
 ### Databases
 
@@ -169,7 +170,7 @@ What are the boundaries and reading frame of the CDS?
 
 This exercise is based on content from [A Quick Guide to Getting Started with Shell and BLAST](https://blast-crash-course.readthedocs.io/en/latest/index.html). 
 
-The objective is to identify the existence of **nitrogen fixation genes** in **soil metagenome**.
+The objective is to identify the existence of **nitrogen fixation genes** (*nifH*, *nifD*, *nifK*) in **soil metagenome**. These genes encode enzymes that convert atmospheric nitrogen (N₂) into ammonia (NH₃). This process is essential for maintaining soil fertility and supporting plant growth. In this exercise, we will focus on identifying **nifH genes**.
 
 ### Connection to the Server
 
@@ -231,7 +232,7 @@ tree <directory>
 ```
 
 ::: {#exr-1 .custom}
-What are in  in `/data/blast_tp/` ? Use `ls`command. Explore the subdirectory with the `tree` command and map out the directory structure.
+What are in `/data/blast_tp/` ? Use `ls`command. Explore the subdirectory with the `tree` command and map out the directory structure.
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -374,14 +375,16 @@ Navigate back to the directory of the current practical and construct the BLAST 
 ::: {.callout-tip collapse="true"}
 # Solution
 ```bash
-cd ~/td3/
+cd ~/tp3/
 makeblastdb -in /data/blast_tp/nifh_db/nifh-ref.fa -dbtype nucl -out nifh-db.fa
 ```
 
 *Note: The tilde `~` is a shortcut for your home directory `/home/<username>`.*
 :::
 
+::: {#exr-1 .custom}
 Look the files generared. Use `ls` command.
+:::
 
 ::: {.callout-tip collapse="true"}
 # Solution

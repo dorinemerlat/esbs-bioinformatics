@@ -1,59 +1,14 @@
 # Practical – Analysis of Protein Families
 
-## 1. Characterization of a Sequence of Unknown Function
-
-```bash
-> Hypothetical protein [Candidatus Poribacteria sp. WGA-A3]
-MVDFNNTLSSTASVQVAAHWDPIENTANNLHRSTEEKFNRDKAQWQEPVEMTWEQWLEVFNPGPAHPLKN
-YSTADFQVFLPPSTVNVADVWDLDTEGILPFLRQFHPSATMKLPRYGSIPSDQKDAKACLRALSPEYADI
-VFRIHARFTLDASIDAYFMPAQFAGHLIINRNSRTIHQWTLSLPNRNSNVDIGAFRSHDIGFVPRMELCS
-VSETQPESIVWEAAITAEEADKKFQNSLYKFAEIEWTPIEEAVELAKASNRSIHAVLLFGVLDDESC
-```
-
-##  First Part: BLASTP Search
-
-Search for the organism **Candidatus Poribacteria** in the NCBI Taxonomy database. 
-
-
-::: {#exr-1 .custom}
-What can you say about the organism taxonomy?
-:::
-
-Search for homologs of the Poribacteria sequence (available on Moodle) using NCBI BLASTP:
-
-- In the **RefSeq_protein** database (not in **RefSeq select**!!!)
-- With word size = 3
-- With a maximum of 1000 sequences and E ≤ 10 (other parameters: default)
-- **How many hits did you get with E ≤ 10?**
-  
-::: {#exr-1 .custom}
-To which family does the protein seem to belong?
-:::
-
-
-::: {#exr-1 .custom}
-According to BLASTP alignments, propose 2 patterns conserved in the protein family.
-:::
-
-
-::: {#exr-1 .custom}
-In which taxonomic group(s) do we find hits? Are the hits found in the bacterial sequences significant? Propose a function and an evolutionary origin for the gene encoding the Poribacteria protein.
-:::
-
-
-::: {#exr-1 .custom}
-Look at the alignment with human selenoprotein N **NP_996809.1**. Do the alignments cover the C-terminal part of the query sequence and animal selenoprotein N? In metazoans, which amino acid "matches" the stop codon of the Poribacteria sequence? What hypothesis can be made? How could this hypothesis be tested?
-:::
-
-## Connection to the server
+## Connection to the Server
 
 To learn how to connect to the server for practical work, refer to the [Server Connection Guide](../help/server_connection_guide.qmd).
 
-Once you're connected, start by creating a working directory for this session and navigate into it.
+Once you're connected, start by creating a working directory for this session and navigating into it.
 
 **mkdir**
 
-The mkdir command stands for "make directory", is used to create a new folder in the file system. You can create your directory like this:
+The `mkdir` command stands for "make directory" and is used to create a new folder in the file system. You can create your directory like this:
 
 ```bash
 mkdir <directory_name>
@@ -68,10 +23,10 @@ cd <directory>
 ```
 
 ::: {.callout-tip collapse="true"}
-## Solution
+# Solution
 ```bash
-mkdir TdBlast
-cd TdBlast
+mkdir tp4
+cd tp4
 ```
 :::
 
@@ -82,49 +37,158 @@ If you need help with a command, display its help using:
  - `man <command>` to display the full manual of a command.
 :::
 
-
-## Comparison Protein/Genome Using Command-Line BLAST
-
-Retrieve the Human Protein Sequence of the Selenoprotein N (Accession Number: Q9NZV5) using the command GET of the UniProtKB API.
-
-Documentation of UniProtKB API: [UniProtKB API Documentation](https://www.ebi.ac.uk/proteins/api/doc/#!/proteins/search)
+## Characterization of a Sequence of Unknown Function
 
 ```bash
-curl -X GET --header 'Accept:text/x-fasta' -o Q9NZV5.fasta 'https://www.ebi.ac.uk/proteins/api/proteins?offset=0&size=100&accession=Q9NZV5'
+> Hypothetical protein [Candidatus Poribacteria sp. WGA-A3]
+MVDFNNTLSSTASVQVAAHWDPIENTANNLHRSTEEKFNRDKAQWQEPVEMTWEQWLEVFNPGPAHPLKN
+YSTADFQVFLPPSTVNVADVWDLDTEGILPFLRQFHPSATMKLPRYGSIPSDQKDAKACLRALSPEYADI
+VFRIHARFTLDASIDAYFMPAQFAGHLIINRNSRTIHQWTLSLPNRNSNVDIGAFRSHDIGFVPRMELCS
+VSETQPESIVWEAAITAEEADKKFQNSLYKFAEIEWTPIEEAVELAKASNRSIHAVLLFGVLDDESC
 ```
 
-You can open the file with the `cat` command:
-```bash
-cat Q9NZV5.fasta
-```
-Create a BLAST Database with Poribacteria Genomes
+Search for the organism **Candidatus Poribacteria** in the [NCBI Taxonomy database](https://www.ncbi.nlm.nih.gov/taxonomy). 
 
-Copy the fasta file containing sequences from 2 Poribacteria genomes to your directory. The sequence is available at:  `/home/lecompte/Poribacteria_genomes.fasta`
+::: {#exr-1 .custom}
+What can you say about the organism taxonomy?
+:::
 
-```bash
-cp /home/lecompte/Poribacteria_genomes.fasta Poribacteria_genomes.fasta
-```
+Use the BLASTP command-line tool to search for homologs of the Poribacteria sequence stored in `/data/poribacteria/poribacteria_hypothetical_protein.faa`. Perform the search against the **SwissProt** database (already installed and indexed at `/data/blast/swissprot*`), specifying a word size of **3**, a maximum e-value of **10**, and the output format to **BLAST archive format (ASN.1)**. All other parameters should remain at their default values.
 
-Create the BLAST database with the `makeblastdb` command:
 To see available options: 
 ```bash
 makeblastdb –help
 ```
 
+Here are the required BLASTP options with their explanations:
+
+- `-db <path>`: Specifies the path to the BLAST database (without file extensions).
+- `-query <path>`: Defines the input protein sequence file to search for homologs.
+- `-evalue <n>`: Sets the maximum e-value threshold for filtering results.
+- `-word_size <n>`: Determines the word size for the search algorithm.
+- `-outfmt <n>`: Set the output format. For the Blast archive format, it's 11. 
+- `-out <output>`: Specifies the output file where the results will be saved.
+
+::: {.callout-tip collapse="true"}
+# Solution
 ```bash
-makeblastdb -in Poribacteria_genomes.fasta -dbtype nucl -out PoribacteriaDb
+blastp -db /data/blast/swissprot -query /data/poribacteria/poribacteria_hypothetical_protein.faa -evalue 10 -word_size 3 -outfmt 11 -out poribacteria_hypothetical_protein.asn
+```
+:::
+
+Convert the BLAST archive file into two different output formats using the `blast_formatter` command:
+
+- **Pairwise alignment** (outfmt = `0`)
+- **Tabular format** (outfmt = `6`): Specifying selected columns for detailed output.
+
+```bash
+blast_formatter -archive <archive_path> -outfmt <format> -out <output_path>
 ```
 
+For the tabular format (outfmt = 6), specify the desired columns:
+```bash
+-outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore sscinames sskingdoms"
 
-Perform a Similarity Search using the human selenoprotein N **Q9NZV5.fasta** as a query in the **PoribacteriaDb** database using the **tblastN** command:
+```
+
+We can have a good understanding of `-outfmt 6` format from this [webpage](https://sites.google.com/site/wiki4metagenomics/tools/blast/blastn-output-format-6).
+
+::: {.callout-tip collapse="true"}
+# Solution
+```bash
+# Convert to pairwise format (outfmt 0)
+blast_formatter -archive poribacteria_hypothetical_protein.asn -outfmt 0 -out poribacteria_hypothetical_protein_pairwise.txt
+
+# Convert to tabular format (outfmt 6)
+blast_formatter -archive poribacteria_hypothetical_protein.asn -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore sscinames sskingdoms" -out poribacteria_hypothetical_protein_tabular.tsv
+```
+:::
+
+::: {#exr-1 .custom}
+How many hits did you get with E ≤ 10?
+:::
+
+::: {.callout-tip collapse="true"}
+# Solution
+```bash
+ wc -l poribacteria_hypothetical_protein_tabular.tsv
+```
+:::
+
+
+::: {#exr-1 .custom}
+To which family does the protein seem to belong? Look the beginning  of `poribacteria_hypothetical_protein_pairwise.txt` file.
+:::
+
+::: {.callout-tip collapse="true"}
+# Solution
+```bash
+more poribacteria_hypothetical_protein_pairwise.txt 
+```
+:::
+
+::: {#exr-1 .custom}
+According to BLASTP alignments, propose 2 patterns conserved in the protein family.
+:::
+
+
+::: {#exr-1 .custom}
+In which taxonomic group(s) do we find hits of the protein family? Are the hits found in the bacterial sequences significant? Propose a function and an evolutionary origin for the gene encoding the Poribacteria protein.
+:::
+
+
+::: {#exr-1 .custom}
+Look at the alignment with human selenoprotein N **Q9NZV5**. Do the alignments cover the C-terminal part of the query sequence and animal selenoprotein N? In metazoans, which amino acid "matches" the stop codon of the Poribacteria sequence? For instance, review the entire sequence of human selenoprotein N (Q9NZV5), available on UniProt [here](https://www.uniprot.org/uniprotkb/Q9NZV5/entry#sequences). Based on this analysis, what hypothesis can be proposed? How could this hypothesis be tested?
+:::
+
+## Comparison Protein/Genome Using Command-Line BLAST
+
+Retrieve the **Human Protein Sequence of the Selenoprotein N** (Accession Number: **Q9NZV5**) using the command GET of the UniProtKB API.
+
+Documentation of UniProtKB API: [UniProtKB API Documentation](https://www.ebi.ac.uk/proteins/api/doc/#!/proteins/search)
+
+::: {.callout-tip collapse="true"}
+# Solution
+```bash
+curl -X GET --header 'Accept:text/x-fasta' -o Q9NZV5.fasta 'https://www.ebi.ac.uk/proteins/api/proteins?offset=0&size=100&accession=Q9NZV5'
+```
+:::
+
+You can open the file with the `cat` command:
+```bash
+cat Q9NZV5.fasta
+```
+
+The sequence of Poribacteria genome is available at:  `/data/poribacteria/poribacteria_genomes.fasta`
+
+
+Create the BLAST database with the `makeblastdb` command.
+
+To see available options: 
+```bash
+makeblastdb –help
+```
+
+::: {.callout-tip collapse="true"}
+# Solution
+```bash
+makeblastdb -in /data/poribacteria/poribacteria_genomes.fasta -dbtype nucl -out poribacteriaDb
+```
+:::
+
+Perform a Similarity Search using the human selenoprotein N **Q9NZV5.fasta** as a query in the **PoribacteriaDb** database using the **tblastN** command.
+
 To see available options: 
 ```bash
 tblastn –help
 ```
 
+::: {.callout-tip collapse="true"}
+# Solution
 ```bash
-tblastn -db PoribacteriaDb -query Q9NZV5.fasta -out selN.tblastn
+tblastn -db poribacteriaDb -query Q9NZV5.fasta -out selN.tblastn
 ```
+:::
 
 Analysis of the TblastN Results. 
 
@@ -146,6 +210,86 @@ What do you learn from this search about the evolution of this gene in available
 We obtain several alignments for the sequence **VYCT01000218**. Why?
 :::
 
+For that, use `grep`command with `-A` option. The `-A` option tells grep to display not only the matching line but also the subsequent *n* lines after each match.
+
+::: {.callout-tip collapse="true"}
+# Solution
 ```bash
 grep -A 90 '>VYCT01000218' selN.tblastn
 ```
+:::
+
+## Analysis of a Protein Family
+
+A protein sequence (available on the Moodle platform) has been automatically predicted during the annotation of the fungus *Malassezia globosa* genome.
+
+### Similarity Search
+
+Perform a similarity search using BLAST at EBI in the SWISSPROT database (https://www.ebi.ac.uk/jdispatcher/sss/ncbiblast) (default parameters).
+
+::: {#exr-1 .custom}
+How many sequences do you obtain (with E<10)? Why so few sequences are detected according to you?  
+:::
+
+Display results with Tool output.
+
+::: {#exr-1 .custom}
+Find 3 conserved motifs.  
+:::
+
+::: {#exr-1 .custom}
+Is the *Malassezia* sequence homologous to: Q84424, P05469, P0C995, O13881?  
+:::
+
+Display results with Visual output.
+
+::: {#exr-1 .custom}
+For each group of homologs, specify which region(s) (N-terminus, central region, C-terminus, almost whole sequence...) of the query sequence and of the database sequences have been aligned by BLAST.
+:::
+
+::: {#exr-1 .custom}
+Why can this information be important before constructing a global multiple alignment?  
+:::
+
+Display the Summary table. Select all sequences detected by BLAST except:  
+
+- CLR2_SCHPO (O13881) and YKP3_KLULA (P05469): non-homologous sequences  
+- YL226_MIMIV (Q5UQC0) and MCE_MIMIV (Q5UQX1): too few motifs.  
+  
+Save sequences in Fasta format and add the query sequence in the file. The final file is also available on Moodle (`distant_homologs.txt`).
+
+### Multiple Alignment of Homologs Using Mafft
+
+**Parameters:  **
+
+Display alignment parameters.  
+
+::: {#exr-1 .custom}
+Why are pairwise parameters mentioned?  
+:::
+
+Align sequences (Alignment, Do complete alignment) with default parameters.  
+
+Visualize this alignment with Jalview (available on your computer or using https://www.jalview.org/jalview-js/JalviewJS/).  
+
+Residues can be colored according to their properties with Colour, Zappo (or Clustal, for instance).  
+
+::: {#exr-1 .custom}
+Is the sequence order relevant? Modify sequence order if necessary.  
+:::
+
+::: {#exr-1 .custom}
+Do all sequences exhibit the same domain organization?  
+:::
+
+::: {#exr-1 .custom}
+Do you find the previously defined motifs? According to you, is the alignment correct?  
+:::
+
+::: {#exr-1 .custom}
+Can you find additional motifs? Can you find obvious sequence prediction errors?  
+:::
+
+::: {#exr-1 .custom}
+Which sequence sub-groups can be defined? Are there “orphan” sequences? Justify your answer and give one discriminative residue or motif for each group.
+:::

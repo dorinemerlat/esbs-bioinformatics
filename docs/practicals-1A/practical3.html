@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,12 +69,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d7ba9c6adfd1938aed2b9fb196500684.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-51e2c66856be53ee965980e392a92cdf.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": true,
@@ -295,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
 
 
 
@@ -307,32 +307,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We want to find homologs of a bat protein sequence available on moodle.</p>
 <section id="composition" class="level3">
 <h3 class="anchored" data-anchor-id="composition">Composition</h3>
-<p>What can you say about the composition of this protein sequence? What problem can be encountered in a similarity search with such a composition?</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1</strong></span> What can you say about the composition of this protein sequence? What problem can be encountered in a similarity search with such a composition?</p>
+</div>
 </section>
 <section id="databases" class="level3">
 <h3 class="anchored" data-anchor-id="databases">Databases</h3>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1</strong></span> Which databases are available for the search?</p>
+<p><span class="theorem-title"><strong>Exercise 2</strong></span> Which databases are available for the search?</p>
 </div>
 <p>Select the SwissProt database.</p>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2</strong></span> Will the search be exhaustive?</p>
+<p><span class="theorem-title"><strong>Exercise 3</strong></span> Will the search be exhaustive?</p>
 </div>
 </section>
 <section id="blastp-parameters" class="level3">
 <h3 class="anchored" data-anchor-id="blastp-parameters">BLASTP parameters</h3>
 <p>See Algorithm parameters, at the bottom of the page.</p>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3</strong></span> How many sequences can you get?</p>
+<p><span class="theorem-title"><strong>Exercise 4</strong></span> How many sequences can you get?</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4</strong></span> What is the Expect threshold to display sequences? Modify the Expect threshold to obtain results with E≤10.</p>
+<p><span class="theorem-title"><strong>Exercise 5</strong></span> What is the Expect threshold to display sequences? Modify the Expect threshold to obtain results with E≤10.</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5</strong></span> What are the gap penalties? The word size?</p>
+<p><span class="theorem-title"><strong>Exercise 6</strong></span> What are the gap penalties? The word size?</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 6</strong></span> How are regions of low complexity processed?</p>
+<p><span class="theorem-title"><strong>Exercise 7</strong></span> How are regions of low complexity processed?</p>
 </div>
 </section>
 <section id="perform-the-similarity-search-swissprot-e10-default-for-other-parameters" class="level3">
@@ -340,47 +342,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="graphic-summary" class="level4">
 <h4 class="anchored" data-anchor-id="graphic-summary">Graphic summary</h4>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7</strong></span> How many sequences do you obtain with E≤10?</p>
+<p><span class="theorem-title"><strong>Exercise 8</strong></span> How many sequences do you obtain with E≤10?</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8</strong></span> What can be deduced from the graphical representation of BLAST results? There is no alignment on the C-terminal region. Why?</p>
+<p><span class="theorem-title"><strong>Exercise 9</strong></span> What can be deduced from the graphical representation of BLAST results? There is no alignment on the C-terminal region. Why?</p>
 </div>
 </section>
 </section>
 <section id="description" class="level3">
 <h3 class="anchored" data-anchor-id="description">Description</h3>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9</strong></span> Which families are detected?</p>
+<p><span class="theorem-title"><strong>Exercise 10</strong></span> Which families are detected?</p>
 </div>
 <section id="taxonomy" class="level4">
 <h4 class="anchored" data-anchor-id="taxonomy">Taxonomy</h4>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10</strong></span> In which organisms do you find hits?</p>
+<p><span class="theorem-title"><strong>Exercise 11</strong></span> In which organisms do you find hits?</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 11</strong></span> In which species is the closest sequence found?</p>
+<p><span class="theorem-title"><strong>Exercise 12</strong></span> In which species is the closest sequence found?</p>
 </div>
 </section>
 <section id="alignments" class="level4">
 <h4 class="anchored" data-anchor-id="alignments">Alignments</h4>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12</strong></span> Identify a conserved motif in the superfamily.</p>
+<p><span class="theorem-title"><strong>Exercise 13</strong></span> Identify a conserved motif in the superfamily.</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 13</strong></span> According to the alignments, are the detected sequences all homologous to our query?</p>
+<p><span class="theorem-title"><strong>Exercise 14</strong></span> According to the alignments, are the detected sequences all homologous to our query?</p>
 </div>
 </section>
 <section id="decrease-in-the-word-size" class="level4">
 <h4 class="anchored" data-anchor-id="decrease-in-the-word-size">Decrease in the word size</h4>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 14</strong></span> What might be the consequences of a decrease in word size?</p>
+<p><span class="theorem-title"><strong>Exercise 15</strong></span> What might be the consequences of a decrease in word size?</p>
 </div>
 <p>Repeat the search with the parameters used in question 4 but with a word size of 3 aa.</p>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 15</strong></span> How many “hits” are you getting now?</p>
+<p><span class="theorem-title"><strong>Exercise 16</strong></span> How many “hits” are you getting now?</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 16</strong></span> In which taxon (taxa) are similar proteins found?</p>
+<p><span class="theorem-title"><strong>Exercise 17</strong></span> In which taxon (taxa) are similar proteins found?</p>
 </div>
 </section>
 </section>
@@ -410,37 +412,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="program">Program</h4>
 <p>MEGABLAST is proposed by default.</p>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 17</strong></span> What is the word size in MEGABLAST? Can we use MegaBLAST in our case or should we use BLASTN?</p>
+<p><span class="theorem-title"><strong>Exercise 18</strong></span> What is the word size in MEGABLAST? Can we use MegaBLAST in our case or should we use BLASTN?</p>
 </div>
 </section>
 <section id="analysis" class="level4">
 <h4 class="anchored" data-anchor-id="analysis">Analysis</h4>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 18</strong></span> Comment obtained results (number of hits, conservation…)</p>
+<p><span class="theorem-title"><strong>Exercise 19</strong></span> Comment obtained results (number of hits, conservation…)</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 19</strong></span> Give the localization of the transcribed region (chromosome, strand, start, end).</p>
+<p><span class="theorem-title"><strong>Exercise 20</strong></span> Give the localization of the transcribed region (chromosome, strand, start, end).</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 20</strong></span> How many exons are present in this gene? Can you give the precise boundaries of exons?</p>
+<p><span class="theorem-title"><strong>Exercise 21</strong></span> How many exons are present in this gene? Can you give the precise boundaries of exons?</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 21</strong></span> How can you explain the ranking provided by BLAST?</p>
+<p><span class="theorem-title"><strong>Exercise 22</strong></span> How can you explain the ranking provided by BLAST?</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 22</strong></span> Which program can be used to improve your results? Compare results.</p>
+<p><span class="theorem-title"><strong>Exercise 23</strong></span> Which program can be used to improve your results? Compare results.</p>
 </div>
 </section>
 <section id="localization-of-the-coding-sequence-cds" class="level4">
 <h4 class="anchored" data-anchor-id="localization-of-the-coding-sequence-cds">Localization of the coding sequence (CDS)</h4>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 23</strong></span> How could we localize the coding region of this transcript?</p>
+<p><span class="theorem-title"><strong>Exercise 24</strong></span> How could we localize the coding region of this transcript?</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 24</strong></span> Perform the similarity search in SwissProt.</p>
+<p><span class="theorem-title"><strong>Exercise 25</strong></span> Perform the similarity search in SwissProt.</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 25</strong></span> What are the boundaries and reading frame of the CDS?</p>
+<p><span class="theorem-title"><strong>Exercise 26</strong></span> What are the boundaries and reading frame of the CDS?</p>
 </div>
 </section>
 </section>
@@ -448,7 +450,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="gene-identification-in-metagenomic-data" class="level2">
 <h2 class="anchored" data-anchor-id="gene-identification-in-metagenomic-data">Gene identification in metagenomic data</h2>
 <p>This exercise is based on content from <a href="https://blast-crash-course.readthedocs.io/en/latest/index.html">A Quick Guide to Getting Started with Shell and BLAST</a>.</p>
-<p>The objective is to identify the existence of <strong>nitrogen fixation genes</strong>* in <strong>soil metagenome</strong>.</p>
+<p>The objective is to identify the existence of <strong>nitrogen fixation genes</strong> (<em>nifH</em>, <em>nifD</em>, <em>nifK</em>) in <strong>soil metagenome</strong>. These genes encode enzymes that convert atmospheric nitrogen (N₂) into ammonia (NH₃). This process is essential for maintaining soil fertility and supporting plant growth. In this exercise, we will focus on identifying <strong>nifH genes</strong>.</p>
 <section id="connection-to-the-server" class="level3">
 <h3 class="anchored" data-anchor-id="connection-to-the-server">Connection to the Server</h3>
 <p>To learn how to connect to the server for practical work, refer to the <a href="../help/server_connection_guide.html">Server Connection Guide</a>.</p>
@@ -501,7 +503,7 @@ Help
 <p>The <code>tree</code>command is used to display the contents of a directory in a hierarchical structure. It provides a visual representation of files and subdirectories within the specified directory.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tree</span> <span class="op">&lt;</span>directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 26</strong></span> What are in in <code>/data/blast_tp/</code> ? Use <code>ls</code>command. Explore the subdirectory with the <code>tree</code> command and map out the directory structure.</p>
+<p><span class="theorem-title"><strong>Exercise 27</strong></span> What are in <code>/data/blast_tp/</code> ? Use <code>ls</code>command. Explore the subdirectory with the <code>tree</code> command and map out the directory structure.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -549,7 +551,7 @@ Solution
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 20 <span class="op">&lt;</span>file<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This command will display the first 20 lines of the file. You can adjust the number of lines according to your needs.</p>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 27</strong></span> How does sequence fasta file look like? Use the command <code>head</code> to display the begining of each file.</p>
+<p><span class="theorem-title"><strong>Exercise 28</strong></span> How does sequence fasta file look like? Use the command <code>head</code> to display the begining of each file.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -584,7 +586,7 @@ Solution
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"&lt;pattern&gt;"</span> <span class="op">&lt;</span>file_path<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The -c option tells grep to count the number of lines that match the specified pattern rather than displaying them. This is useful for quickly determining how many occurrences of the pattern exist in the file.</p>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 28</strong></span> How many sequences are there in theses fasta files?</p>
+<p><span class="theorem-title"><strong>Exercise 29</strong></span> How many sequences are there in theses fasta files?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
@@ -637,13 +639,15 @@ Solution
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/td3/</span>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/tp3/</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">makeblastdb</span> <span class="at">-in</span> /data/blast_tp/nifh_db/nifh-ref.fa <span class="at">-dbtype</span> nucl <span class="at">-out</span> nifh-db.fa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>Note: The tilde <code>~</code> is a shortcut for your home directory <code>/home/&lt;username&gt;</code>.</em></p>
 </div>
 </div>
 </div>
-<p>Look the files generared. Use <code>ls</code> command.</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 30</strong></span> Look the files generared. Use <code>ls</code> command.</p>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -707,7 +711,7 @@ Solution
 <section id="playing-around-blast-output" class="level3">
 <h3 class="anchored" data-anchor-id="playing-around-blast-output">Playing around BLAST output</h3>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 29</strong></span> How many results do you get for each metagenome? Use the <code>wc -l</code>.</p>
+<p><span class="theorem-title"><strong>Exercise 31</strong></span> How many results do you get for each metagenome? Use the <code>wc -l</code>.</p>
 </div>
 <p><strong>wc</strong></p>
 <p>The <code>wc</code> (word count) command in Unix/Linux is a utility used to count lines, words, and bytes in a file or input stream.</p>
@@ -743,7 +747,7 @@ Solution
 <p>The <code>more</code> command is used to display the contents of a file one screen at a time. This is useful for viewing large files like FASTQ files, where the data is too big to fit on a single screen.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span> <span class="op">&lt;</span>path_file_to_display<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 30</strong></span> What is the range of percentage identity for the results of BLAST of soybean metagenome?? Similarly, what is the range of e-values? Use <code>more</code>command.</p>
+<p><span class="theorem-title"><strong>Exercise 32</strong></span> What is the range of percentage identity for the results of BLAST of soybean metagenome?? Similarly, what is the range of e-values? Use <code>more</code>command.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
@@ -789,7 +793,7 @@ Solution
 <li><code>-u</code>: Only print unique lines.</li>
 </ul>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 31</strong></span> How many uniq nifh genes were hit by sequences from soybean metagenome?</p>
+<p><span class="theorem-title"><strong>Exercise 33</strong></span> How many uniq nifh genes were hit by sequences from soybean metagenome?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
@@ -811,7 +815,7 @@ Solution
 </div>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 32</strong></span> How many uniq sequences from prairie metagenome can hit nifh genes?</p>
+<p><span class="theorem-title"><strong>Exercise 34</strong></span> How many uniq sequences from prairie metagenome can hit nifh genes?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
@@ -833,7 +837,7 @@ Solution
 </div>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 33</strong></span> How to get the <code>sseqid</code>, <code>sstart</code>, and <code>send</code> column (column 2, 9, 10) from the soybean blast output file?</p>
+<p><span class="theorem-title"><strong>Exercise 35</strong></span> How to get the <code>sseqid</code>, <code>sstart</code>, and <code>send</code> column (column 2, 9, 10) from the soybean blast output file?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
@@ -863,7 +867,7 @@ Solution
 <li><code>-r</code>: Recursively search directories.</li>
 </ul>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 34</strong></span> How many times was gene <code>gi|909637271|emb|LN713523.1|</code> hit by sequences from corn metagenome sample:</p>
+<p><span class="theorem-title"><strong>Exercise 36</strong></span> How many times was gene <code>gi|909637271|emb|LN713523.1|</code> hit by sequences from corn metagenome sample:</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
@@ -889,12 +893,19 @@ Solution
 
 </main> <!-- /main -->
 <script>
+
     var custom_title = document.querySelectorAll('.custom .theorem-title');
+
     
+
     for (let i = 0; i < custom_title.length; i++ ) {
+
        var mod_name = custom_title[i].innerHTML;
+
        custom_title[i].innerHTML = mod_name.replace("Exercise", "Question");
+
     };
+
     </script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1122,6 +1133,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1232,6 +1245,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

@@ -270,10 +270,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#practical-analysis-of-protein-families" id="toc-practical-analysis-of-protein-families" class="nav-link active" data-scroll-target="#practical-analysis-of-protein-families">Practical – Analysis of Protein Families</a>
   <ul class="collapse">
-  <li><a href="#characterization-of-a-sequence-of-unknown-function" id="toc-characterization-of-a-sequence-of-unknown-function" class="nav-link" data-scroll-target="#characterization-of-a-sequence-of-unknown-function">1. Characterization of a Sequence of Unknown Function</a></li>
-  <li><a href="#first-part-blastp-search" id="toc-first-part-blastp-search" class="nav-link" data-scroll-target="#first-part-blastp-search">First Part: BLASTP Search</a></li>
-  <li><a href="#connection-to-the-server" id="toc-connection-to-the-server" class="nav-link" data-scroll-target="#connection-to-the-server">Connection to the server</a></li>
+  <li><a href="#connection-to-the-server" id="toc-connection-to-the-server" class="nav-link" data-scroll-target="#connection-to-the-server">Connection to the Server</a></li>
+  <li><a href="#characterization-of-a-sequence-of-unknown-function" id="toc-characterization-of-a-sequence-of-unknown-function" class="nav-link" data-scroll-target="#characterization-of-a-sequence-of-unknown-function">Characterization of a Sequence of Unknown Function</a></li>
   <li><a href="#comparison-proteingenome-using-command-line-blast" id="toc-comparison-proteingenome-using-command-line-blast" class="nav-link" data-scroll-target="#comparison-proteingenome-using-command-line-blast">Comparison Protein/Genome Using Command-Line BLAST</a></li>
+  <li><a href="#analysis-of-a-protein-family" id="toc-analysis-of-a-protein-family" class="nav-link" data-scroll-target="#analysis-of-a-protein-family">Analysis of a Protein Family</a>
+  <ul class="collapse">
+  <li><a href="#similarity-search" id="toc-similarity-search" class="nav-link" data-scroll-target="#similarity-search">Similarity Search</a></li>
+  <li><a href="#multiple-alignment-of-homologs-using-mafft" id="toc-multiple-alignment-of-homologs-using-mafft" class="nav-link" data-scroll-target="#multiple-alignment-of-homologs-using-mafft">Multiple Alignment of Homologs Using Mafft</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -286,50 +290,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="practical-analysis-of-protein-families" class="level1">
 <h1>Practical – Analysis of Protein Families</h1>
-<section id="characterization-of-a-sequence-of-unknown-function" class="level2">
-<h2 class="anchored" data-anchor-id="characterization-of-a-sequence-of-unknown-function">1. Characterization of a Sequence of Unknown Function</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> Hypothetical <span class="ex">protein</span> [Candidatus Poribacteria sp. WGA-A3]</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">MVDFNNTLSSTASVQVAAHWDPIENTANNLHRSTEEKFNRDKAQWQEPVEMTWEQWLEVFNPGPAHPLKN</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">YSTADFQVFLPPSTVNVADVWDLDTEGILPFLRQFHPSATMKLPRYGSIPSDQKDAKACLRALSPEYADI</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">VFRIHARFTLDASIDAYFMPAQFAGHLIINRNSRTIHQWTLSLPNRNSNVDIGAFRSHDIGFVPRMELCS</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">VSETQPESIVWEAAITAEEADKKFQNSLYKFAEIEWTPIEEAVELAKASNRSIHAVLLFGVLDDESC</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="first-part-blastp-search" class="level2">
-<h2 class="anchored" data-anchor-id="first-part-blastp-search">First Part: BLASTP Search</h2>
-<p>Search for the organism <strong>Candidatus Poribacteria</strong> in the NCBI Taxonomy database.</p>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1</strong></span> What can you say about the organism taxonomy?</p>
-</div>
-<p>Search for homologs of the Poribacteria sequence (available on Moodle) using NCBI BLASTP:</p>
-<ul>
-<li>In the <strong>RefSeq_protein</strong> database (not in <strong>RefSeq select</strong>!!!)</li>
-<li>With word size = 3</li>
-<li>With a maximum of 1000 sequences and E ≤ 10 (other parameters: default)</li>
-<li><strong>How many hits did you get with E ≤ 10?</strong></li>
-</ul>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2</strong></span> To which family does the protein seem to belong?</p>
-</div>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3</strong></span> According to BLASTP alignments, propose 2 patterns conserved in the protein family.</p>
-</div>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4</strong></span> In which taxonomic group(s) do we find hits? Are the hits found in the bacterial sequences significant? Propose a function and an evolutionary origin for the gene encoding the Poribacteria protein.</p>
-</div>
-<div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5</strong></span> Look at the alignment with human selenoprotein N <strong>NP_996809.1</strong>. Do the alignments cover the C-terminal part of the query sequence and animal selenoprotein N? In metazoans, which amino acid “matches” the stop codon of the Poribacteria sequence? What hypothesis can be made? How could this hypothesis be tested?</p>
-</div>
-</section>
 <section id="connection-to-the-server" class="level2">
-<h2 class="anchored" data-anchor-id="connection-to-the-server">Connection to the server</h2>
+<h2 class="anchored" data-anchor-id="connection-to-the-server">Connection to the Server</h2>
 <p>To learn how to connect to the server for practical work, refer to the <a href="../help/server_connection_guide.html">Server Connection Guide</a>.</p>
-<p>Once you’re connected, start by creating a working directory for this session and navigate into it.</p>
+<p>Once you’re connected, start by creating a working directory for this session and navigating into it.</p>
 <p><strong>mkdir</strong></p>
-<p>The mkdir command stands for “make directory”, is used to create a new folder in the file system. You can create your directory like this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="op">&lt;</span>directory_name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>mkdir</code> command stands for “make directory” and is used to create a new folder in the file system. You can create your directory like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="op">&lt;</span>directory_name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>cd</strong></p>
 <p>The cd command stands for “change directory”, allows you to move into a different folder within the file system. Use it as follows:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="op">&lt;</span>directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="op">&lt;</span>directory<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -342,8 +312,8 @@ Solution
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> TdBlast</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> TdBlast</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> tp4</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> tp4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -361,37 +331,189 @@ Help
 </div>
 </div>
 </section>
+<section id="characterization-of-a-sequence-of-unknown-function" class="level2">
+<h2 class="anchored" data-anchor-id="characterization-of-a-sequence-of-unknown-function">Characterization of a Sequence of Unknown Function</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> Hypothetical <span class="ex">protein</span> [Candidatus Poribacteria sp. WGA-A3]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">MVDFNNTLSSTASVQVAAHWDPIENTANNLHRSTEEKFNRDKAQWQEPVEMTWEQWLEVFNPGPAHPLKN</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">YSTADFQVFLPPSTVNVADVWDLDTEGILPFLRQFHPSATMKLPRYGSIPSDQKDAKACLRALSPEYADI</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">VFRIHARFTLDASIDAYFMPAQFAGHLIINRNSRTIHQWTLSLPNRNSNVDIGAFRSHDIGFVPRMELCS</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">VSETQPESIVWEAAITAEEADKKFQNSLYKFAEIEWTPIEEAVELAKASNRSIHAVLLFGVLDDESC</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Search for the organism <strong>Candidatus Poribacteria</strong> in the <a href="https://www.ncbi.nlm.nih.gov/taxonomy">NCBI Taxonomy database</a>.</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1</strong></span> What can you say about the organism taxonomy?</p>
+</div>
+<p>Search for homologs of the Poribacteria sequence (available on Moodle) using BLASTP:</p>
+<ul>
+<li>In the <strong>RefSeq_protein</strong> database (not in <strong>RefSeq select</strong>!!!)</li>
+<li>With word size = 3</li>
+<li>With a maximum of 1000 sequences and E ≤ 10 (other parameters: default)</li>
+</ul>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2</strong></span> How many hits did you get with E ≤ 10?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3</strong></span> To which family does the protein seem to belong?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4</strong></span> According to BLASTP alignments, propose 2 patterns conserved in the protein family.</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5</strong></span> In which taxonomic group(s) do we find hits? Are the hits found in the bacterial sequences significant? Propose a function and an evolutionary origin for the gene encoding the Poribacteria protein.</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6</strong></span> Look at the alignment with human selenoprotein N <strong>NP_996809.1</strong>. Do the alignments cover the C-terminal part of the query sequence and animal selenoprotein N? In metazoans, which amino acid “matches” the stop codon of the Poribacteria sequence? What hypothesis can be made? How could this hypothesis be tested?</p>
+</div>
+</section>
 <section id="comparison-proteingenome-using-command-line-blast" class="level2">
 <h2 class="anchored" data-anchor-id="comparison-proteingenome-using-command-line-blast">Comparison Protein/Genome Using Command-Line BLAST</h2>
-<p>Retrieve the Human Protein Sequence of the Selenoprotein N (Accession Number: Q9NZV5) using the command GET of the UniProtKB API.</p>
+<p>Retrieve the <strong>Human Protein Sequence of the Selenoprotein N</strong> (Accession Number: <strong>Q9NZV5</strong>) using the command GET of the UniProtKB API.</p>
 <p>Documentation of UniProtKB API: <a href="https://www.ebi.ac.uk/proteins/api/doc/#!/proteins/search">UniProtKB API Documentation</a></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> GET <span class="at">--header</span> <span class="st">'Accept:text/x-fasta'</span> <span class="at">-o</span> Q9NZV5.fasta <span class="st">'https://www.ebi.ac.uk/proteins/api/proteins?offset=0&amp;size=100&amp;accession=Q9NZV5'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 <p>You can open the file with the <code>cat</code> command:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> Q9NZV5.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Create a BLAST Database with Poribacteria Genomes</p>
-<p>Copy the fasta file containing sequences from 2 Poribacteria genomes to your directory. The sequence is available at: <code>/home/lecompte/Poribacteria_genomes.fasta</code></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /home/lecompte/Poribacteria_genomes.fasta Poribacteria_genomes.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Create the BLAST database with the <code>makeblastdb</code> command: To see available options:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">makeblastdb</span> –help</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">makeblastdb</span> <span class="at">-in</span> Poribacteria_genomes.fasta <span class="at">-dbtype</span> nucl <span class="at">-out</span> PoribacteriaDb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Perform a Similarity Search using the human selenoprotein N <strong>Q9NZV5.fasta</strong> as a query in the <strong>PoribacteriaDb</strong> database using the <strong>tblastN</strong> command: To see available options:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tblastn</span> –help</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tblastn</span> <span class="at">-db</span> PoribacteriaDb <span class="at">-query</span> Q9NZV5.fasta <span class="at">-out</span> selN.tblastn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The sequence of Poribacteria genome is available at: <code>/data/poribacteria/poribacteria_genomes.fasta</code></p>
+<p>Create the BLAST database with the <code>makeblastdb</code> command.</p>
+<p>To see available options:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">makeblastdb</span> –help</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">makeblastdb</span> <span class="at">-in</span> /data/poribacteria/poribacteria_genomes.fasta <span class="at">-dbtype</span> nucl <span class="at">-out</span> poribacteriaDb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>Perform a Similarity Search using the human selenoprotein N <strong>Q9NZV5.fasta</strong> as a query in the <strong>PoribacteriaDb</strong> database using the <strong>tblastN</strong> command.</p>
+<p>To see available options:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tblastn</span> –help</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tblastn</span> <span class="at">-db</span> poribacteriaDb <span class="at">-query</span> Q9NZV5.fasta <span class="at">-out</span> selN.tblastn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 <p>Analysis of the TblastN Results.</p>
 <p>Display the TblastN output:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span> selN.tblastn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span> selN.tblastn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 6</strong></span> Can we extend the gene sequence in 3’?</p>
+<p><span class="theorem-title"><strong>Exercise 7</strong></span> Can we extend the gene sequence in 3’?</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7</strong></span> What do you learn from this search about the evolution of this gene in available Poribacteria genomes?</p>
+<p><span class="theorem-title"><strong>Exercise 8</strong></span> What do you learn from this search about the evolution of this gene in available Poribacteria genomes?</p>
 </div>
 <div id="exr-1" class="custom theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8</strong></span> We obtain several alignments for the sequence <strong>VYCT01000218</strong>. Why?</p>
+<p><span class="theorem-title"><strong>Exercise 9</strong></span> We obtain several alignments for the sequence <strong>VYCT01000218</strong>. Why?</p>
 </div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-A</span> 90 <span class="st">'&gt;VYCT01000218'</span> selN.tblastn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For that, use <code>grep</code>command with <code>-A</code> option. The <code>-A</code> option tells grep to display not only the matching line but also the subsequent <em>n</em> lines after each match.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-A</span> 90 <span class="st">'&gt;VYCT01000218'</span> selN.tblastn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="analysis-of-a-protein-family" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-of-a-protein-family">Analysis of a Protein Family</h2>
+<p>A protein sequence (available on the Moodle platform) has been automatically predicted during the annotation of the fungus <em>Malassezia globosa</em> genome.</p>
+<section id="similarity-search" class="level3">
+<h3 class="anchored" data-anchor-id="similarity-search">Similarity Search</h3>
+<p>Perform a similarity search using BLAST at EBI in the SWISSPROT database (https://www.ebi.ac.uk/jdispatcher/sss/ncbiblast) (default parameters).</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 10</strong></span> How many sequences do you obtain (with E&lt;10)? Why so few sequences are detected according to you?</p>
+</div>
+<p>Display results with Tool output.</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 11</strong></span> Find 3 conserved motifs.</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 12</strong></span> Is the <em>Malassezia</em> sequence homologous to: Q84424, P05469, P0C995, O13881?</p>
+</div>
+<p>Display results with Visual output.</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 13</strong></span> For each group of homologs, specify which region(s) (N-terminus, central region, C-terminus, almost whole sequence…) of the query sequence and of the database sequences have been aligned by BLAST.</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 14</strong></span> Why can this information be important before constructing a global multiple alignment?</p>
+</div>
+<p>Display the Summary table. Select all sequences detected by BLAST except:</p>
+<ul>
+<li>CLR2_SCHPO (O13881) and YKP3_KLULA (P05469): non-homologous sequences<br>
+</li>
+<li>YL226_MIMIV (Q5UQC0) and MCE_MIMIV (Q5UQX1): too few motifs.</li>
+</ul>
+<p>Save sequences in Fasta format and add the query sequence in the file. The final file is also available on Moodle (<code>distant_homologs.txt</code>).</p>
+</section>
+<section id="multiple-alignment-of-homologs-using-mafft" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-alignment-of-homologs-using-mafft">Multiple Alignment of Homologs Using Mafft</h3>
+<p><strong>Parameters: </strong></p>
+<p>Display alignment parameters.</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 15</strong></span> Why are pairwise parameters mentioned?</p>
+</div>
+<p>Align sequences (Alignment, Do complete alignment) with default parameters.</p>
+<p>Visualize this alignment with Jalview (available on your computer or using https://www.jalview.org/jalview-js/JalviewJS/).</p>
+<p>Residues can be colored according to their properties with Colour, Zappo (or Clustal, for instance).</p>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 16</strong></span> Is the sequence order relevant? Modify sequence order if necessary.</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 17</strong></span> Do all sequences exhibit the same domain organization?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 18</strong></span> Do you find the previously defined motifs? According to you, is the alignment correct?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 19</strong></span> Can you find additional motifs? Can you find obvious sequence prediction errors?</p>
+</div>
+<div id="exr-1" class="custom theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 20</strong></span> Which sequence sub-groups can be defined? Are there “orphan” sequences? Justify your answer and give one discriminative residue or motif for each group.</p>
+</div>
 
 
+</section>
 </section>
 </section>
 

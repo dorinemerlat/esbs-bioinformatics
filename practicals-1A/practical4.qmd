@@ -1,42 +1,5 @@
 # Practical – Analysis of Protein Families
 
-## Connection to the Server
-
-To learn how to connect to the server for practical work, refer to the [Server Connection Guide](../help/server_connection_guide.qmd).
-
-Once you're connected, start by creating a working directory for this session and navigating into it.
-
-**mkdir**
-
-The `mkdir` command stands for "make directory" and is used to create a new folder in the file system. You can create your directory like this:
-
-```bash
-mkdir <directory_name>
-```
-
-**cd**
-
-The cd command stands for "change directory", allows you to move into a different folder within the file system. Use it as follows:
-
-```bash
-cd <directory>
-```
-
-::: {.callout-tip collapse="true"}
-# Solution
-```bash
-mkdir tp4
-cd tp4
-```
-:::
-
-::: {.callout-note}
-## Help
-If you need help with a command, display its help using:
- - `<command-h` or `<command--help` for short help messages.
- - `man <command>` to display the full manual of a command.
-:::
-
 ## Characterization of a Sequence of Unknown Function
 
 ```bash
@@ -54,6 +17,8 @@ What can you say about the organism taxonomy?
 :::
 
 Use the BLASTP command-line tool to search for homologs of the Poribacteria sequence stored in `/data/poribacteria/poribacteria_hypothetical_protein.faa`. Perform the search against the **SwissProt** database (already installed and indexed at `/data/blast/swissprot*`), specifying a word size of **3**, a maximum e-value of **10**, and the output format to **BLAST archive format (ASN.1)**. All other parameters should remain at their default values.
+
+BLAST can only produce one output format at a time. Therefore, we first generate an archive and then convert it into the required formats as needed.
 
 To see available options: 
 ```bash
@@ -111,7 +76,7 @@ How many hits did you get with E ≤ 10?
 ::: {.callout-tip collapse="true"}
 # Solution
 ```bash
- wc -l poribacteria_hypothetical_protein_tabular.tsv
+wc -l poribacteria_hypothetical_protein_tabular.tsv
 ```
 :::
 
@@ -136,9 +101,56 @@ According to BLASTP alignments, propose 2 patterns conserved in the protein fami
 In which taxonomic group(s) do we find hits of the protein family? Are the hits found in the bacterial sequences significant? Propose a function and an evolutionary origin for the gene encoding the Poribacteria protein.
 :::
 
+The taxonomy information doesn't seem to be working correctly. You can check this file for taxonomic details: `/home/merlat/tp4/poribacteria_hypothetical_protein_tabular.tsv`
+
+::: {.callout-tip collapse="true"}
+# Solution
+```bash
+more /home/merlat/tp4/poribacteria_hypothetical_protein_tabular.tsv
+
+more poribacteria_hypothetical_protein_pairwise.txt 
+```
+:::
 
 ::: {#exr-1 .custom}
 Look at the alignment with human selenoprotein N **Q9NZV5**. Do the alignments cover the C-terminal part of the query sequence and animal selenoprotein N? In metazoans, which amino acid "matches" the stop codon of the Poribacteria sequence? For instance, review the entire sequence of human selenoprotein N (Q9NZV5), available on UniProt [here](https://www.uniprot.org/uniprotkb/Q9NZV5/entry#sequences). Based on this analysis, what hypothesis can be proposed? How could this hypothesis be tested?
+:::
+
+## Connection to the Server
+
+To learn how to connect to the server for practical work, refer to the [Server Connection Guide](../help/server_connection_guide.qmd).
+
+Once you're connected, start by creating a working directory for this session and navigating into it.
+
+**mkdir**
+
+The `mkdir` command stands for "make directory" and is used to create a new folder in the file system. You can create your directory like this:
+
+```bash
+mkdir <directory_name>
+```
+
+**cd**
+
+The cd command stands for "change directory", allows you to move into a different folder within the file system. Use it as follows:
+
+```bash
+cd <directory>
+```
+
+::: {.callout-tip collapse="true"}
+# Solution
+```bash
+mkdir tp4
+cd tp4
+```
+:::
+
+::: {.callout-note}
+## Help
+If you need help with a command, display its help using:
+ - `<command-h` or `<command--help` for short help messages.
+ - `man <command>` to display the full manual of a command.
 :::
 
 ## Comparison Protein/Genome Using Command-Line BLAST
